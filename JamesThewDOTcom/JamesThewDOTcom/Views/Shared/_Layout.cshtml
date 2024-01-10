@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>[Template] Sample Inner Page</title>
+    <title>Home</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -74,11 +74,11 @@
                     <li><a href="#contests">Contests</a></li>
                     <li><a href="#winners">Winners</a></li>
                     <li><a href="#feedback">Feedback</a></li>
-                    <li><a href="#faq">FAQ</a></li>
+                    <li>@Html.ActionLink("FAQ", "Index", "Recipes", new { area = "" }, new { @class = "navbar-brand" })</li>
                 </ul>
             </nav><!-- .navbar -->
 
-            <a class="btn-book-a-table" href="#book-a-table">Sign Up</a>
+            @Html.ActionLink("Sign up", "Register", "UserAuth", new { area = "" }, new { @class = "navbar-brand btn-book-a-table" })
             <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
             <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
