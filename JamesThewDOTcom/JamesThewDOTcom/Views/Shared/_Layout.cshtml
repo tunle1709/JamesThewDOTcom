@@ -71,10 +71,10 @@
                             <li><a href="#">Drop Down 4</a></li>
                         </ul>
                     </li>
-                    <li><a href="#contests">Contests</a></li>
+                    <li>@Html.ActionLink("Contest", "Index", "Contests", new { area = "" }, new { @class = "navbar-brand" })</li>
                     <li><a href="#winners">Winners</a></li>
-                    <li><a href="#feedback">Feedback</a></li>
-                    <li>@Html.ActionLink("FAQ", "Index", "Recipes", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("Feedback", "Index", "Feedback", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("FAQ", "Index", "FAQ", new { area = "" }, new { @class = "navbar-brand" })</li>
                 </ul>
             </nav><!-- .navbar -->
 
