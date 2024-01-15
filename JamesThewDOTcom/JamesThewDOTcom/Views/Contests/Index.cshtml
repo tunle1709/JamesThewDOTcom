@@ -4,10 +4,70 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Contests</h2>
-<h2>Contests</h2>
-<h2>Contests</h2>
-<h2>Contests</h2>
-<h2>Contests</h2>
-<h2>Contests</h2>
+<main>
+
+    <br />
+    <section class="container mt-4">
+        <div class="jumbotron">
+            <h2>Welcome to the Contest!</h2>
+            <p class="lead">Description of the contest and important information.</p>
+            <a href="#registration" class="btn btn-danger btn-lg">Register Now</a>
+        </div>
+        <br />
+        <img width="1000" src="https://toanphatcorp.vn/media/images/tin-tuc/A2.png"
+             alt="Registration Form image" class="card-img-top" >
+    </section>
+
+    <section id="registration" class="container mt-4">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title" style="color:red">Registration Form</h2>
+                <form action="process_registration.php" method="post">
+
+                    <div class="form-group">
+                        <label for="id">ID:</label>
+                        <input type="text" id="id" name="id" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phoneNumber">PhoneNumber:</label>
+                        <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-danger" style="margin-top:20px">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <style>
+        button{
+            background: red;
+        }
+        
+        button:hover{
+            color: white;
+        }
+    </style>
+
+    <!-- Add more Bootstrap components and sections as needed -->
+    <!-- Link to Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</main>
 
