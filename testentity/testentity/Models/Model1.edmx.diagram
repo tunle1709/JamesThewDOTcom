@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="024db6f5d33644209b39f0ada46d5241" Name="Diagram1">
+        <EntityTypeShape EntityType="masterModel.CookingContest" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.Customer" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.CustomerType" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.CustomerType_CookingContest" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.Employee" Width="1.5" PointX="3.75" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.Employees_Group" Width="1.5" PointX="11" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.ExamRegistration" Width="1.5" PointX="6" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.FAQ" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.FeedBack" Width="1.5" PointX="8.25" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.Group_Object" Width="1.5" PointX="11" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.Group" Width="1.5" PointX="8.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.Objecthihi" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.PaymentType" Width="1.5" PointX="3.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.RecipeType" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.RecipeType_CustomerType" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.Repice" Width="1.5" PointX="6" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.MSreplication_options" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.spt_fallback_db" Width="1.5" PointX="8.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.spt_fallback_dev" Width="1.5" PointX="5.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.spt_fallback_usg" Width="1.5" PointX="10.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.spt_monitor" Width="1.5" PointX="12.75" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="masterModel.FK__Customers__Title__414EAC47" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__Customers__Title__5FD33367" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__Customers__Title__7D63964E" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__CustomerT__Title__4242D080" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__CustomerT__Title__60C757A0" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__CustomerT__Title__7E57BA87" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__FAQ__CustomerID__041093DD" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__FAQ__CustomerID__47FBA9D6" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__FAQ__CustomerID__668030F6" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__FeedBack__Custom__05F8DC4F" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__FeedBack__Custom__49E3F248" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__FeedBack__Custom__68687968" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__CustomerT__Custo__4336F4B9" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__CustomerT__Custo__61BB7BD9" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__CustomerT__Custo__7F4BDEC0" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__ExamRegis__Custo__031C6FA4" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__ExamRegis__Custo__4707859D" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__ExamRegis__Custo__658C0CBD" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__RecipeTyp__Custo__08D548FA" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__RecipeTyp__Custo__4CC05EF3" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__RecipeTyp__Custo__6B44E613" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__Employees__Emplo__01342732" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__Employees__Emplo__451F3D2B" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__Employees__Emplo__63A3C44B" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__Repice__Employee__0ABD916C" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__Repice__Employee__4EA8A765" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__Repice__Employee__6D2D2E85" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__Employees__Group__004002F9" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__Employees__Group__442B18F2" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__Employees__Group__62AFA012" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__ExamRegis__Payme__02284B6B" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__ExamRegis__Payme__46136164" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__ExamRegis__Payme__6497E884" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__FeedBack__0504B816" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__FeedBack__48EFCE0F" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__FeedBack__6774552F" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__Group_Obj__Group__07E124C1" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__Group_Obj__Group__4BCC3ABA" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__Group_Obj__Group__6A50C1DA" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__Group_Obj__Objec__06ED0088" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__Group_Obj__Objec__695C9DA1" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__RecipeTyp__Recip__09C96D33" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__RecipeTyp__Recip__4DB4832C" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__RecipeTyp__Recip__6C390A4C" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

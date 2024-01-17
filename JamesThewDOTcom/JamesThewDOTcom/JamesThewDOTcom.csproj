@@ -155,16 +155,26 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\ContestsController.cs" />
-    <Compile Include="Controllers\FAQController.cs" />
-    <Compile Include="Controllers\FeedbackController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\RecipesController.cs" />
-    <Compile Include="Controllers\UserAuthController.cs" />
+    <Compile Include="Controllers\Administration\RecipeController.cs" />
+    <Compile Include="Controllers\User\ContestsController.cs" />
+    <Compile Include="Controllers\User\FAQController.cs" />
+    <Compile Include="Controllers\User\FeedbackController.cs" />
+    <Compile Include="Controllers\User\HomeController.cs" />
+    <Compile Include="Controllers\User\RecipesController.cs" />
+    <Compile Include="Controllers\Administration\UserAuthController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContestResults.cs" />
+    <Compile Include="Models\CookingContest.cs" />
+    <Compile Include="Models\Customers.cs" />
+    <Compile Include="Models\Employees.cs" />
+    <Compile Include="Models\FAQ.cs" />
+    <Compile Include="Models\FeedBack.cs" />
+    <Compile Include="Models\PaymentType.cs" />
+    <Compile Include="Models\Register.cs" />
+    <Compile Include="Models\Recipe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -341,10 +351,14 @@
     <Content Include="Views\FAQ\Index.cshtml" />
     <Content Include="Views\Feedback\Index.cshtml" />
     <Content Include="Views\Contests\Index.cshtml" />
+    <Content Include="Views\Recipe\Index.cshtml" />
+    <Content Include="Views\Recipe\Details.cshtml" />
+    <Content Include="Views\Recipe\Create.cshtml" />
+    <Content Include="Views\Recipe\Edit.cshtml" />
+    <Content Include="Views\Recipe\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\bootstrap.min.js.map" />
