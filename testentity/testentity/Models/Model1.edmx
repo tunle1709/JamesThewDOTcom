@@ -1,0 +1,2421 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="masterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CookingContest">
+          <Key>
+            <PropertyRef Name="Title" />
+          </Key>
+          <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="DescriptionCookingContest" Type="nvarchar" MaxLength="500" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="20" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="30" />
+          <Property Name="AddressCustomer" Type="nvarchar" MaxLength="40" />
+          <Property Name="City" Type="nvarchar" MaxLength="20" />
+          <Property Name="Region" Type="nvarchar" MaxLength="50" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="Country" Type="nvarchar" MaxLength="20" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="24" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="CustomerType">
+          <Key>
+            <PropertyRef Name="CustomersTypeID" />
+          </Key>
+          <Property Name="CustomersTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomersTypeName" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerType_CookingContest">
+          <Key>
+            <PropertyRef Name="CustomersTypeID" />
+            <PropertyRef Name="Title" />
+          </Key>
+          <Property Name="CustomersTypeID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Last_Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="First_Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="4000" Nullable="false" />
+          <Property Name="TitleoOfCourtesy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BirthDate" Type="datetime" Nullable="false" />
+          <Property Name="HireDate" Type="datetime" Nullable="false" />
+          <Property Name="AddressEmployees" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Region" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="HomePhone" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Extension" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employees_Group">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="GroupID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExamRegistration">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameExamRegistration" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="30" />
+          <Property Name="AddressExamRegistration" Type="nvarchar" MaxLength="24" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="CustomersTypeID" Type="int" />
+          <Property Name="PaymentTypeID" Type="int" />
+        </EntityType>
+        <EntityType Name="FAQ">
+          <Key>
+            <PropertyRef Name="FaqID" />
+          </Key>
+          <Property Name="FaqID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FaqName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CustomerID" Type="int" />
+        </EntityType>
+        <EntityType Name="FeedBack">
+          <Key>
+            <PropertyRef Name="FeedBackID" />
+            <PropertyRef Name="RecipeID" />
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="FeedBackID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="500" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="RecipeID" Type="int" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Group_Object">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="ObjectID" />
+          </Key>
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="ObjectID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'master.dbo.MSreplication_options' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MSreplication_options">
+          <Key>
+            <PropertyRef Name="optname" />
+            <PropertyRef Name="value" />
+            <PropertyRef Name="major_version" />
+            <PropertyRef Name="minor_version" />
+            <PropertyRef Name="revision" />
+            <PropertyRef Name="install_failures" />
+          </Key>
+          <Property Name="optname" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="value" Type="bit" Nullable="false" />
+          <Property Name="major_version" Type="int" Nullable="false" />
+          <Property Name="minor_version" Type="int" Nullable="false" />
+          <Property Name="revision" Type="int" Nullable="false" />
+          <Property Name="install_failures" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Objecthihi">
+          <Key>
+            <PropertyRef Name="ObjectID" />
+          </Key>
+          <Property Name="ObjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ObjectName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="PaymentType">
+          <Key>
+            <PropertyRef Name="PaymentTypeID" />
+          </Key>
+          <Property Name="PaymentTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NamePaymentType" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RecipeType">
+          <Key>
+            <PropertyRef Name="RecipeTypeID" />
+          </Key>
+          <Property Name="RecipeTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RecipeTyName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RecipeType_CustomerType">
+          <Key>
+            <PropertyRef Name="RecipeTypeID" />
+            <PropertyRef Name="CustomersTypeID" />
+          </Key>
+          <Property Name="RecipeTypeID" Type="int" Nullable="false" />
+          <Property Name="CustomersTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Repice">
+          <Key>
+            <PropertyRef Name="RecipeID" />
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="RecipeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ingredints" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProcedureRepice" Type="text" />
+          <Property Name="RecipeType" Type="bit" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'master.dbo.spt_fallback_db' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="spt_fallback_db">
+          <Key>
+            <PropertyRef Name="xserver_name" />
+            <PropertyRef Name="xdttm_ins" />
+            <PropertyRef Name="xdttm_last_ins_upd" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="dbid" />
+            <PropertyRef Name="status" />
+            <PropertyRef Name="version" />
+          </Key>
+          <Property Name="xserver_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
+          <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
+          <Property Name="xfallback_dbid" Type="smallint" />
+          <Property Name="name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="dbid" Type="smallint" Nullable="false" />
+          <Property Name="status" Type="smallint" Nullable="false" />
+          <Property Name="version" Type="smallint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'master.dbo.spt_fallback_dev' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="spt_fallback_dev">
+          <Key>
+            <PropertyRef Name="xserver_name" />
+            <PropertyRef Name="xdttm_ins" />
+            <PropertyRef Name="xdttm_last_ins_upd" />
+            <PropertyRef Name="low" />
+            <PropertyRef Name="high" />
+            <PropertyRef Name="status" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="phyname" />
+          </Key>
+          <Property Name="xserver_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
+          <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
+          <Property Name="xfallback_low" Type="int" />
+          <Property Name="xfallback_drive" Type="char" MaxLength="2" />
+          <Property Name="low" Type="int" Nullable="false" />
+          <Property Name="high" Type="int" Nullable="false" />
+          <Property Name="status" Type="smallint" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="phyname" Type="varchar" MaxLength="127" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'master.dbo.spt_fallback_usg' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="spt_fallback_usg">
+          <Key>
+            <PropertyRef Name="xserver_name" />
+            <PropertyRef Name="xdttm_ins" />
+            <PropertyRef Name="xdttm_last_ins_upd" />
+            <PropertyRef Name="dbid" />
+            <PropertyRef Name="segmap" />
+            <PropertyRef Name="lstart" />
+            <PropertyRef Name="sizepg" />
+            <PropertyRef Name="vstart" />
+          </Key>
+          <Property Name="xserver_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
+          <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
+          <Property Name="xfallback_vstart" Type="int" />
+          <Property Name="dbid" Type="smallint" Nullable="false" />
+          <Property Name="segmap" Type="int" Nullable="false" />
+          <Property Name="lstart" Type="int" Nullable="false" />
+          <Property Name="sizepg" Type="int" Nullable="false" />
+          <Property Name="vstart" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="spt_monitor">
+          <Key>
+            <PropertyRef Name="lastrun" />
+            <PropertyRef Name="cpu_busy" />
+            <PropertyRef Name="io_busy" />
+            <PropertyRef Name="idle" />
+            <PropertyRef Name="pack_received" />
+            <PropertyRef Name="pack_sent" />
+            <PropertyRef Name="connections" />
+            <PropertyRef Name="pack_errors" />
+            <PropertyRef Name="total_read" />
+            <PropertyRef Name="total_write" />
+            <PropertyRef Name="total_errors" />
+          </Key>
+          <Property Name="lastrun" Type="datetime" Nullable="false" />
+          <Property Name="cpu_busy" Type="int" Nullable="false" />
+          <Property Name="io_busy" Type="int" Nullable="false" />
+          <Property Name="idle" Type="int" Nullable="false" />
+          <Property Name="pack_received" Type="int" Nullable="false" />
+          <Property Name="pack_sent" Type="int" Nullable="false" />
+          <Property Name="connections" Type="int" Nullable="false" />
+          <Property Name="pack_errors" Type="int" Nullable="false" />
+          <Property Name="total_read" Type="int" Nullable="false" />
+          <Property Name="total_write" Type="int" Nullable="false" />
+          <Property Name="total_errors" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Customers__Title__414EAC47">
+          <End Role="CookingContest" Type="Self.CookingContest" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CookingContest">
+              <PropertyRef Name="Title" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="Title" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customers__Title__5FD33367">
+          <End Role="CookingContest" Type="Self.CookingContest" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CookingContest">
+              <PropertyRef Name="Title" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="Title" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customers__Title__7D63964E">
+          <End Role="CookingContest" Type="Self.CookingContest" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CookingContest">
+              <PropertyRef Name="Title" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="Title" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerT__Custo__4336F4B9">
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="1" />
+          <End Role="CustomerType_CookingContest" Type="Self.CustomerType_CookingContest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Principal>
+            <Dependent Role="CustomerType_CookingContest">
+              <PropertyRef Name="CustomersTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerT__Custo__61BB7BD9">
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="1" />
+          <End Role="CustomerType_CookingContest" Type="Self.CustomerType_CookingContest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Principal>
+            <Dependent Role="CustomerType_CookingContest">
+              <PropertyRef Name="CustomersTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerT__Custo__7F4BDEC0">
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="1" />
+          <End Role="CustomerType_CookingContest" Type="Self.CustomerType_CookingContest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Principal>
+            <Dependent Role="CustomerType_CookingContest">
+              <PropertyRef Name="CustomersTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerT__Title__4242D080">
+          <End Role="CookingContest" Type="Self.CookingContest" Multiplicity="1" />
+          <End Role="CustomerType_CookingContest" Type="Self.CustomerType_CookingContest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CookingContest">
+              <PropertyRef Name="Title" />
+            </Principal>
+            <Dependent Role="CustomerType_CookingContest">
+              <PropertyRef Name="Title" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerT__Title__60C757A0">
+          <End Role="CookingContest" Type="Self.CookingContest" Multiplicity="1" />
+          <End Role="CustomerType_CookingContest" Type="Self.CustomerType_CookingContest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CookingContest">
+              <PropertyRef Name="Title" />
+            </Principal>
+            <Dependent Role="CustomerType_CookingContest">
+              <PropertyRef Name="Title" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerT__Title__7E57BA87">
+          <End Role="CookingContest" Type="Self.CookingContest" Multiplicity="1" />
+          <End Role="CustomerType_CookingContest" Type="Self.CustomerType_CookingContest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CookingContest">
+              <PropertyRef Name="Title" />
+            </Principal>
+            <Dependent Role="CustomerType_CookingContest">
+              <PropertyRef Name="Title" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__Emplo__01342732">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Employees_Group" Type="Self.Employees_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Employees_Group">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__Emplo__451F3D2B">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Employees_Group" Type="Self.Employees_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Employees_Group">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__Emplo__63A3C44B">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Employees_Group" Type="Self.Employees_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Employees_Group">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__Group__004002F9">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="Employees_Group" Type="Self.Employees_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="Employees_Group">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__Group__442B18F2">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="Employees_Group" Type="Self.Employees_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="Employees_Group">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__Group__62AFA012">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="Employees_Group" Type="Self.Employees_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="Employees_Group">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExamRegis__Custo__031C6FA4">
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="0..1" />
+          <End Role="ExamRegistration" Type="Self.ExamRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Principal>
+            <Dependent Role="ExamRegistration">
+              <PropertyRef Name="CustomersTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExamRegis__Custo__4707859D">
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="0..1" />
+          <End Role="ExamRegistration" Type="Self.ExamRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Principal>
+            <Dependent Role="ExamRegistration">
+              <PropertyRef Name="CustomersTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExamRegis__Custo__658C0CBD">
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="0..1" />
+          <End Role="ExamRegistration" Type="Self.ExamRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Principal>
+            <Dependent Role="ExamRegistration">
+              <PropertyRef Name="CustomersTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExamRegis__Payme__02284B6B">
+          <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="0..1" />
+          <End Role="ExamRegistration" Type="Self.ExamRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="PaymentTypeID" />
+            </Principal>
+            <Dependent Role="ExamRegistration">
+              <PropertyRef Name="PaymentTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExamRegis__Payme__46136164">
+          <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="0..1" />
+          <End Role="ExamRegistration" Type="Self.ExamRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="PaymentTypeID" />
+            </Principal>
+            <Dependent Role="ExamRegistration">
+              <PropertyRef Name="PaymentTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExamRegis__Payme__6497E884">
+          <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="0..1" />
+          <End Role="ExamRegistration" Type="Self.ExamRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="PaymentTypeID" />
+            </Principal>
+            <Dependent Role="ExamRegistration">
+              <PropertyRef Name="PaymentTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FAQ__CustomerID__041093DD">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="FAQ" Type="Self.FAQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="FAQ">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FAQ__CustomerID__47FBA9D6">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="FAQ" Type="Self.FAQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="FAQ">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FAQ__CustomerID__668030F6">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="FAQ" Type="Self.FAQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="FAQ">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FeedBack__0504B816">
+          <End Role="Repice" Type="Self.Repice" Multiplicity="1" />
+          <End Role="FeedBack" Type="Self.FeedBack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repice">
+              <PropertyRef Name="RecipeID" />
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="FeedBack">
+              <PropertyRef Name="RecipeID" />
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FeedBack__48EFCE0F">
+          <End Role="Repice" Type="Self.Repice" Multiplicity="1" />
+          <End Role="FeedBack" Type="Self.FeedBack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repice">
+              <PropertyRef Name="RecipeID" />
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="FeedBack">
+              <PropertyRef Name="RecipeID" />
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FeedBack__6774552F">
+          <End Role="Repice" Type="Self.Repice" Multiplicity="1" />
+          <End Role="FeedBack" Type="Self.FeedBack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repice">
+              <PropertyRef Name="RecipeID" />
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="FeedBack">
+              <PropertyRef Name="RecipeID" />
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FeedBack__Custom__05F8DC4F">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="FeedBack" Type="Self.FeedBack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="FeedBack">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FeedBack__Custom__49E3F248">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="FeedBack" Type="Self.FeedBack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="FeedBack">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FeedBack__Custom__68687968">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="FeedBack" Type="Self.FeedBack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="FeedBack">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Group_Obj__Group__07E124C1">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="Group_Object" Type="Self.Group_Object" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="Group_Object">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Group_Obj__Group__4BCC3ABA">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="Group_Object" Type="Self.Group_Object" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="Group_Object">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Group_Obj__Group__6A50C1DA">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="Group_Object" Type="Self.Group_Object" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="Group_Object">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Group_Obj__Objec__06ED0088">
+          <End Role="Objecthihi" Type="Self.Objecthihi" Multiplicity="1" />
+          <End Role="Group_Object" Type="Self.Group_Object" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Objecthihi">
+              <PropertyRef Name="ObjectID" />
+            </Principal>
+            <Dependent Role="Group_Object">
+              <PropertyRef Name="ObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Group_Obj__Objec__695C9DA1">
+          <End Role="Objecthihi" Type="Self.Objecthihi" Multiplicity="1" />
+          <End Role="Group_Object" Type="Self.Group_Object" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Objecthihi">
+              <PropertyRef Name="ObjectID" />
+            </Principal>
+            <Dependent Role="Group_Object">
+              <PropertyRef Name="ObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecipeTyp__Custo__08D548FA">
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="1" />
+          <End Role="RecipeType_CustomerType" Type="Self.RecipeType_CustomerType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Principal>
+            <Dependent Role="RecipeType_CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecipeTyp__Custo__4CC05EF3">
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="1" />
+          <End Role="RecipeType_CustomerType" Type="Self.RecipeType_CustomerType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Principal>
+            <Dependent Role="RecipeType_CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecipeTyp__Custo__6B44E613">
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="1" />
+          <End Role="RecipeType_CustomerType" Type="Self.RecipeType_CustomerType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Principal>
+            <Dependent Role="RecipeType_CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecipeTyp__Recip__09C96D33">
+          <End Role="RecipeType" Type="Self.RecipeType" Multiplicity="1" />
+          <End Role="RecipeType_CustomerType" Type="Self.RecipeType_CustomerType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecipeType">
+              <PropertyRef Name="RecipeTypeID" />
+            </Principal>
+            <Dependent Role="RecipeType_CustomerType">
+              <PropertyRef Name="RecipeTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecipeTyp__Recip__4DB4832C">
+          <End Role="RecipeType" Type="Self.RecipeType" Multiplicity="1" />
+          <End Role="RecipeType_CustomerType" Type="Self.RecipeType_CustomerType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecipeType">
+              <PropertyRef Name="RecipeTypeID" />
+            </Principal>
+            <Dependent Role="RecipeType_CustomerType">
+              <PropertyRef Name="RecipeTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecipeTyp__Recip__6C390A4C">
+          <End Role="RecipeType" Type="Self.RecipeType" Multiplicity="1" />
+          <End Role="RecipeType_CustomerType" Type="Self.RecipeType_CustomerType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecipeType">
+              <PropertyRef Name="RecipeTypeID" />
+            </Principal>
+            <Dependent Role="RecipeType_CustomerType">
+              <PropertyRef Name="RecipeTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Repice__Employee__0ABD916C">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Repice" Type="Self.Repice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Repice">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Repice__Employee__4EA8A765">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Repice" Type="Self.Repice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Repice">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Repice__Employee__6D2D2E85">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Repice" Type="Self.Repice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Repice">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="masterModelStoreContainer">
+          <EntitySet Name="CookingContest" EntityType="Self.CookingContest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerType" EntityType="Self.CustomerType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerType_CookingContest" EntityType="Self.CustomerType_CookingContest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees_Group" EntityType="Self.Employees_Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExamRegistration" EntityType="Self.ExamRegistration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FAQ" EntityType="Self.FAQ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FeedBack" EntityType="Self.FeedBack" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Group_Object" EntityType="Self.Group_Object" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Objecthihi" EntityType="Self.Objecthihi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentType" EntityType="Self.PaymentType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecipeType" EntityType="Self.RecipeType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecipeType_CustomerType" EntityType="Self.RecipeType_CustomerType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Repice" EntityType="Self.Repice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MSreplication_options" EntityType="Self.MSreplication_options" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MSreplication_options].[optname] AS [optname], 
+    [MSreplication_options].[value] AS [value], 
+    [MSreplication_options].[major_version] AS [major_version], 
+    [MSreplication_options].[minor_version] AS [minor_version], 
+    [MSreplication_options].[revision] AS [revision], 
+    [MSreplication_options].[install_failures] AS [install_failures]
+    FROM [dbo].[MSreplication_options] AS [MSreplication_options]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="spt_fallback_db" EntityType="Self.spt_fallback_db" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [spt_fallback_db].[xserver_name] AS [xserver_name], 
+    [spt_fallback_db].[xdttm_ins] AS [xdttm_ins], 
+    [spt_fallback_db].[xdttm_last_ins_upd] AS [xdttm_last_ins_upd], 
+    [spt_fallback_db].[xfallback_dbid] AS [xfallback_dbid], 
+    [spt_fallback_db].[name] AS [name], 
+    [spt_fallback_db].[dbid] AS [dbid], 
+    [spt_fallback_db].[status] AS [status], 
+    [spt_fallback_db].[version] AS [version]
+    FROM [dbo].[spt_fallback_db] AS [spt_fallback_db]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="spt_fallback_dev" EntityType="Self.spt_fallback_dev" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [spt_fallback_dev].[xserver_name] AS [xserver_name], 
+    [spt_fallback_dev].[xdttm_ins] AS [xdttm_ins], 
+    [spt_fallback_dev].[xdttm_last_ins_upd] AS [xdttm_last_ins_upd], 
+    [spt_fallback_dev].[xfallback_low] AS [xfallback_low], 
+    [spt_fallback_dev].[xfallback_drive] AS [xfallback_drive], 
+    [spt_fallback_dev].[low] AS [low], 
+    [spt_fallback_dev].[high] AS [high], 
+    [spt_fallback_dev].[status] AS [status], 
+    [spt_fallback_dev].[name] AS [name], 
+    [spt_fallback_dev].[phyname] AS [phyname]
+    FROM [dbo].[spt_fallback_dev] AS [spt_fallback_dev]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="spt_fallback_usg" EntityType="Self.spt_fallback_usg" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [spt_fallback_usg].[xserver_name] AS [xserver_name], 
+    [spt_fallback_usg].[xdttm_ins] AS [xdttm_ins], 
+    [spt_fallback_usg].[xdttm_last_ins_upd] AS [xdttm_last_ins_upd], 
+    [spt_fallback_usg].[xfallback_vstart] AS [xfallback_vstart], 
+    [spt_fallback_usg].[dbid] AS [dbid], 
+    [spt_fallback_usg].[segmap] AS [segmap], 
+    [spt_fallback_usg].[lstart] AS [lstart], 
+    [spt_fallback_usg].[sizepg] AS [sizepg], 
+    [spt_fallback_usg].[vstart] AS [vstart]
+    FROM [dbo].[spt_fallback_usg] AS [spt_fallback_usg]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="spt_monitor" EntityType="Self.spt_monitor" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [spt_monitor].[lastrun] AS [lastrun], 
+    [spt_monitor].[cpu_busy] AS [cpu_busy], 
+    [spt_monitor].[io_busy] AS [io_busy], 
+    [spt_monitor].[idle] AS [idle], 
+    [spt_monitor].[pack_received] AS [pack_received], 
+    [spt_monitor].[pack_sent] AS [pack_sent], 
+    [spt_monitor].[connections] AS [connections], 
+    [spt_monitor].[pack_errors] AS [pack_errors], 
+    [spt_monitor].[total_read] AS [total_read], 
+    [spt_monitor].[total_write] AS [total_write], 
+    [spt_monitor].[total_errors] AS [total_errors]
+    FROM [dbo].[spt_monitor] AS [spt_monitor]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Customers__Title__414EAC47" Association="Self.FK__Customers__Title__414EAC47">
+            <End Role="CookingContest" EntitySet="CookingContest" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customers__Title__5FD33367" Association="Self.FK__Customers__Title__5FD33367">
+            <End Role="CookingContest" EntitySet="CookingContest" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customers__Title__7D63964E" Association="Self.FK__Customers__Title__7D63964E">
+            <End Role="CookingContest" EntitySet="CookingContest" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerT__Custo__4336F4B9" Association="Self.FK__CustomerT__Custo__4336F4B9">
+            <End Role="CustomerType" EntitySet="CustomerType" />
+            <End Role="CustomerType_CookingContest" EntitySet="CustomerType_CookingContest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerT__Custo__61BB7BD9" Association="Self.FK__CustomerT__Custo__61BB7BD9">
+            <End Role="CustomerType" EntitySet="CustomerType" />
+            <End Role="CustomerType_CookingContest" EntitySet="CustomerType_CookingContest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerT__Custo__7F4BDEC0" Association="Self.FK__CustomerT__Custo__7F4BDEC0">
+            <End Role="CustomerType" EntitySet="CustomerType" />
+            <End Role="CustomerType_CookingContest" EntitySet="CustomerType_CookingContest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerT__Title__4242D080" Association="Self.FK__CustomerT__Title__4242D080">
+            <End Role="CookingContest" EntitySet="CookingContest" />
+            <End Role="CustomerType_CookingContest" EntitySet="CustomerType_CookingContest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerT__Title__60C757A0" Association="Self.FK__CustomerT__Title__60C757A0">
+            <End Role="CookingContest" EntitySet="CookingContest" />
+            <End Role="CustomerType_CookingContest" EntitySet="CustomerType_CookingContest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerT__Title__7E57BA87" Association="Self.FK__CustomerT__Title__7E57BA87">
+            <End Role="CookingContest" EntitySet="CookingContest" />
+            <End Role="CustomerType_CookingContest" EntitySet="CustomerType_CookingContest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__Emplo__01342732" Association="Self.FK__Employees__Emplo__01342732">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Employees_Group" EntitySet="Employees_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__Emplo__451F3D2B" Association="Self.FK__Employees__Emplo__451F3D2B">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Employees_Group" EntitySet="Employees_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__Emplo__63A3C44B" Association="Self.FK__Employees__Emplo__63A3C44B">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Employees_Group" EntitySet="Employees_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__Group__004002F9" Association="Self.FK__Employees__Group__004002F9">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Employees_Group" EntitySet="Employees_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__Group__442B18F2" Association="Self.FK__Employees__Group__442B18F2">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Employees_Group" EntitySet="Employees_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__Group__62AFA012" Association="Self.FK__Employees__Group__62AFA012">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Employees_Group" EntitySet="Employees_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExamRegis__Custo__031C6FA4" Association="Self.FK__ExamRegis__Custo__031C6FA4">
+            <End Role="CustomerType" EntitySet="CustomerType" />
+            <End Role="ExamRegistration" EntitySet="ExamRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExamRegis__Custo__4707859D" Association="Self.FK__ExamRegis__Custo__4707859D">
+            <End Role="CustomerType" EntitySet="CustomerType" />
+            <End Role="ExamRegistration" EntitySet="ExamRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExamRegis__Custo__658C0CBD" Association="Self.FK__ExamRegis__Custo__658C0CBD">
+            <End Role="CustomerType" EntitySet="CustomerType" />
+            <End Role="ExamRegistration" EntitySet="ExamRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExamRegis__Payme__02284B6B" Association="Self.FK__ExamRegis__Payme__02284B6B">
+            <End Role="PaymentType" EntitySet="PaymentType" />
+            <End Role="ExamRegistration" EntitySet="ExamRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExamRegis__Payme__46136164" Association="Self.FK__ExamRegis__Payme__46136164">
+            <End Role="PaymentType" EntitySet="PaymentType" />
+            <End Role="ExamRegistration" EntitySet="ExamRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExamRegis__Payme__6497E884" Association="Self.FK__ExamRegis__Payme__6497E884">
+            <End Role="PaymentType" EntitySet="PaymentType" />
+            <End Role="ExamRegistration" EntitySet="ExamRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FAQ__CustomerID__041093DD" Association="Self.FK__FAQ__CustomerID__041093DD">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="FAQ" EntitySet="FAQ" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FAQ__CustomerID__47FBA9D6" Association="Self.FK__FAQ__CustomerID__47FBA9D6">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="FAQ" EntitySet="FAQ" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FAQ__CustomerID__668030F6" Association="Self.FK__FAQ__CustomerID__668030F6">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="FAQ" EntitySet="FAQ" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FeedBack__0504B816" Association="Self.FK__FeedBack__0504B816">
+            <End Role="Repice" EntitySet="Repice" />
+            <End Role="FeedBack" EntitySet="FeedBack" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FeedBack__48EFCE0F" Association="Self.FK__FeedBack__48EFCE0F">
+            <End Role="Repice" EntitySet="Repice" />
+            <End Role="FeedBack" EntitySet="FeedBack" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FeedBack__6774552F" Association="Self.FK__FeedBack__6774552F">
+            <End Role="Repice" EntitySet="Repice" />
+            <End Role="FeedBack" EntitySet="FeedBack" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FeedBack__Custom__05F8DC4F" Association="Self.FK__FeedBack__Custom__05F8DC4F">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="FeedBack" EntitySet="FeedBack" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FeedBack__Custom__49E3F248" Association="Self.FK__FeedBack__Custom__49E3F248">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="FeedBack" EntitySet="FeedBack" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FeedBack__Custom__68687968" Association="Self.FK__FeedBack__Custom__68687968">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="FeedBack" EntitySet="FeedBack" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Group_Obj__Group__07E124C1" Association="Self.FK__Group_Obj__Group__07E124C1">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Group_Object" EntitySet="Group_Object" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Group_Obj__Group__4BCC3ABA" Association="Self.FK__Group_Obj__Group__4BCC3ABA">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Group_Object" EntitySet="Group_Object" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Group_Obj__Group__6A50C1DA" Association="Self.FK__Group_Obj__Group__6A50C1DA">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Group_Object" EntitySet="Group_Object" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Group_Obj__Objec__06ED0088" Association="Self.FK__Group_Obj__Objec__06ED0088">
+            <End Role="Objecthihi" EntitySet="Objecthihi" />
+            <End Role="Group_Object" EntitySet="Group_Object" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Group_Obj__Objec__695C9DA1" Association="Self.FK__Group_Obj__Objec__695C9DA1">
+            <End Role="Objecthihi" EntitySet="Objecthihi" />
+            <End Role="Group_Object" EntitySet="Group_Object" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecipeTyp__Custo__08D548FA" Association="Self.FK__RecipeTyp__Custo__08D548FA">
+            <End Role="CustomerType" EntitySet="CustomerType" />
+            <End Role="RecipeType_CustomerType" EntitySet="RecipeType_CustomerType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecipeTyp__Custo__4CC05EF3" Association="Self.FK__RecipeTyp__Custo__4CC05EF3">
+            <End Role="CustomerType" EntitySet="CustomerType" />
+            <End Role="RecipeType_CustomerType" EntitySet="RecipeType_CustomerType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecipeTyp__Custo__6B44E613" Association="Self.FK__RecipeTyp__Custo__6B44E613">
+            <End Role="CustomerType" EntitySet="CustomerType" />
+            <End Role="RecipeType_CustomerType" EntitySet="RecipeType_CustomerType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecipeTyp__Recip__09C96D33" Association="Self.FK__RecipeTyp__Recip__09C96D33">
+            <End Role="RecipeType" EntitySet="RecipeType" />
+            <End Role="RecipeType_CustomerType" EntitySet="RecipeType_CustomerType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecipeTyp__Recip__4DB4832C" Association="Self.FK__RecipeTyp__Recip__4DB4832C">
+            <End Role="RecipeType" EntitySet="RecipeType" />
+            <End Role="RecipeType_CustomerType" EntitySet="RecipeType_CustomerType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecipeTyp__Recip__6C390A4C" Association="Self.FK__RecipeTyp__Recip__6C390A4C">
+            <End Role="RecipeType" EntitySet="RecipeType" />
+            <End Role="RecipeType_CustomerType" EntitySet="RecipeType_CustomerType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Repice__Employee__0ABD916C" Association="Self.FK__Repice__Employee__0ABD916C">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Repice" EntitySet="Repice" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Repice__Employee__4EA8A765" Association="Self.FK__Repice__Employee__4EA8A765">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Repice" EntitySet="Repice" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Repice__Employee__6D2D2E85" Association="Self.FK__Repice__Employee__6D2D2E85">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Repice" EntitySet="Repice" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="masterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CookingContest">
+          <Key>
+            <PropertyRef Name="Title" />
+          </Key>
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DescriptionCookingContest" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK__Customers__Title__414EAC47" FromRole="CookingContest" ToRole="Customers" />
+          <NavigationProperty Name="Customers1" Relationship="Self.FK__Customers__Title__5FD33367" FromRole="CookingContest" ToRole="Customers" />
+          <NavigationProperty Name="Customers2" Relationship="Self.FK__Customers__Title__7D63964E" FromRole="CookingContest" ToRole="Customers" />
+          <NavigationProperty Name="CustomerType_CookingContest" Relationship="Self.FK__CustomerT__Title__4242D080" FromRole="CookingContest" ToRole="CustomerType_CookingContest" />
+          <NavigationProperty Name="CustomerType_CookingContest1" Relationship="Self.FK__CustomerT__Title__60C757A0" FromRole="CookingContest" ToRole="CustomerType_CookingContest" />
+          <NavigationProperty Name="CustomerType_CookingContest2" Relationship="Self.FK__CustomerT__Title__7E57BA87" FromRole="CookingContest" ToRole="CustomerType_CookingContest" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ContactName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AddressCustomer" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CookingContest" Relationship="Self.FK__Customers__Title__414EAC47" FromRole="Customers" ToRole="CookingContest" />
+          <NavigationProperty Name="CookingContest1" Relationship="Self.FK__Customers__Title__5FD33367" FromRole="Customers" ToRole="CookingContest" />
+          <NavigationProperty Name="CookingContest2" Relationship="Self.FK__Customers__Title__7D63964E" FromRole="Customers" ToRole="CookingContest" />
+          <NavigationProperty Name="FAQs" Relationship="Self.FK__FAQ__CustomerID__041093DD" FromRole="Customers" ToRole="FAQ" />
+          <NavigationProperty Name="FAQs1" Relationship="Self.FK__FAQ__CustomerID__47FBA9D6" FromRole="Customers" ToRole="FAQ" />
+          <NavigationProperty Name="FAQs2" Relationship="Self.FK__FAQ__CustomerID__668030F6" FromRole="Customers" ToRole="FAQ" />
+          <NavigationProperty Name="FeedBacks" Relationship="Self.FK__FeedBack__Custom__05F8DC4F" FromRole="Customers" ToRole="FeedBack" />
+          <NavigationProperty Name="FeedBacks1" Relationship="Self.FK__FeedBack__Custom__49E3F248" FromRole="Customers" ToRole="FeedBack" />
+          <NavigationProperty Name="FeedBacks2" Relationship="Self.FK__FeedBack__Custom__68687968" FromRole="Customers" ToRole="FeedBack" />
+        </EntityType>
+        <EntityType Name="CustomerType">
+          <Key>
+            <PropertyRef Name="CustomersTypeID" />
+          </Key>
+          <Property Name="CustomersTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomersTypeName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CustomerType_CookingContest" Relationship="Self.FK__CustomerT__Custo__4336F4B9" FromRole="CustomerType" ToRole="CustomerType_CookingContest" />
+          <NavigationProperty Name="CustomerType_CookingContest1" Relationship="Self.FK__CustomerT__Custo__61BB7BD9" FromRole="CustomerType" ToRole="CustomerType_CookingContest" />
+          <NavigationProperty Name="CustomerType_CookingContest2" Relationship="Self.FK__CustomerT__Custo__7F4BDEC0" FromRole="CustomerType" ToRole="CustomerType_CookingContest" />
+          <NavigationProperty Name="ExamRegistrations" Relationship="Self.FK__ExamRegis__Custo__031C6FA4" FromRole="CustomerType" ToRole="ExamRegistration" />
+          <NavigationProperty Name="ExamRegistrations1" Relationship="Self.FK__ExamRegis__Custo__4707859D" FromRole="CustomerType" ToRole="ExamRegistration" />
+          <NavigationProperty Name="ExamRegistrations2" Relationship="Self.FK__ExamRegis__Custo__658C0CBD" FromRole="CustomerType" ToRole="ExamRegistration" />
+          <NavigationProperty Name="RecipeType_CustomerType" Relationship="Self.FK__RecipeTyp__Custo__08D548FA" FromRole="CustomerType" ToRole="RecipeType_CustomerType" />
+          <NavigationProperty Name="RecipeType_CustomerType1" Relationship="Self.FK__RecipeTyp__Custo__4CC05EF3" FromRole="CustomerType" ToRole="RecipeType_CustomerType" />
+          <NavigationProperty Name="RecipeType_CustomerType2" Relationship="Self.FK__RecipeTyp__Custo__6B44E613" FromRole="CustomerType" ToRole="RecipeType_CustomerType" />
+        </EntityType>
+        <EntityType Name="CustomerType_CookingContest">
+          <Key>
+            <PropertyRef Name="CustomersTypeID" />
+            <PropertyRef Name="Title" />
+          </Key>
+          <Property Name="CustomersTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CookingContest" Relationship="Self.FK__CustomerT__Title__4242D080" FromRole="CustomerType_CookingContest" ToRole="CookingContest" />
+          <NavigationProperty Name="CookingContest1" Relationship="Self.FK__CustomerT__Title__60C757A0" FromRole="CustomerType_CookingContest" ToRole="CookingContest" />
+          <NavigationProperty Name="CookingContest2" Relationship="Self.FK__CustomerT__Title__7E57BA87" FromRole="CustomerType_CookingContest" ToRole="CookingContest" />
+          <NavigationProperty Name="CustomerType" Relationship="Self.FK__CustomerT__Custo__4336F4B9" FromRole="CustomerType_CookingContest" ToRole="CustomerType" />
+          <NavigationProperty Name="CustomerType1" Relationship="Self.FK__CustomerT__Custo__61BB7BD9" FromRole="CustomerType_CookingContest" ToRole="CustomerType" />
+          <NavigationProperty Name="CustomerType2" Relationship="Self.FK__CustomerT__Custo__7F4BDEC0" FromRole="CustomerType_CookingContest" ToRole="CustomerType" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Last_Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="First_Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TitleoOfCourtesy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AddressEmployees" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Region" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HomePhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Extension" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employees_Group" Relationship="Self.FK__Employees__Emplo__01342732" FromRole="Employees" ToRole="Employees_Group" />
+          <NavigationProperty Name="Employees_Group1" Relationship="Self.FK__Employees__Emplo__451F3D2B" FromRole="Employees" ToRole="Employees_Group" />
+          <NavigationProperty Name="Employees_Group2" Relationship="Self.FK__Employees__Emplo__63A3C44B" FromRole="Employees" ToRole="Employees_Group" />
+          <NavigationProperty Name="Repices" Relationship="Self.FK__Repice__Employee__0ABD916C" FromRole="Employees" ToRole="Repice" />
+          <NavigationProperty Name="Repices1" Relationship="Self.FK__Repice__Employee__4EA8A765" FromRole="Employees" ToRole="Repice" />
+          <NavigationProperty Name="Repices2" Relationship="Self.FK__Repice__Employee__6D2D2E85" FromRole="Employees" ToRole="Repice" />
+        </EntityType>
+        <EntityType Name="Employees_Group">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Employees__Emplo__01342732" FromRole="Employees_Group" ToRole="Employees" />
+          <NavigationProperty Name="Employee1" Relationship="Self.FK__Employees__Emplo__451F3D2B" FromRole="Employees_Group" ToRole="Employees" />
+          <NavigationProperty Name="Employee2" Relationship="Self.FK__Employees__Emplo__63A3C44B" FromRole="Employees_Group" ToRole="Employees" />
+          <NavigationProperty Name="Group" Relationship="Self.FK__Employees__Group__004002F9" FromRole="Employees_Group" ToRole="Groups" />
+          <NavigationProperty Name="Group1" Relationship="Self.FK__Employees__Group__442B18F2" FromRole="Employees_Group" ToRole="Groups" />
+          <NavigationProperty Name="Group2" Relationship="Self.FK__Employees__Group__62AFA012" FromRole="Employees_Group" ToRole="Groups" />
+        </EntityType>
+        <EntityType Name="ExamRegistration">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameExamRegistration" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AddressExamRegistration" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CustomersTypeID" Type="Int32" />
+          <Property Name="PaymentTypeID" Type="Int32" />
+          <NavigationProperty Name="CustomerType" Relationship="Self.FK__ExamRegis__Custo__031C6FA4" FromRole="ExamRegistration" ToRole="CustomerType" />
+          <NavigationProperty Name="CustomerType1" Relationship="Self.FK__ExamRegis__Custo__4707859D" FromRole="ExamRegistration" ToRole="CustomerType" />
+          <NavigationProperty Name="CustomerType2" Relationship="Self.FK__ExamRegis__Custo__658C0CBD" FromRole="ExamRegistration" ToRole="CustomerType" />
+          <NavigationProperty Name="PaymentType" Relationship="Self.FK__ExamRegis__Payme__02284B6B" FromRole="ExamRegistration" ToRole="PaymentType" />
+          <NavigationProperty Name="PaymentType1" Relationship="Self.FK__ExamRegis__Payme__46136164" FromRole="ExamRegistration" ToRole="PaymentType" />
+          <NavigationProperty Name="PaymentType2" Relationship="Self.FK__ExamRegis__Payme__6497E884" FromRole="ExamRegistration" ToRole="PaymentType" />
+        </EntityType>
+        <EntityType Name="FAQ">
+          <Key>
+            <PropertyRef Name="FaqID" />
+          </Key>
+          <Property Name="FaqID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FaqName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__FAQ__CustomerID__041093DD" FromRole="FAQ" ToRole="Customers" />
+          <NavigationProperty Name="Customer1" Relationship="Self.FK__FAQ__CustomerID__47FBA9D6" FromRole="FAQ" ToRole="Customers" />
+          <NavigationProperty Name="Customer2" Relationship="Self.FK__FAQ__CustomerID__668030F6" FromRole="FAQ" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="FeedBack">
+          <Key>
+            <PropertyRef Name="FeedBackID" />
+            <PropertyRef Name="RecipeID" />
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="FeedBackID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="RecipeID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__FeedBack__Custom__05F8DC4F" FromRole="FeedBack" ToRole="Customers" />
+          <NavigationProperty Name="Customer1" Relationship="Self.FK__FeedBack__Custom__49E3F248" FromRole="FeedBack" ToRole="Customers" />
+          <NavigationProperty Name="Customer2" Relationship="Self.FK__FeedBack__Custom__68687968" FromRole="FeedBack" ToRole="Customers" />
+          <NavigationProperty Name="Repice" Relationship="Self.FK__FeedBack__0504B816" FromRole="FeedBack" ToRole="Repice" />
+          <NavigationProperty Name="Repice1" Relationship="Self.FK__FeedBack__48EFCE0F" FromRole="FeedBack" ToRole="Repice" />
+          <NavigationProperty Name="Repice2" Relationship="Self.FK__FeedBack__6774552F" FromRole="FeedBack" ToRole="Repice" />
+        </EntityType>
+        <EntityType Name="Group_Object">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="ObjectID" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="ObjectID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="Self.FK__Group_Obj__Group__07E124C1" FromRole="Group_Object" ToRole="Groups" />
+          <NavigationProperty Name="Group1" Relationship="Self.FK__Group_Obj__Group__4BCC3ABA" FromRole="Group_Object" ToRole="Groups" />
+          <NavigationProperty Name="Group2" Relationship="Self.FK__Group_Obj__Group__6A50C1DA" FromRole="Group_Object" ToRole="Groups" />
+          <NavigationProperty Name="Objecthihi" Relationship="Self.FK__Group_Obj__Objec__06ED0088" FromRole="Group_Object" ToRole="Objecthihi" />
+          <NavigationProperty Name="Objecthihi1" Relationship="Self.FK__Group_Obj__Objec__695C9DA1" FromRole="Group_Object" ToRole="Objecthihi" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employees_Group" Relationship="Self.FK__Employees__Group__004002F9" FromRole="Groups" ToRole="Employees_Group" />
+          <NavigationProperty Name="Employees_Group1" Relationship="Self.FK__Employees__Group__442B18F2" FromRole="Groups" ToRole="Employees_Group" />
+          <NavigationProperty Name="Employees_Group2" Relationship="Self.FK__Employees__Group__62AFA012" FromRole="Groups" ToRole="Employees_Group" />
+          <NavigationProperty Name="Group_Object" Relationship="Self.FK__Group_Obj__Group__07E124C1" FromRole="Groups" ToRole="Group_Object" />
+          <NavigationProperty Name="Group_Object1" Relationship="Self.FK__Group_Obj__Group__4BCC3ABA" FromRole="Groups" ToRole="Group_Object" />
+          <NavigationProperty Name="Group_Object2" Relationship="Self.FK__Group_Obj__Group__6A50C1DA" FromRole="Groups" ToRole="Group_Object" />
+        </EntityType>
+        <EntityType Name="Objecthihi">
+          <Key>
+            <PropertyRef Name="ObjectID" />
+          </Key>
+          <Property Name="ObjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ObjectName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Group_Object" Relationship="Self.FK__Group_Obj__Objec__06ED0088" FromRole="Objecthihi" ToRole="Group_Object" />
+          <NavigationProperty Name="Group_Object1" Relationship="Self.FK__Group_Obj__Objec__695C9DA1" FromRole="Objecthihi" ToRole="Group_Object" />
+        </EntityType>
+        <EntityType Name="PaymentType">
+          <Key>
+            <PropertyRef Name="PaymentTypeID" />
+          </Key>
+          <Property Name="PaymentTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NamePaymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ExamRegistrations" Relationship="Self.FK__ExamRegis__Payme__02284B6B" FromRole="PaymentType" ToRole="ExamRegistration" />
+          <NavigationProperty Name="ExamRegistrations1" Relationship="Self.FK__ExamRegis__Payme__46136164" FromRole="PaymentType" ToRole="ExamRegistration" />
+          <NavigationProperty Name="ExamRegistrations2" Relationship="Self.FK__ExamRegis__Payme__6497E884" FromRole="PaymentType" ToRole="ExamRegistration" />
+        </EntityType>
+        <EntityType Name="RecipeType">
+          <Key>
+            <PropertyRef Name="RecipeTypeID" />
+          </Key>
+          <Property Name="RecipeTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RecipeTyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RecipeType_CustomerType" Relationship="Self.FK__RecipeTyp__Recip__09C96D33" FromRole="RecipeType" ToRole="RecipeType_CustomerType" />
+          <NavigationProperty Name="RecipeType_CustomerType1" Relationship="Self.FK__RecipeTyp__Recip__4DB4832C" FromRole="RecipeType" ToRole="RecipeType_CustomerType" />
+          <NavigationProperty Name="RecipeType_CustomerType2" Relationship="Self.FK__RecipeTyp__Recip__6C390A4C" FromRole="RecipeType" ToRole="RecipeType_CustomerType" />
+        </EntityType>
+        <EntityType Name="RecipeType_CustomerType">
+          <Key>
+            <PropertyRef Name="RecipeTypeID" />
+            <PropertyRef Name="CustomersTypeID" />
+          </Key>
+          <Property Name="RecipeTypeID" Type="Int32" Nullable="false" />
+          <Property Name="CustomersTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CustomerType" Relationship="Self.FK__RecipeTyp__Custo__08D548FA" FromRole="RecipeType_CustomerType" ToRole="CustomerType" />
+          <NavigationProperty Name="CustomerType1" Relationship="Self.FK__RecipeTyp__Custo__4CC05EF3" FromRole="RecipeType_CustomerType" ToRole="CustomerType" />
+          <NavigationProperty Name="CustomerType2" Relationship="Self.FK__RecipeTyp__Custo__6B44E613" FromRole="RecipeType_CustomerType" ToRole="CustomerType" />
+          <NavigationProperty Name="RecipeType" Relationship="Self.FK__RecipeTyp__Recip__09C96D33" FromRole="RecipeType_CustomerType" ToRole="RecipeType" />
+          <NavigationProperty Name="RecipeType1" Relationship="Self.FK__RecipeTyp__Recip__4DB4832C" FromRole="RecipeType_CustomerType" ToRole="RecipeType" />
+          <NavigationProperty Name="RecipeType2" Relationship="Self.FK__RecipeTyp__Recip__6C390A4C" FromRole="RecipeType_CustomerType" ToRole="RecipeType" />
+        </EntityType>
+        <EntityType Name="Repice">
+          <Key>
+            <PropertyRef Name="RecipeID" />
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="RecipeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ingredints" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProcedureRepice" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RecipeType" Type="Boolean" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Repice__Employee__0ABD916C" FromRole="Repice" ToRole="Employees" />
+          <NavigationProperty Name="Employee1" Relationship="Self.FK__Repice__Employee__4EA8A765" FromRole="Repice" ToRole="Employees" />
+          <NavigationProperty Name="Employee2" Relationship="Self.FK__Repice__Employee__6D2D2E85" FromRole="Repice" ToRole="Employees" />
+          <NavigationProperty Name="FeedBacks" Relationship="Self.FK__FeedBack__0504B816" FromRole="Repice" ToRole="FeedBack" />
+          <NavigationProperty Name="FeedBacks1" Relationship="Self.FK__FeedBack__48EFCE0F" FromRole="Repice" ToRole="FeedBack" />
+          <NavigationProperty Name="FeedBacks2" Relationship="Self.FK__FeedBack__6774552F" FromRole="Repice" ToRole="FeedBack" />
+        </EntityType>
+        <EntityType Name="MSreplication_options">
+          <Key>
+            <PropertyRef Name="optname" />
+            <PropertyRef Name="value" />
+            <PropertyRef Name="major_version" />
+            <PropertyRef Name="minor_version" />
+            <PropertyRef Name="revision" />
+            <PropertyRef Name="install_failures" />
+          </Key>
+          <Property Name="optname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="value" Type="Boolean" Nullable="false" />
+          <Property Name="major_version" Type="Int32" Nullable="false" />
+          <Property Name="minor_version" Type="Int32" Nullable="false" />
+          <Property Name="revision" Type="Int32" Nullable="false" />
+          <Property Name="install_failures" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spt_fallback_db">
+          <Key>
+            <PropertyRef Name="xserver_name" />
+            <PropertyRef Name="xdttm_ins" />
+            <PropertyRef Name="xdttm_last_ins_upd" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="dbid" />
+            <PropertyRef Name="status" />
+            <PropertyRef Name="version" />
+          </Key>
+          <Property Name="xserver_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="xdttm_ins" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="xdttm_last_ins_upd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="xfallback_dbid" Type="Int16" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dbid" Type="Int16" Nullable="false" />
+          <Property Name="status" Type="Int16" Nullable="false" />
+          <Property Name="version" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spt_fallback_dev">
+          <Key>
+            <PropertyRef Name="xserver_name" />
+            <PropertyRef Name="xdttm_ins" />
+            <PropertyRef Name="xdttm_last_ins_upd" />
+            <PropertyRef Name="low" />
+            <PropertyRef Name="high" />
+            <PropertyRef Name="status" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="phyname" />
+          </Key>
+          <Property Name="xserver_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="xdttm_ins" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="xdttm_last_ins_upd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="xfallback_low" Type="Int32" />
+          <Property Name="xfallback_drive" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="low" Type="Int32" Nullable="false" />
+          <Property Name="high" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int16" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phyname" Type="String" MaxLength="127" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spt_fallback_usg">
+          <Key>
+            <PropertyRef Name="xserver_name" />
+            <PropertyRef Name="xdttm_ins" />
+            <PropertyRef Name="xdttm_last_ins_upd" />
+            <PropertyRef Name="dbid" />
+            <PropertyRef Name="segmap" />
+            <PropertyRef Name="lstart" />
+            <PropertyRef Name="sizepg" />
+            <PropertyRef Name="vstart" />
+          </Key>
+          <Property Name="xserver_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="xdttm_ins" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="xdttm_last_ins_upd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="xfallback_vstart" Type="Int32" />
+          <Property Name="dbid" Type="Int16" Nullable="false" />
+          <Property Name="segmap" Type="Int32" Nullable="false" />
+          <Property Name="lstart" Type="Int32" Nullable="false" />
+          <Property Name="sizepg" Type="Int32" Nullable="false" />
+          <Property Name="vstart" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spt_monitor">
+          <Key>
+            <PropertyRef Name="lastrun" />
+            <PropertyRef Name="cpu_busy" />
+            <PropertyRef Name="io_busy" />
+            <PropertyRef Name="idle" />
+            <PropertyRef Name="pack_received" />
+            <PropertyRef Name="pack_sent" />
+            <PropertyRef Name="connections" />
+            <PropertyRef Name="pack_errors" />
+            <PropertyRef Name="total_read" />
+            <PropertyRef Name="total_write" />
+            <PropertyRef Name="total_errors" />
+          </Key>
+          <Property Name="lastrun" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cpu_busy" Type="Int32" Nullable="false" />
+          <Property Name="io_busy" Type="Int32" Nullable="false" />
+          <Property Name="idle" Type="Int32" Nullable="false" />
+          <Property Name="pack_received" Type="Int32" Nullable="false" />
+          <Property Name="pack_sent" Type="Int32" Nullable="false" />
+          <Property Name="connections" Type="Int32" Nullable="false" />
+          <Property Name="pack_errors" Type="Int32" Nullable="false" />
+          <Property Name="total_read" Type="Int32" Nullable="false" />
+          <Property Name="total_write" Type="Int32" Nullable="false" />
+          <Property Name="total_errors" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Customers__Title__414EAC47">
+          <End Role="CookingContest" Type="Self.CookingContest" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CookingContest">
+              <PropertyRef Name="Title" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="Title" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customers__Title__5FD33367">
+          <End Role="CookingContest" Type="Self.CookingContest" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CookingContest">
+              <PropertyRef Name="Title" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="Title" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customers__Title__7D63964E">
+          <End Role="CookingContest" Type="Self.CookingContest" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CookingContest">
+              <PropertyRef Name="Title" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="Title" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerT__Title__4242D080">
+          <End Role="CookingContest" Type="Self.CookingContest" Multiplicity="1" />
+          <End Role="CustomerType_CookingContest" Type="Self.CustomerType_CookingContest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CookingContest">
+              <PropertyRef Name="Title" />
+            </Principal>
+            <Dependent Role="CustomerType_CookingContest">
+              <PropertyRef Name="Title" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerT__Title__60C757A0">
+          <End Role="CookingContest" Type="Self.CookingContest" Multiplicity="1" />
+          <End Role="CustomerType_CookingContest" Type="Self.CustomerType_CookingContest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CookingContest">
+              <PropertyRef Name="Title" />
+            </Principal>
+            <Dependent Role="CustomerType_CookingContest">
+              <PropertyRef Name="Title" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerT__Title__7E57BA87">
+          <End Role="CookingContest" Type="Self.CookingContest" Multiplicity="1" />
+          <End Role="CustomerType_CookingContest" Type="Self.CustomerType_CookingContest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CookingContest">
+              <PropertyRef Name="Title" />
+            </Principal>
+            <Dependent Role="CustomerType_CookingContest">
+              <PropertyRef Name="Title" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FAQ__CustomerID__041093DD">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="FAQ" Type="Self.FAQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="FAQ">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FAQ__CustomerID__47FBA9D6">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="FAQ" Type="Self.FAQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="FAQ">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FAQ__CustomerID__668030F6">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="FAQ" Type="Self.FAQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="FAQ">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FeedBack__Custom__05F8DC4F">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="FeedBack" Type="Self.FeedBack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="FeedBack">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FeedBack__Custom__49E3F248">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="FeedBack" Type="Self.FeedBack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="FeedBack">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FeedBack__Custom__68687968">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="FeedBack" Type="Self.FeedBack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="FeedBack">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerT__Custo__4336F4B9">
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="1" />
+          <End Role="CustomerType_CookingContest" Type="Self.CustomerType_CookingContest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Principal>
+            <Dependent Role="CustomerType_CookingContest">
+              <PropertyRef Name="CustomersTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerT__Custo__61BB7BD9">
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="1" />
+          <End Role="CustomerType_CookingContest" Type="Self.CustomerType_CookingContest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Principal>
+            <Dependent Role="CustomerType_CookingContest">
+              <PropertyRef Name="CustomersTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerT__Custo__7F4BDEC0">
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="1" />
+          <End Role="CustomerType_CookingContest" Type="Self.CustomerType_CookingContest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Principal>
+            <Dependent Role="CustomerType_CookingContest">
+              <PropertyRef Name="CustomersTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExamRegis__Custo__031C6FA4">
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="0..1" />
+          <End Role="ExamRegistration" Type="Self.ExamRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Principal>
+            <Dependent Role="ExamRegistration">
+              <PropertyRef Name="CustomersTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExamRegis__Custo__4707859D">
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="0..1" />
+          <End Role="ExamRegistration" Type="Self.ExamRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Principal>
+            <Dependent Role="ExamRegistration">
+              <PropertyRef Name="CustomersTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExamRegis__Custo__658C0CBD">
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="0..1" />
+          <End Role="ExamRegistration" Type="Self.ExamRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Principal>
+            <Dependent Role="ExamRegistration">
+              <PropertyRef Name="CustomersTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecipeTyp__Custo__08D548FA">
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="1" />
+          <End Role="RecipeType_CustomerType" Type="Self.RecipeType_CustomerType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Principal>
+            <Dependent Role="RecipeType_CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecipeTyp__Custo__4CC05EF3">
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="1" />
+          <End Role="RecipeType_CustomerType" Type="Self.RecipeType_CustomerType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Principal>
+            <Dependent Role="RecipeType_CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecipeTyp__Custo__6B44E613">
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="1" />
+          <End Role="RecipeType_CustomerType" Type="Self.RecipeType_CustomerType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Principal>
+            <Dependent Role="RecipeType_CustomerType">
+              <PropertyRef Name="CustomersTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__Emplo__01342732">
+          <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Employees_Group" Type="Self.Employees_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Employees_Group">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__Emplo__451F3D2B">
+          <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Employees_Group" Type="Self.Employees_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Employees_Group">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__Emplo__63A3C44B">
+          <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Employees_Group" Type="Self.Employees_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Employees_Group">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Repice__Employee__0ABD916C">
+          <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Repice" Type="Self.Repice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Repice">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Repice__Employee__4EA8A765">
+          <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Repice" Type="Self.Repice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Repice">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Repice__Employee__6D2D2E85">
+          <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Repice" Type="Self.Repice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Repice">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__Group__004002F9">
+          <End Role="Groups" Type="Self.Group" Multiplicity="1" />
+          <End Role="Employees_Group" Type="Self.Employees_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="Employees_Group">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__Group__442B18F2">
+          <End Role="Groups" Type="Self.Group" Multiplicity="1" />
+          <End Role="Employees_Group" Type="Self.Employees_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="Employees_Group">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__Group__62AFA012">
+          <End Role="Groups" Type="Self.Group" Multiplicity="1" />
+          <End Role="Employees_Group" Type="Self.Employees_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="Employees_Group">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExamRegis__Payme__02284B6B">
+          <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="0..1" />
+          <End Role="ExamRegistration" Type="Self.ExamRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="PaymentTypeID" />
+            </Principal>
+            <Dependent Role="ExamRegistration">
+              <PropertyRef Name="PaymentTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExamRegis__Payme__46136164">
+          <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="0..1" />
+          <End Role="ExamRegistration" Type="Self.ExamRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="PaymentTypeID" />
+            </Principal>
+            <Dependent Role="ExamRegistration">
+              <PropertyRef Name="PaymentTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExamRegis__Payme__6497E884">
+          <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="0..1" />
+          <End Role="ExamRegistration" Type="Self.ExamRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="PaymentTypeID" />
+            </Principal>
+            <Dependent Role="ExamRegistration">
+              <PropertyRef Name="PaymentTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FeedBack__0504B816">
+          <End Role="Repice" Type="Self.Repice" Multiplicity="1" />
+          <End Role="FeedBack" Type="Self.FeedBack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repice">
+              <PropertyRef Name="RecipeID" />
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="FeedBack">
+              <PropertyRef Name="RecipeID" />
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FeedBack__48EFCE0F">
+          <End Role="Repice" Type="Self.Repice" Multiplicity="1" />
+          <End Role="FeedBack" Type="Self.FeedBack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repice">
+              <PropertyRef Name="RecipeID" />
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="FeedBack">
+              <PropertyRef Name="RecipeID" />
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FeedBack__6774552F">
+          <End Role="Repice" Type="Self.Repice" Multiplicity="1" />
+          <End Role="FeedBack" Type="Self.FeedBack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repice">
+              <PropertyRef Name="RecipeID" />
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="FeedBack">
+              <PropertyRef Name="RecipeID" />
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Group_Obj__Group__07E124C1">
+          <End Role="Groups" Type="Self.Group" Multiplicity="1" />
+          <End Role="Group_Object" Type="Self.Group_Object" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="Group_Object">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Group_Obj__Group__4BCC3ABA">
+          <End Role="Groups" Type="Self.Group" Multiplicity="1" />
+          <End Role="Group_Object" Type="Self.Group_Object" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="Group_Object">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Group_Obj__Group__6A50C1DA">
+          <End Role="Groups" Type="Self.Group" Multiplicity="1" />
+          <End Role="Group_Object" Type="Self.Group_Object" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="Group_Object">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Group_Obj__Objec__06ED0088">
+          <End Role="Objecthihi" Type="Self.Objecthihi" Multiplicity="1" />
+          <End Role="Group_Object" Type="Self.Group_Object" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Objecthihi">
+              <PropertyRef Name="ObjectID" />
+            </Principal>
+            <Dependent Role="Group_Object">
+              <PropertyRef Name="ObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Group_Obj__Objec__695C9DA1">
+          <End Role="Objecthihi" Type="Self.Objecthihi" Multiplicity="1" />
+          <End Role="Group_Object" Type="Self.Group_Object" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Objecthihi">
+              <PropertyRef Name="ObjectID" />
+            </Principal>
+            <Dependent Role="Group_Object">
+              <PropertyRef Name="ObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecipeTyp__Recip__09C96D33">
+          <End Role="RecipeType" Type="Self.RecipeType" Multiplicity="1" />
+          <End Role="RecipeType_CustomerType" Type="Self.RecipeType_CustomerType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecipeType">
+              <PropertyRef Name="RecipeTypeID" />
+            </Principal>
+            <Dependent Role="RecipeType_CustomerType">
+              <PropertyRef Name="RecipeTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecipeTyp__Recip__4DB4832C">
+          <End Role="RecipeType" Type="Self.RecipeType" Multiplicity="1" />
+          <End Role="RecipeType_CustomerType" Type="Self.RecipeType_CustomerType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecipeType">
+              <PropertyRef Name="RecipeTypeID" />
+            </Principal>
+            <Dependent Role="RecipeType_CustomerType">
+              <PropertyRef Name="RecipeTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecipeTyp__Recip__6C390A4C">
+          <End Role="RecipeType" Type="Self.RecipeType" Multiplicity="1" />
+          <End Role="RecipeType_CustomerType" Type="Self.RecipeType_CustomerType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecipeType">
+              <PropertyRef Name="RecipeTypeID" />
+            </Principal>
+            <Dependent Role="RecipeType_CustomerType">
+              <PropertyRef Name="RecipeTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="masterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CookingContests" EntityType="Self.CookingContest" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="CustomerTypes" EntityType="Self.CustomerType" />
+          <EntitySet Name="CustomerType_CookingContest" EntityType="Self.CustomerType_CookingContest" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Employees_Group" EntityType="Self.Employees_Group" />
+          <EntitySet Name="ExamRegistrations" EntityType="Self.ExamRegistration" />
+          <EntitySet Name="FAQs" EntityType="Self.FAQ" />
+          <EntitySet Name="FeedBacks" EntityType="Self.FeedBack" />
+          <EntitySet Name="Group_Object" EntityType="Self.Group_Object" />
+          <EntitySet Name="Groups" EntityType="Self.Group" />
+          <EntitySet Name="Objecthihis" EntityType="Self.Objecthihi" />
+          <EntitySet Name="PaymentTypes" EntityType="Self.PaymentType" />
+          <EntitySet Name="RecipeTypes" EntityType="Self.RecipeType" />
+          <EntitySet Name="RecipeType_CustomerType" EntityType="Self.RecipeType_CustomerType" />
+          <EntitySet Name="Repices" EntityType="Self.Repice" />
+          <EntitySet Name="MSreplication_options" EntityType="Self.MSreplication_options" />
+          <EntitySet Name="spt_fallback_db" EntityType="Self.spt_fallback_db" />
+          <EntitySet Name="spt_fallback_dev" EntityType="Self.spt_fallback_dev" />
+          <EntitySet Name="spt_fallback_usg" EntityType="Self.spt_fallback_usg" />
+          <EntitySet Name="spt_monitor" EntityType="Self.spt_monitor" />
+          <AssociationSet Name="FK__Customers__Title__414EAC47" Association="Self.FK__Customers__Title__414EAC47">
+            <End Role="CookingContest" EntitySet="CookingContests" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customers__Title__5FD33367" Association="Self.FK__Customers__Title__5FD33367">
+            <End Role="CookingContest" EntitySet="CookingContests" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customers__Title__7D63964E" Association="Self.FK__Customers__Title__7D63964E">
+            <End Role="CookingContest" EntitySet="CookingContests" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerT__Title__4242D080" Association="Self.FK__CustomerT__Title__4242D080">
+            <End Role="CookingContest" EntitySet="CookingContests" />
+            <End Role="CustomerType_CookingContest" EntitySet="CustomerType_CookingContest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerT__Title__60C757A0" Association="Self.FK__CustomerT__Title__60C757A0">
+            <End Role="CookingContest" EntitySet="CookingContests" />
+            <End Role="CustomerType_CookingContest" EntitySet="CustomerType_CookingContest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerT__Title__7E57BA87" Association="Self.FK__CustomerT__Title__7E57BA87">
+            <End Role="CookingContest" EntitySet="CookingContests" />
+            <End Role="CustomerType_CookingContest" EntitySet="CustomerType_CookingContest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FAQ__CustomerID__041093DD" Association="Self.FK__FAQ__CustomerID__041093DD">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="FAQ" EntitySet="FAQs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FAQ__CustomerID__47FBA9D6" Association="Self.FK__FAQ__CustomerID__47FBA9D6">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="FAQ" EntitySet="FAQs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FAQ__CustomerID__668030F6" Association="Self.FK__FAQ__CustomerID__668030F6">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="FAQ" EntitySet="FAQs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FeedBack__Custom__05F8DC4F" Association="Self.FK__FeedBack__Custom__05F8DC4F">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="FeedBack" EntitySet="FeedBacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FeedBack__Custom__49E3F248" Association="Self.FK__FeedBack__Custom__49E3F248">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="FeedBack" EntitySet="FeedBacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FeedBack__Custom__68687968" Association="Self.FK__FeedBack__Custom__68687968">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="FeedBack" EntitySet="FeedBacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerT__Custo__4336F4B9" Association="Self.FK__CustomerT__Custo__4336F4B9">
+            <End Role="CustomerType" EntitySet="CustomerTypes" />
+            <End Role="CustomerType_CookingContest" EntitySet="CustomerType_CookingContest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerT__Custo__61BB7BD9" Association="Self.FK__CustomerT__Custo__61BB7BD9">
+            <End Role="CustomerType" EntitySet="CustomerTypes" />
+            <End Role="CustomerType_CookingContest" EntitySet="CustomerType_CookingContest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerT__Custo__7F4BDEC0" Association="Self.FK__CustomerT__Custo__7F4BDEC0">
+            <End Role="CustomerType" EntitySet="CustomerTypes" />
+            <End Role="CustomerType_CookingContest" EntitySet="CustomerType_CookingContest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExamRegis__Custo__031C6FA4" Association="Self.FK__ExamRegis__Custo__031C6FA4">
+            <End Role="CustomerType" EntitySet="CustomerTypes" />
+            <End Role="ExamRegistration" EntitySet="ExamRegistrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExamRegis__Custo__4707859D" Association="Self.FK__ExamRegis__Custo__4707859D">
+            <End Role="CustomerType" EntitySet="CustomerTypes" />
+            <End Role="ExamRegistration" EntitySet="ExamRegistrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExamRegis__Custo__658C0CBD" Association="Self.FK__ExamRegis__Custo__658C0CBD">
+            <End Role="CustomerType" EntitySet="CustomerTypes" />
+            <End Role="ExamRegistration" EntitySet="ExamRegistrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecipeTyp__Custo__08D548FA" Association="Self.FK__RecipeTyp__Custo__08D548FA">
+            <End Role="CustomerType" EntitySet="CustomerTypes" />
+            <End Role="RecipeType_CustomerType" EntitySet="RecipeType_CustomerType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecipeTyp__Custo__4CC05EF3" Association="Self.FK__RecipeTyp__Custo__4CC05EF3">
+            <End Role="CustomerType" EntitySet="CustomerTypes" />
+            <End Role="RecipeType_CustomerType" EntitySet="RecipeType_CustomerType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecipeTyp__Custo__6B44E613" Association="Self.FK__RecipeTyp__Custo__6B44E613">
+            <End Role="CustomerType" EntitySet="CustomerTypes" />
+            <End Role="RecipeType_CustomerType" EntitySet="RecipeType_CustomerType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__Emplo__01342732" Association="Self.FK__Employees__Emplo__01342732">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Employees_Group" EntitySet="Employees_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__Emplo__451F3D2B" Association="Self.FK__Employees__Emplo__451F3D2B">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Employees_Group" EntitySet="Employees_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__Emplo__63A3C44B" Association="Self.FK__Employees__Emplo__63A3C44B">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Employees_Group" EntitySet="Employees_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Repice__Employee__0ABD916C" Association="Self.FK__Repice__Employee__0ABD916C">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Repice" EntitySet="Repices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Repice__Employee__4EA8A765" Association="Self.FK__Repice__Employee__4EA8A765">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Repice" EntitySet="Repices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Repice__Employee__6D2D2E85" Association="Self.FK__Repice__Employee__6D2D2E85">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Repice" EntitySet="Repices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__Group__004002F9" Association="Self.FK__Employees__Group__004002F9">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Employees_Group" EntitySet="Employees_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__Group__442B18F2" Association="Self.FK__Employees__Group__442B18F2">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Employees_Group" EntitySet="Employees_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__Group__62AFA012" Association="Self.FK__Employees__Group__62AFA012">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Employees_Group" EntitySet="Employees_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExamRegis__Payme__02284B6B" Association="Self.FK__ExamRegis__Payme__02284B6B">
+            <End Role="PaymentType" EntitySet="PaymentTypes" />
+            <End Role="ExamRegistration" EntitySet="ExamRegistrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExamRegis__Payme__46136164" Association="Self.FK__ExamRegis__Payme__46136164">
+            <End Role="PaymentType" EntitySet="PaymentTypes" />
+            <End Role="ExamRegistration" EntitySet="ExamRegistrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExamRegis__Payme__6497E884" Association="Self.FK__ExamRegis__Payme__6497E884">
+            <End Role="PaymentType" EntitySet="PaymentTypes" />
+            <End Role="ExamRegistration" EntitySet="ExamRegistrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FeedBack__0504B816" Association="Self.FK__FeedBack__0504B816">
+            <End Role="Repice" EntitySet="Repices" />
+            <End Role="FeedBack" EntitySet="FeedBacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FeedBack__48EFCE0F" Association="Self.FK__FeedBack__48EFCE0F">
+            <End Role="Repice" EntitySet="Repices" />
+            <End Role="FeedBack" EntitySet="FeedBacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FeedBack__6774552F" Association="Self.FK__FeedBack__6774552F">
+            <End Role="Repice" EntitySet="Repices" />
+            <End Role="FeedBack" EntitySet="FeedBacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Group_Obj__Group__07E124C1" Association="Self.FK__Group_Obj__Group__07E124C1">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Group_Object" EntitySet="Group_Object" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Group_Obj__Group__4BCC3ABA" Association="Self.FK__Group_Obj__Group__4BCC3ABA">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Group_Object" EntitySet="Group_Object" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Group_Obj__Group__6A50C1DA" Association="Self.FK__Group_Obj__Group__6A50C1DA">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Group_Object" EntitySet="Group_Object" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Group_Obj__Objec__06ED0088" Association="Self.FK__Group_Obj__Objec__06ED0088">
+            <End Role="Objecthihi" EntitySet="Objecthihis" />
+            <End Role="Group_Object" EntitySet="Group_Object" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Group_Obj__Objec__695C9DA1" Association="Self.FK__Group_Obj__Objec__695C9DA1">
+            <End Role="Objecthihi" EntitySet="Objecthihis" />
+            <End Role="Group_Object" EntitySet="Group_Object" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecipeTyp__Recip__09C96D33" Association="Self.FK__RecipeTyp__Recip__09C96D33">
+            <End Role="RecipeType" EntitySet="RecipeTypes" />
+            <End Role="RecipeType_CustomerType" EntitySet="RecipeType_CustomerType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecipeTyp__Recip__4DB4832C" Association="Self.FK__RecipeTyp__Recip__4DB4832C">
+            <End Role="RecipeType" EntitySet="RecipeTypes" />
+            <End Role="RecipeType_CustomerType" EntitySet="RecipeType_CustomerType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecipeTyp__Recip__6C390A4C" Association="Self.FK__RecipeTyp__Recip__6C390A4C">
+            <End Role="RecipeType" EntitySet="RecipeTypes" />
+            <End Role="RecipeType_CustomerType" EntitySet="RecipeType_CustomerType" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="masterModelStoreContainer" CdmEntityContainer="masterEntities">
+          <EntitySetMapping Name="CookingContests">
+            <EntityTypeMapping TypeName="masterModel.CookingContest">
+              <MappingFragment StoreEntitySet="CookingContest">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="DescriptionCookingContest" ColumnName="DescriptionCookingContest" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="masterModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="AddressCustomer" ColumnName="AddressCustomer" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerTypes">
+            <EntityTypeMapping TypeName="masterModel.CustomerType">
+              <MappingFragment StoreEntitySet="CustomerType">
+                <ScalarProperty Name="CustomersTypeID" ColumnName="CustomersTypeID" />
+                <ScalarProperty Name="CustomersTypeName" ColumnName="CustomersTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerType_CookingContest">
+            <EntityTypeMapping TypeName="masterModel.CustomerType_CookingContest">
+              <MappingFragment StoreEntitySet="CustomerType_CookingContest">
+                <ScalarProperty Name="CustomersTypeID" ColumnName="CustomersTypeID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="masterModel.Employee">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="TitleoOfCourtesy" ColumnName="TitleoOfCourtesy" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="AddressEmployees" ColumnName="AddressEmployees" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees_Group">
+            <EntityTypeMapping TypeName="masterModel.Employees_Group">
+              <MappingFragment StoreEntitySet="Employees_Group">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExamRegistrations">
+            <EntityTypeMapping TypeName="masterModel.ExamRegistration">
+              <MappingFragment StoreEntitySet="ExamRegistration">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NameExamRegistration" ColumnName="NameExamRegistration" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="AddressExamRegistration" ColumnName="AddressExamRegistration" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="CustomersTypeID" ColumnName="CustomersTypeID" />
+                <ScalarProperty Name="PaymentTypeID" ColumnName="PaymentTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FAQs">
+            <EntityTypeMapping TypeName="masterModel.FAQ">
+              <MappingFragment StoreEntitySet="FAQ">
+                <ScalarProperty Name="FaqID" ColumnName="FaqID" />
+                <ScalarProperty Name="FaqName" ColumnName="FaqName" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FeedBacks">
+            <EntityTypeMapping TypeName="masterModel.FeedBack">
+              <MappingFragment StoreEntitySet="FeedBack">
+                <ScalarProperty Name="FeedBackID" ColumnName="FeedBackID" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="RecipeID" ColumnName="RecipeID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Group_Object">
+            <EntityTypeMapping TypeName="masterModel.Group_Object">
+              <MappingFragment StoreEntitySet="Group_Object">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="masterModel.Group">
+              <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Objecthihis">
+            <EntityTypeMapping TypeName="masterModel.Objecthihi">
+              <MappingFragment StoreEntitySet="Objecthihi">
+                <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+                <ScalarProperty Name="ObjectName" ColumnName="ObjectName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentTypes">
+            <EntityTypeMapping TypeName="masterModel.PaymentType">
+              <MappingFragment StoreEntitySet="PaymentType">
+                <ScalarProperty Name="PaymentTypeID" ColumnName="PaymentTypeID" />
+                <ScalarProperty Name="NamePaymentType" ColumnName="NamePaymentType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecipeTypes">
+            <EntityTypeMapping TypeName="masterModel.RecipeType">
+              <MappingFragment StoreEntitySet="RecipeType">
+                <ScalarProperty Name="RecipeTypeID" ColumnName="RecipeTypeID" />
+                <ScalarProperty Name="RecipeTyName" ColumnName="RecipeTyName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecipeType_CustomerType">
+            <EntityTypeMapping TypeName="masterModel.RecipeType_CustomerType">
+              <MappingFragment StoreEntitySet="RecipeType_CustomerType">
+                <ScalarProperty Name="RecipeTypeID" ColumnName="RecipeTypeID" />
+                <ScalarProperty Name="CustomersTypeID" ColumnName="CustomersTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Repices">
+            <EntityTypeMapping TypeName="masterModel.Repice">
+              <MappingFragment StoreEntitySet="Repice">
+                <ScalarProperty Name="RecipeID" ColumnName="RecipeID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Ingredints" ColumnName="Ingredints" />
+                <ScalarProperty Name="ProcedureRepice" ColumnName="ProcedureRepice" />
+                <ScalarProperty Name="RecipeType" ColumnName="RecipeType" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MSreplication_options">
+            <EntityTypeMapping TypeName="masterModel.MSreplication_options">
+              <MappingFragment StoreEntitySet="MSreplication_options">
+                <ScalarProperty Name="optname" ColumnName="optname" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="major_version" ColumnName="major_version" />
+                <ScalarProperty Name="minor_version" ColumnName="minor_version" />
+                <ScalarProperty Name="revision" ColumnName="revision" />
+                <ScalarProperty Name="install_failures" ColumnName="install_failures" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spt_fallback_db">
+            <EntityTypeMapping TypeName="masterModel.spt_fallback_db">
+              <MappingFragment StoreEntitySet="spt_fallback_db">
+                <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
+                <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
+                <ScalarProperty Name="xdttm_last_ins_upd" ColumnName="xdttm_last_ins_upd" />
+                <ScalarProperty Name="xfallback_dbid" ColumnName="xfallback_dbid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="dbid" ColumnName="dbid" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="version" ColumnName="version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spt_fallback_dev">
+            <EntityTypeMapping TypeName="masterModel.spt_fallback_dev">
+              <MappingFragment StoreEntitySet="spt_fallback_dev">
+                <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
+                <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
+                <ScalarProperty Name="xdttm_last_ins_upd" ColumnName="xdttm_last_ins_upd" />
+                <ScalarProperty Name="xfallback_low" ColumnName="xfallback_low" />
+                <ScalarProperty Name="xfallback_drive" ColumnName="xfallback_drive" />
+                <ScalarProperty Name="low" ColumnName="low" />
+                <ScalarProperty Name="high" ColumnName="high" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phyname" ColumnName="phyname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spt_fallback_usg">
+            <EntityTypeMapping TypeName="masterModel.spt_fallback_usg">
+              <MappingFragment StoreEntitySet="spt_fallback_usg">
+                <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
+                <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
+                <ScalarProperty Name="xdttm_last_ins_upd" ColumnName="xdttm_last_ins_upd" />
+                <ScalarProperty Name="xfallback_vstart" ColumnName="xfallback_vstart" />
+                <ScalarProperty Name="dbid" ColumnName="dbid" />
+                <ScalarProperty Name="segmap" ColumnName="segmap" />
+                <ScalarProperty Name="lstart" ColumnName="lstart" />
+                <ScalarProperty Name="sizepg" ColumnName="sizepg" />
+                <ScalarProperty Name="vstart" ColumnName="vstart" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spt_monitor">
+            <EntityTypeMapping TypeName="masterModel.spt_monitor">
+              <MappingFragment StoreEntitySet="spt_monitor">
+                <ScalarProperty Name="lastrun" ColumnName="lastrun" />
+                <ScalarProperty Name="cpu_busy" ColumnName="cpu_busy" />
+                <ScalarProperty Name="io_busy" ColumnName="io_busy" />
+                <ScalarProperty Name="idle" ColumnName="idle" />
+                <ScalarProperty Name="pack_received" ColumnName="pack_received" />
+                <ScalarProperty Name="pack_sent" ColumnName="pack_sent" />
+                <ScalarProperty Name="connections" ColumnName="connections" />
+                <ScalarProperty Name="pack_errors" ColumnName="pack_errors" />
+                <ScalarProperty Name="total_read" ColumnName="total_read" />
+                <ScalarProperty Name="total_write" ColumnName="total_write" />
+                <ScalarProperty Name="total_errors" ColumnName="total_errors" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
