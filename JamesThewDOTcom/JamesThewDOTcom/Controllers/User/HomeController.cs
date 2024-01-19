@@ -12,7 +12,7 @@ namespace JamesThewDOTcom.Controllers
         {
             ViewBag.Title = "Home Page";
 
-            return View();
+            return View("~/Views/User/Home/Index.cshtml");
         }
     }
 }

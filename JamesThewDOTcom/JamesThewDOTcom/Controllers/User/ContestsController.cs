@@ -15,7 +15,7 @@ namespace JamesThewDOTcom.Controllers
         // GET: Contests
         public ActionResult Index()
         {
-            return View();
+            return View("~/Views/User/Contests/Index.cshtml");
         }
     }
 }

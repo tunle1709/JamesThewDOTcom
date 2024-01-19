@@ -15,7 +15,7 @@ namespace JamesThewDOTcom.Controllers
         // GET: Feedback
         public ActionResult Index()
         {
-            return View();
+            return View("~/Views/User/Feedback/Index.cshtml");
         }
     }
 }

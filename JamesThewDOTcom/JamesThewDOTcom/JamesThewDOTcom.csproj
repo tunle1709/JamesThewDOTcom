@@ -155,14 +155,16 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\Administration\CustomersController.cs" />
     <Compile Include="Controllers\Administration\EmployeesController.cs" />
     <Compile Include="Controllers\Administration\RecipeController.cs" />
+    <Compile Include="Controllers\Administration\UserAuthAdminController.cs" />
     <Compile Include="Controllers\User\ContestsController.cs" />
     <Compile Include="Controllers\User\FAQController.cs" />
     <Compile Include="Controllers\User\FeedbackController.cs" />
     <Compile Include="Controllers\User\HomeController.cs" />
     <Compile Include="Controllers\User\RecipesController.cs" />
-    <Compile Include="Controllers\Administration\UserAuthController.cs" />
+    <Compile Include="Controllers\User\UserAuthController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -174,7 +176,6 @@
     <Compile Include="Models\FAQ.cs" />
     <Compile Include="Models\FeedBack.cs" />
     <Compile Include="Models\PaymentType.cs" />
-    <Compile Include="Models\Register.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -404,26 +405,31 @@
     <Content Include="Content\Site.css" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\User\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Recipes\Index.cshtml" />
-    <Content Include="Views\UserAuth\Register.cshtml" />
+    <Content Include="Views\User\Recipes\Index.cshtml" />
+    <Content Include="Views\User\UserAuth\Register.cshtml" />
     <Content Include="Views\Shared\_Layout_More.cshtml" />
-    <Content Include="Views\UserAuth\Login.cshtml" />
-    <Content Include="Views\FAQ\Index.cshtml" />
-    <Content Include="Views\Feedback\Index.cshtml" />
-    <Content Include="Views\Contests\Index.cshtml" />
-    <Content Include="Views\Recipe\Index.cshtml" />
-    <Content Include="Views\Recipe\Details.cshtml" />
-    <Content Include="Views\Recipe\Create.cshtml" />
-    <Content Include="Views\Recipe\Edit.cshtml" />
-    <Content Include="Views\Recipe\Delete.cshtml" />
-    <Content Include="Views\Employees\Index.cshtml" />
-    <Content Include="Views\Employees\Details.cshtml" />
-    <Content Include="Views\Employees\Create.cshtml" />
-    <Content Include="Views\Employees\Edit.cshtml" />
-    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\User\UserAuth\Login.cshtml" />
+    <Content Include="Views\User\FAQ\Index.cshtml" />
+    <Content Include="Views\User\Feedback\Index.cshtml" />
+    <Content Include="Views\User\Contests\Index.cshtml" />
+    <Content Include="Views\Administration\Recipe\Index.cshtml" />
+    <Content Include="Views\Administration\Recipe\Details.cshtml" />
+    <Content Include="Views\Administration\Recipe\Create.cshtml" />
+    <Content Include="Views\Administration\Recipe\Edit.cshtml" />
+    <Content Include="Views\Administration\Recipe\Delete.cshtml" />
+    <Content Include="Views\Administration\Employees\Index.cshtml" />
+    <Content Include="Views\Administration\Employees\Details.cshtml" />
+    <Content Include="Views\Administration\Employees\Create.cshtml" />
+    <Content Include="Views\Administration\Employees\Edit.cshtml" />
+    <Content Include="Views\Administration\Employees\Delete.cshtml" />
+    <Content Include="Views\Administration\Customers\Index.cshtml" />
+    <Content Include="Views\Administration\Customers\Details.cshtml" />
+    <Content Include="Views\Administration\Customers\Edit.cshtml" />
+    <Content Include="Views\Administration\Customers\Delete.cshtml" />
+    <Content Include="Views\Administration\UserAuthAdmin\LoginAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
