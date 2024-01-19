@@ -15,7 +15,7 @@ namespace JamesThewDOTcom.Controllers
         // GET: Receipe
         public ActionResult Index()
         {
-            return View();
+            return View("~/Views/User/Recipes/Index.cshtml");
         }
     }
 }

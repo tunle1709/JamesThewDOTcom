@@ -15,7 +15,7 @@ namespace JamesThewDOTcom.Controllers
         // GET: FAQ
         public ActionResult Index()
         {
-            return View();
+            return View("~/Views/User/FAQ/Index.cshtml");
         }
     }
 }

@@ -68,7 +68,7 @@ namespace JamesThewDOTcom.Controllers.Administration
                         })
                         .ToList();
 
-                    return View(recipeList);
+                    return View("~/Views/Administration/Recipe/Index.cshtml", recipeList);
                 }
             }
         }
@@ -81,13 +81,13 @@ namespace JamesThewDOTcom.Controllers.Administration
             {
                 return HttpNotFound();
             }
-            return View(recipe);
+            return View("~/Views/Administration/Recipe/Details.cshtml", recipe);
         }
 
         // GET: Recipe/Create
         public ActionResult Create()
         {
-            return View();
+            return View("~/Views/Administration/Recipe/Create.cshtml");
         }
 
 
@@ -111,11 +111,11 @@ namespace JamesThewDOTcom.Controllers.Administration
                         cmd.ExecuteNonQuery();
                     }
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("~/Views/Administration/Recipe/Index.cshtml");
             }
             catch
             {
-                return View();
+                return View("~/Views/Administration/Recipe/Create.cshtml");
             }
         }
 
@@ -127,7 +127,7 @@ namespace JamesThewDOTcom.Controllers.Administration
             {
                 return HttpNotFound();
             }
-            return View(recipe);
+            return View("~/Views/Administration/Recipe/Edit.cshtml", recipe);
         }
 
         // POST: Recipe/Edit/5
@@ -150,11 +150,11 @@ namespace JamesThewDOTcom.Controllers.Administration
                         cmd.ExecuteNonQuery();
                     }
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("~/Views/Administration/Recipe/Index.cshtml");
             }
             catch
             {
-                return View();
+                return View("~/Views/Administration/Recipe/Edit.cshtml");
             }
         }
 
@@ -166,7 +166,7 @@ namespace JamesThewDOTcom.Controllers.Administration
             {
                 return HttpNotFound();
             }
-            return View(recipe);
+            return View("~/Views/Administration/Recipe/Delete.cshtml", recipe);
         }
 
         // POST: Recipe/Delete/5
@@ -184,11 +184,11 @@ namespace JamesThewDOTcom.Controllers.Administration
                         cmd.ExecuteNonQuery();
                     }
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("~/Views/Administration/Recipe/Index.cshtml");
             }
             catch
             {
-                return View();
+                return View("~/Views/Administration/Recipe/Delete.cshtml");
             }
         }
     }

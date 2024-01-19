@@ -76,7 +76,7 @@ namespace JamesThewDOTcom.Controllers.Administration
                         })
                         .ToList();
 
-                    return View(employeeList);
+                    return View("~/Views/Administration/Employees/Index.cshtml", employeeList);
                 }
             }
         }
@@ -89,13 +89,13 @@ namespace JamesThewDOTcom.Controllers.Administration
             {
                 return HttpNotFound();
             }
-            return View(employee);
+            return View("~/Views/Administration/Employees/Details.cshtml", employee);
         }
 
         // GET: Employees/Create
         public ActionResult Create()
         {
-            return View();
+            return View("~/Views/Administration/Employees/Create.cshtml");
         }
 
         // POST: Employees/Create
@@ -123,11 +123,11 @@ namespace JamesThewDOTcom.Controllers.Administration
                         cmd.ExecuteNonQuery();
                     }
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("~/Views/Administration/Employees/Index.cshtml");
             }
             catch
             {
-                return View();
+                return View("~/Views/Administration/Employees/Create.cshtml");
             }
         }
 
@@ -139,7 +139,7 @@ namespace JamesThewDOTcom.Controllers.Administration
             {
                 return HttpNotFound();
             }
-            return View(employee);
+            return View("~/Views/Administration/Employees/Edit.cshtml", employee);
         }
 
         // POST: Employees/Edit/5
@@ -169,11 +169,11 @@ namespace JamesThewDOTcom.Controllers.Administration
                         cmd.ExecuteNonQuery();
                     }
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("~/Views/Administration/Employees/Index.cshtml");
             }
             catch
             {
-                return View();
+                return View("~/Views/Administration/Employees/Edit.cshtml");
             }
         }
 
@@ -185,7 +185,7 @@ namespace JamesThewDOTcom.Controllers.Administration
             {
                 return HttpNotFound();
             }
-            return View(employee);
+            return View("~/Views/Administration/Employees/Delete.cshtml", employee);
         }
 
         // POST: Employees/Delete/5
@@ -203,11 +203,11 @@ namespace JamesThewDOTcom.Controllers.Administration
                         cmd.ExecuteNonQuery();
                     }
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("~/Views/Administration/Employees/Index.cshtml");
             }
             catch
             {
-                return View();
+                return View("~/Views/Administration/Employees/Delete.cshtml");
             }
         }
     }
