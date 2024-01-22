@@ -1,12 +1,12 @@
-﻿@{
+﻿@model JamesThewDOTcom.Models.Customers
+
+@{
     ViewBag.Title = "Sign Up";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
 
 <main>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-
 
     <section class="vh-100 bg-image" style="background-image: url('https://dulichviet.com.vn/images/bandidau/am-thuc-phap-su-trang-le-trong-tung-chi-tiet-mon-an.jpg'); ">
         <div class="mask d-flex align-items-center h-100 gradient-custom-3">
@@ -17,26 +17,56 @@
                             <div class="card-body p-5">
                                 <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-                                <form>
+                                @using (Html.BeginForm("Register", "UserAuth", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+
                                     <div class="container">
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
                                         <div class="form-outline mb-4">
-                                            <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
-                                            <label class="form-label" for="form3Example1cg">Your Name</label>
+                                            @Html.TextBoxFor(m => m.First_Name, new { @class = "form-control form-control-lg", placeholder = "First Name" })
+                                            @Html.ValidationMessageFor(m => m.First_Name, "", new { @class = "text-danger" })
                                         </div>
 
                                         <div class="form-outline mb-4">
-                                            <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
-                                            <label class="form-label" for="form3Example3cg">Your Email</label>
+                                            @Html.TextBoxFor(m => m.Last_Name, new { @class = "form-control form-control-lg", placeholder = "Last Name" })
+                                            @Html.ValidationMessageFor(m => m.Last_Name, "", new { @class = "text-danger" })
                                         </div>
 
                                         <div class="form-outline mb-4">
-                                            <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
-                                            <label class="form-label" for="form3Example4cg">Password</label>
+                                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control form-control-lg", placeholder = "UserName" })
+                                            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
                                         </div>
 
                                         <div class="form-outline mb-4">
-                                            <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
-                                            <label class="form-label" for="form3Example4cdg">Repeat your password</label>
+                                            @Html.PasswordFor(m => m.Password, new { @class = "form-control form-control-lg", placeholder = "Password" })
+                                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            @Html.PasswordFor(m => m.RePassword, new { @class = "form-control form-control-lg", placeholder = "Repeat Password" })
+                                            @Html.ValidationMessageFor(m => m.RePassword, "", new { @class = "text-danger" })
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control form-control-lg", placeholder = "Birth Date" })
+                                            @Html.ValidationMessageFor(m => m.BirthDate, "", new { @class = "text-danger" })
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            @Html.TextBoxFor(m => m.Address, new { @class = "form-control form-control-lg", placeholder = "Address" })
+                                            @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            @Html.TextBoxFor(m => m.City, new { @class = "form-control form-control-lg", placeholder = "City" })
+                                            @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            @Html.TextBoxFor(m => m.Phone, new { @class = "form-control form-control-lg", placeholder = "Phone" })
+                                            @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
                                         </div>
 
                                         <div class="form-check d-flex justify-content-center mb-5">
@@ -47,23 +77,23 @@
                                         </div>
 
                                         <div class="form-outline mb-4">
-                                            <label class="form-label" for="subscriptionType">Choose Subscription Type:</label>
+                                            <label class="form-label" for="SubscriptionType">Choose Subscription Type:</label>
 
                                             <div class="row g-2">
                                                 <div class="col-md-6">
                                                     <div class="form-check">
-                                                        <input class="form-check-input visually-hidden" type="radio" name="subscriptionType" id="monthly" value="monthly">
+                                                        @Html.RadioButtonFor(m => m.PaymentTypeID, 1, new { @class = "form-check-input visually-hidden", id = "monthly" })
                                                         <label class="form-check-label" for="monthly">
-                                                            <button type="button" class="btn btn-warning w-100">Monthly Subscription<br />$10</button>
+                                                            <button type="submit" class="btn btn-warning w-100">Monthly Subscription<br />$10</button>
                                                         </label>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-check">
-                                                        <input class="form-check-input visually-hidden" type="radio" name="subscriptionType" id="yearly" value="yearly">
+                                                        @Html.RadioButtonFor(m => m.PaymentTypeID, 2, new { @class = "form-check-input visually-hidden", id = "yearly" })
                                                         <label class="form-check-label" for="yearly">
-                                                            <button type="button" class="btn btn-success w-100">Yearly Subscription<br />$100</button>
+                                                            <button type="submit" class="btn btn-success w-100">Yearly Subscription<br />$100</button>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -71,7 +101,7 @@
                                         </div>
 
                                         <div class="d-flex justify-content-center">
-                                            <button type="button" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
+                                            <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
                                                 Register
                                             </button>
                                         </div>
@@ -80,7 +110,7 @@
                                             Have already an account? @Html.ActionLink("Login here", "Login", "UserAuth", new { area = "" }, new { @class = "fw-bold text-body" })
                                         </p>
                                     </div>
-                                </form>
+                                }
                             </div>
                         </div>
                     </div>

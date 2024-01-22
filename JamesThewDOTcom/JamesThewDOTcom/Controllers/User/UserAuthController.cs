@@ -20,6 +20,12 @@ public class UserAuthController : Controller
     {
         if (ModelState.IsValid)
         {
+            if (customer.Password != customer.RePassword)
+            {
+                ModelState.AddModelError("RePassword", "The password and confirmation password do not match.");
+                return View("~/Views/User/UserAuth/Register.cshtml", customer);
+            }
+
             bool registrationSuccess = RegisterNewCustomer(customer);
 
             if (registrationSuccess)
@@ -34,6 +40,7 @@ public class UserAuthController : Controller
 
         return View("~/Views/User/UserAuth/Register.cshtml", customer);
     }
+
 
     private bool RegisterNewCustomer(Customers customer)
     {
@@ -57,7 +64,7 @@ public class UserAuthController : Controller
                     cmd.Parameters.AddWithValue("@City", customer.City);
                     cmd.Parameters.AddWithValue("@Phone", customer.Phone);
                     cmd.Parameters.AddWithValue("@CustomersTypeID", customer.CustomersTypeID);
-                    cmd.Parameters.AddWithValue("@PaymentTypeID", customer.PaymentTypeID);
+                    cmd.Parameters.AddWithValue("@PaymentTypeID", customer.PaymentTypeID); 
 
                     int rowsAffected = cmd.ExecuteNonQuery();
 
@@ -71,6 +78,7 @@ public class UserAuthController : Controller
             return false;
         }
     }
+
 
 
 
