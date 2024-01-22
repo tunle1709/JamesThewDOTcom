@@ -123,7 +123,7 @@ namespace JamesThewDOTcom.Controllers.Administration
                         cmd.ExecuteNonQuery();
                     }
                 }
-                return RedirectToAction("~/Views/Administration/Employees/Index.cshtml");
+                return RedirectToAction("Index", "Employees");
             }
             catch
             {
@@ -169,7 +169,7 @@ namespace JamesThewDOTcom.Controllers.Administration
                         cmd.ExecuteNonQuery();
                     }
                 }
-                return RedirectToAction("~/Views/Administration/Employees/Index.cshtml");
+                return RedirectToAction("Index", "Employees");
             }
             catch
             {
@@ -203,7 +203,7 @@ namespace JamesThewDOTcom.Controllers.Administration
                         cmd.ExecuteNonQuery();
                     }
                 }
-                return RedirectToAction("~/Views/Administration/Employees/Index.cshtml");
+                return RedirectToAction("Index", "Employees");
             }
             catch
             {
