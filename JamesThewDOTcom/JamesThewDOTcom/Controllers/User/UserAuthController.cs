@@ -14,7 +14,6 @@ public class UserAuthController : Controller
         return View("~/Views/User/UserAuth/Register.cshtml");
     }
 
-
     [HttpPost]
     public ActionResult Register(Customers customer)
     {
@@ -41,7 +40,6 @@ public class UserAuthController : Controller
         return View("~/Views/User/UserAuth/Register.cshtml", customer);
     }
 
-
     private bool RegisterNewCustomer(Customers customer)
     {
         try
@@ -50,8 +48,8 @@ public class UserAuthController : Controller
             {
                 connection.Open();
 
-                string sql = @"INSERT INTO Customers (UserName, Password, Last_Name, First_Name, BirthDate, Address, City, Phone, CustomersTypeID, PaymentTypeID)
-                           VALUES (@UserName, @Password, @Last_Name, @First_Name, @BirthDate, @Address, @City, @Phone, @CustomersTypeID, @PaymentTypeID)";
+                string sql = @"INSERT INTO Customers (UserName, Password, Last_Name, First_Name, BirthDate, Address, City, Phone)
+                           VALUES (@UserName, @Password, @Last_Name, @First_Name, @BirthDate, @Address, @City, @Phone)";
 
                 using (SqlCommand cmd = new SqlCommand(sql, connection))
                 {
@@ -63,8 +61,6 @@ public class UserAuthController : Controller
                     cmd.Parameters.AddWithValue("@Address", customer.Address);
                     cmd.Parameters.AddWithValue("@City", customer.City);
                     cmd.Parameters.AddWithValue("@Phone", customer.Phone);
-                    cmd.Parameters.AddWithValue("@CustomersTypeID", customer.CustomersTypeID);
-                    cmd.Parameters.AddWithValue("@PaymentTypeID", customer.PaymentTypeID); 
 
                     int rowsAffected = cmd.ExecuteNonQuery();
 
@@ -74,12 +70,9 @@ public class UserAuthController : Controller
         }
         catch (Exception ex)
         {
-            
             return false;
         }
     }
-
-
 
 
     [HttpGet]
