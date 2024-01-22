@@ -111,7 +111,7 @@ namespace JamesThewDOTcom.Controllers.Administration
                         cmd.ExecuteNonQuery();
                     }
                 }
-                return RedirectToAction("~/Views/Administration/Recipe/Index.cshtml");
+                return RedirectToAction("Index", "Recipe");
             }
             catch
             {
@@ -150,7 +150,7 @@ namespace JamesThewDOTcom.Controllers.Administration
                         cmd.ExecuteNonQuery();
                     }
                 }
-                return RedirectToAction("~/Views/Administration/Recipe/Index.cshtml");
+                return RedirectToAction("Index", "Recipe");
             }
             catch
             {
@@ -184,7 +184,7 @@ namespace JamesThewDOTcom.Controllers.Administration
                         cmd.ExecuteNonQuery();
                     }
                 }
-                return RedirectToAction("~/Views/Administration/Recipe/Index.cshtml");
+                return RedirectToAction("Index", "Recipe");
             }
             catch
             {
