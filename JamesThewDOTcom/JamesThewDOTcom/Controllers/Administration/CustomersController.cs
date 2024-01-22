@@ -127,7 +127,7 @@ namespace JamesThewDOTcom.Controllers.Administration
                         cmd.ExecuteNonQuery();
                     }
                 }
-                return RedirectToAction("~/Views/Administration/Customers/Index.cshtml");
+                return RedirectToAction("Index", "Customers");
             }
             catch
             {
@@ -161,7 +161,7 @@ namespace JamesThewDOTcom.Controllers.Administration
                         cmd.ExecuteNonQuery();
                     }
                 }
-                return RedirectToAction("~/Views/Administration/Customers/Index.cshtml");
+                return RedirectToAction("Index", "Customers");
             }
             catch
             {
