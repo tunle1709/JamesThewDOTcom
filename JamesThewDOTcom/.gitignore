@@ -476,5 +476,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-
-Web.config
+# Web.config

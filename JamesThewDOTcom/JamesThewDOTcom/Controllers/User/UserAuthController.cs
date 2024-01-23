@@ -1,12 +1,16 @@
-﻿using JamesThewDOTcom.Models;
-using System.Configuration;
-using System.Data.SqlClient;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
 using System.Web.Mvc;
-using System;
+using JamesThewDOTcom.Models;
 
 public class UserAuthController : Controller
 {
-    private string strconn = ConfigurationManager.ConnectionStrings["JamesThewDB"].ConnectionString;
+    private JamesThewDBEntities db = new JamesThewDBEntities();
 
     [HttpGet]
     public ActionResult Register()
@@ -15,7 +19,7 @@ public class UserAuthController : Controller
     }
 
     [HttpPost]
-    public ActionResult Register(Customers customer)
+    public ActionResult Register(Customer customer)
     {
         if (ModelState.IsValid)
         {
@@ -40,40 +44,20 @@ public class UserAuthController : Controller
         return View("~/Views/User/UserAuth/Register.cshtml", customer);
     }
 
-    private bool RegisterNewCustomer(Customers customer)
+    private bool RegisterNewCustomer(Customer customer)
     {
         try
         {
-            using (SqlConnection connection = new SqlConnection(strconn))
-            {
-                connection.Open();
+            db.Customers.Add(customer);
+            db.SaveChanges();
 
-                string sql = @"INSERT INTO Customers (UserName, Password, Last_Name, First_Name, BirthDate, Address, City, Phone)
-                           VALUES (@UserName, @Password, @Last_Name, @First_Name, @BirthDate, @Address, @City, @Phone)";
-
-                using (SqlCommand cmd = new SqlCommand(sql, connection))
-                {
-                    cmd.Parameters.AddWithValue("@UserName", customer.UserName);
-                    cmd.Parameters.AddWithValue("@Password", customer.Password);
-                    cmd.Parameters.AddWithValue("@Last_Name", customer.Last_Name);
-                    cmd.Parameters.AddWithValue("@First_Name", customer.First_Name);
-                    cmd.Parameters.AddWithValue("@BirthDate", customer.BirthDate);
-                    cmd.Parameters.AddWithValue("@Address", customer.Address);
-                    cmd.Parameters.AddWithValue("@City", customer.City);
-                    cmd.Parameters.AddWithValue("@Phone", customer.Phone);
-
-                    int rowsAffected = cmd.ExecuteNonQuery();
-
-                    return rowsAffected > 0;
-                }
-            }
+            return true;
         }
         catch (Exception ex)
         {
             return false;
         }
     }
-
 
     [HttpGet]
     public ActionResult Login()
@@ -82,7 +66,7 @@ public class UserAuthController : Controller
     }
 
     [HttpPost]
-    public ActionResult Login(Customers customer)
+    public ActionResult Login(Customer customer)
     {
         if (ModelState.IsValid)
         {
@@ -90,7 +74,7 @@ public class UserAuthController : Controller
 
             if (authenticatedCustomer != null)
             {
-                return RedirectToAction("Index", "Home"); 
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -101,42 +85,8 @@ public class UserAuthController : Controller
         return View("~/Views/User/UserAuth/Login.cshtml", customer);
     }
 
-    private Customers AuthenticateCustomer(string userName, string password)
+    private Customer AuthenticateCustomer(string userName, string password)
     {
-        using (SqlConnection connection = new SqlConnection(strconn))
-        {
-            connection.Open();
-
-            string sql = "SELECT * FROM Customers WHERE UserName = @UserName AND Password = @Password";
-
-            using (SqlCommand cmd = new SqlCommand(sql, connection))
-            {
-                cmd.Parameters.AddWithValue("@UserName", userName);
-                cmd.Parameters.AddWithValue("@Password", password);
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        Customers customer = new Customers
-                        {
-                            CustomerID = (int)reader["CustomerID"],
-                            UserName = reader["UserName"].ToString(),
-                            Password = reader["Password"].ToString(),
-                            Last_Name = reader["Last_Name"].ToString(),
-                            First_Name = reader["First_Name"].ToString(),
-                            BirthDate = (DateTime)reader["BirthDate"],
-                            Address = reader["Address"].ToString(),
-                            City = reader["City"].ToString(),
-                            Phone = reader["Phone"].ToString()
-                        };
-
-                        return customer;
-                    }
-                }
-            }
-        }
-
-        return null;
+        return db.Customers.FirstOrDefault(c => c.UserName == userName && c.Password == password);
     }
 }

@@ -1,0 +1,27 @@
+﻿@model JamesThewDOTcom.Models.RecipeType
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_More.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RecipeType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RecipeTyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecipeTyName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RecipeTypeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
