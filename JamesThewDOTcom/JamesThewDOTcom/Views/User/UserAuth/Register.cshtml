@@ -76,30 +76,6 @@
                                             </label>
                                         </div>
 
-                                        <div class="form-outline mb-4">
-                                            <label class="form-label" for="SubscriptionType">Choose Subscription Type:</label>
-
-                                            <div class="row g-2">
-                                                <div class="col-md-6">
-                                                    <div class="form-check">
-                                                        @Html.RadioButtonFor(m => m.PaymentTypeID, 1, new { @class = "form-check-input visually-hidden", id = "monthly" })
-                                                        <label class="form-check-label" for="monthly">
-                                                            <button type="submit" class="btn btn-warning w-100">Monthly Subscription<br />$10</button>
-                                                        </label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="form-check">
-                                                        @Html.RadioButtonFor(m => m.PaymentTypeID, 2, new { @class = "form-check-input visually-hidden", id = "yearly" })
-                                                        <label class="form-check-label" for="yearly">
-                                                            <button type="submit" class="btn btn-success w-100">Yearly Subscription<br />$100</button>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                         <div class="d-flex justify-content-center">
                                             <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
                                                 Register

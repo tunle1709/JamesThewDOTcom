@@ -19,9 +19,6 @@ namespace JamesThewDOTcom.Models
         public string Address { get; set; }
         public string City { get; set; }
         public string Phone { get; set; }
-        public int CustomersTypeID { get; set; }
-        public int PaymentTypeID { get; set; }
-        public string PaymentTypeName { get; set; }
 
     }
 }
