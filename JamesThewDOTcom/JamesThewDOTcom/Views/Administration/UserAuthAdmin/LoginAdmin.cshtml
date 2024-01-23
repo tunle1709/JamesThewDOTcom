@@ -5,86 +5,95 @@
 }
 
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
-
-    <!-- Bao gồm thư viện Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <style>
-        body {
-            background-color: #87CEEB;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .form-container {
-            background-color: #FFF;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px 0 #000;
-            width: 400px;
-            text-align: center;
-        }
-
-            .form-container h4 {
-                font-size: 30px;
-                font-weight: bold;
-            }
-
-        .btn {
-            border: 2px solid #87CEEB;
-            background-color: transparent;
-            color: #87CEEB;
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-        }
-
-            .btn:hover {
-                background-color: #87CEEB;
-                color: #FFF;
-            }
-    </style>
+	<title>Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="~/assets/assets_LoginAdmin/images/icons/favicon.ico" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/assets/assets_LoginAdmin/vendor/bootstrap/css/bootstrap.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/assets/assets_LoginAdmin/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/assets/assets_LoginAdmin/vendor/animate/animate.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/assets/assets_LoginAdmin/vendor/css-hamburgers/hamburgers.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/assets/assets_LoginAdmin/vendor/animsition/css/animsition.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/assets/assets_LoginAdmin/vendor/select2/select2.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/assets/assets_LoginAdmin/vendor/daterangepicker/daterangepicker.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/assets/assets_LoginAdmin/css/util.css">
+	<link rel="stylesheet" type="text/css" href="~/assets/assets_LoginAdmin/css/main.css">
+	<!--===============================================================================================-->
 </head>
 <body>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/jqueryval")
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+	
+	@Html.AntiForgeryToken()
 
-        <div class="form-container">
-            <h4 class="display-4">Login</h4>
-            <hr />
+	<div class="limiter">
+		<div class="container-login100">
+            <div class="wrap-login100">
+                
+                <form class="login100-form validate-form p-l-55 p-r-55 p-t-178">
+                    <span class="login100-form-title">
+                        Sign In
+                    </span>
+                            <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+                                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "input100", placeholder = "Username" } })
+                                <span class="focus-input100"></span>
+                            </div>
 
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="wrap-input100 validate-input" data-validate="Please enter password">
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input100", placeholder = "Password", type = "password" } })
+                                <span class="focus-input100"></span>
+                            </div>
 
-            <div class="mb-3">
-                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control form-control-lg", placeholder = "User Name" } })
-                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-            </div>
+                            <div class="text-right p-t-13 p-b-23"
+                            </div>
 
-            <div class="mb-3">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control form-control-lg", placeholder = "Password" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-            </div>
+                            <div class="container-login100-form-btn">
+                                <button class="login100-form-btn">
+                                    Sign in
+                                </button>
+                            </div>
 
-            <div class="form-group">
-                <input type="submit" value="Sign In" class="btn" />
-            </div>
-        </div>
-    }
+                            <div class="flex-col-c p-t-170 p-b-40">
+                                Hello Boss Welcome Back!!!!!!
+                            </div>
+                </form>
+                </div>
+		</div>
+	</div>
+	
 
-    <!-- Bao gồm thư viện Bootstrap 5 JS (để hoạt động các thành phần như tooltip) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+
+<!--===============================================================================================-->
+<script src="~/assets/assets_LoginAdmin/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="~/assets/assets_LoginAdmin/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="~/assets/assets_LoginAdmin/vendor/bootstrap/js/popper.js"></script>
+<script src="~/assets/assets_LoginAdmin/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="~/assets/assets_LoginAdmin/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="~/assets/assets_LoginAdmin/vendor/daterangepicker/moment.min.js"></script>
+<script src="~/assets/assets_LoginAdmin/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="~/assets/assets_LoginAdmin/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="~/assets/assets_LoginAdmin/js/main.js"></script>
+
 </body>
 </html>
 
