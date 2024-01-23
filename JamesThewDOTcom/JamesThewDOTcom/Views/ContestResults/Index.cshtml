@@ -1,0 +1,46 @@
+﻿@model IEnumerable<JamesThewDOTcom.Models.ContestResult>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_More.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Score)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegiterContest.RegisterContestID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Score)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegiterContest.RegisterContestID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CustomerID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CustomerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CustomerID })
+        </td>
+    </tr>
+}
+
+</table>

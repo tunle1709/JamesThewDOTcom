@@ -4,13 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Configuration;
+using JamesThewDOTcom.Models;
 
 namespace JamesThewDOTcom.Controllers
 {
     public class FeedbackController : Controller
     {
 
-        string strconn = ConfigurationManager.ConnectionStrings["JamesThewDB"].ConnectionString;
+        private JamesThewDBEntities db = new JamesThewDBEntities();
 
         // GET: Feedback
         public ActionResult Index()

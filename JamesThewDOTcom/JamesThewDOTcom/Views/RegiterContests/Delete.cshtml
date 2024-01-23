@@ -1,0 +1,49 @@
+﻿@model JamesThewDOTcom.Models.RegiterContest
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout_More.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>RegiterContest</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CookingContest.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CookingContest.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CookingContest1.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CookingContest1.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.UserName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,43 @@
+﻿@model JamesThewDOTcom.Models.ContestResult
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_More.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ContestResult</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Score)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegiterContest.RegisterContestID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegiterContest.RegisterContestID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
