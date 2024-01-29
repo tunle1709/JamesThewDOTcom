@@ -18,5 +18,13 @@ namespace JamesThewDOTcom.Controllers
         {
             return View("~/Views/User/RecipesPublic/Index.cshtml");
         }
+
+        public ActionResult Detail()
+        {
+            return View("~/Views/User/RecipesPublic/Detail.cshtml");
+        }
+
     }
+
+
 }
