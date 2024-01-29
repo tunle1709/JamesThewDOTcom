@@ -20,6 +20,7 @@ namespace JamesThewDOTcom.Models
             this.RegiterContests = new HashSet<RegiterContest>();
             this.RegiterContests1 = new HashSet<RegiterContest>();
             this.CustomerTypes = new HashSet<CustomerType>();
+            this.Questions = new HashSet<Question>();
         }
     
         public int CookingContestID { get; set; }
@@ -27,6 +28,7 @@ namespace JamesThewDOTcom.Models
         public string Description { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
+        public byte[] Image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RegiterContest> RegiterContests { get; set; }
@@ -34,5 +36,7 @@ namespace JamesThewDOTcom.Models
         public virtual ICollection<RegiterContest> RegiterContests1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerType> CustomerTypes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Question> Questions { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using JamesThewDOTcom.Models;
 
 public class UserAuthController : Controller
@@ -74,6 +75,8 @@ public class UserAuthController : Controller
 
             if (authenticatedCustomer != null)
             {
+                FormsAuthentication.SetAuthCookie(authenticatedCustomer.UserName, false);
+
                 return RedirectToAction("Index", "Home");
             }
             else

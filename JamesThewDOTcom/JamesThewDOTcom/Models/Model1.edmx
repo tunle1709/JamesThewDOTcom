@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="JamesThewDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="JamesThewDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ContestResults">
           <Key>
             <PropertyRef Name="CustomerID" />
@@ -22,6 +22,7 @@
           <Property Name="Description" Type="nvarchar" MaxLength="500" />
           <Property Name="StartDate" Type="datetime" />
           <Property Name="EndDate" Type="datetime" />
+          <Property Name="Image" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Customers">
           <Key>
@@ -123,6 +124,19 @@
           <Property Name="PaymentTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="QuestionID" />
+          </Key>
+          <Property Name="QuestionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="Choice1" Type="nvarchar" MaxLength="80" />
+          <Property Name="Choice2" Type="nvarchar" MaxLength="80" />
+          <Property Name="Choice3" Type="nvarchar" MaxLength="80" />
+          <Property Name="Choice4" Type="nvarchar" MaxLength="80" />
+          <Property Name="CorrectChoice" Type="nvarchar" MaxLength="20" />
+          <Property Name="CookingContestID" Type="int" />
+        </EntityType>
         <EntityType Name="Recipe">
           <Key>
             <PropertyRef Name="RecipeID" />
@@ -133,6 +147,7 @@
           <Property Name="Steps" Type="nvarchar" MaxLength="500" />
           <Property Name="RecipeType" Type="nvarchar" MaxLength="500" />
           <Property Name="EmployeeID" Type="int" />
+          <Property Name="Image" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="RecipeType">
           <Key>
@@ -313,6 +328,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Question__Cookin__06CD04F7">
+          <End Role="CookingContest" Type="Self.CookingContest" Multiplicity="0..1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CookingContest">
+              <PropertyRef Name="CookingContestID" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="CookingContestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Recipe__Employee__5EBF139D">
           <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
           <End Role="Recipe" Type="Self.Recipe" Multiplicity="*" />
@@ -423,6 +450,7 @@
           <EntitySet Name="Group_Object" EntityType="Self.Group_Object" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Object" EntityType="Self.Object" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentType" EntityType="Self.PaymentType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Recipe" EntityType="Self.Recipe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RecipeType" EntityType="Self.RecipeType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RecipeType_CustomerType" EntityType="Self.RecipeType_CustomerType" Schema="dbo" store:Type="Tables" />
@@ -476,6 +504,10 @@
             <End Role="Object" EntitySet="Object" />
             <End Role="Group_Object" EntitySet="Group_Object" />
           </AssociationSet>
+          <AssociationSet Name="FK__Question__Cookin__06CD04F7" Association="Self.FK__Question__Cookin__06CD04F7">
+            <End Role="CookingContest" EntitySet="CookingContest" />
+            <End Role="Question" EntitySet="Question" />
+          </AssociationSet>
           <AssociationSet Name="FK__Recipe__Employee__5EBF139D" Association="Self.FK__Recipe__Employee__5EBF139D">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="Recipe" EntitySet="Recipe" />
@@ -509,8 +541,7 @@
             <End Role="RegiterContest" EntitySet="RegiterContest" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="JamesThewDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -536,6 +567,8 @@
           <NavigationProperty Name="RegiterContests" Relationship="Self.FK__RegiterCo__Cooki__59FA5E80" FromRole="CookingContest" ToRole="RegiterContest" />
           <NavigationProperty Name="RegiterContests1" Relationship="Self.FK__RegiterCo__Cooki__5AEE82B9" FromRole="CookingContest" ToRole="RegiterContest" />
           <NavigationProperty Name="CustomerTypes" Relationship="Self.CustomerType_CookingContest" FromRole="CookingContest" ToRole="CustomerType" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Questions" Relationship="JamesThewDBModel.FK__Question__Cookin__06CD04F7" FromRole="CookingContest" ToRole="Question" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -643,6 +676,7 @@
           <Property Name="EmployeeID" Type="Int32" />
           <NavigationProperty Name="Employee" Relationship="Self.FK__Recipe__Employee__5EBF139D" FromRole="Recipe" ToRole="Employees" />
           <NavigationProperty Name="FeedBacks" Relationship="Self.FK__FeedBack__Recipe__5CD6CB2B" FromRole="Recipe" ToRole="FeedBack" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="RecipeType">
           <Key>
@@ -917,7 +951,38 @@
             <End Role="CustomerType" EntitySet="CustomerTypes" />
             <End Role="RecipeType" EntitySet="RecipeTypes" />
           </AssociationSet>
+          <EntitySet Name="Questions" EntityType="JamesThewDBModel.Question" />
+          <AssociationSet Name="FK__Question__Cookin__06CD04F7" Association="JamesThewDBModel.FK__Question__Cookin__06CD04F7">
+            <End Role="CookingContest" EntitySet="CookingContests" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="QuestionID" />
+          </Key>
+          <Property Name="QuestionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Choice1" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Choice2" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Choice3" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Choice4" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="CorrectChoice" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CookingContestID" Type="Int32" />
+          <NavigationProperty Name="CookingContest" Relationship="JamesThewDBModel.FK__Question__Cookin__06CD04F7" FromRole="Question" ToRole="CookingContest" />
+        </EntityType>
+        <Association Name="FK__Question__Cookin__06CD04F7">
+          <End Type="JamesThewDBModel.CookingContest" Role="CookingContest" Multiplicity="0..1" />
+          <End Type="JamesThewDBModel.Question" Role="Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CookingContest">
+              <PropertyRef Name="CookingContestID" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="CookingContestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -936,6 +1001,7 @@
           <EntitySetMapping Name="CookingContests">
             <EntityTypeMapping TypeName="JamesThewDBModel.CookingContest">
               <MappingFragment StoreEntitySet="CookingContest">
+                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="CookingContestID" ColumnName="CookingContestID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -1031,6 +1097,7 @@
           <EntitySetMapping Name="Recipes">
             <EntityTypeMapping TypeName="JamesThewDBModel.Recipe">
               <MappingFragment StoreEntitySet="Recipe">
+                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="RecipeID" ColumnName="RecipeID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Ingredints" ColumnName="Ingredints" />
@@ -1102,6 +1169,20 @@
               <ScalarProperty Name="RecipeTypeID" ColumnName="RecipeTypeID" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="JamesThewDBModel.Question">
+              <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="CookingContestID" ColumnName="CookingContestID" />
+                <ScalarProperty Name="CorrectChoice" ColumnName="CorrectChoice" />
+                <ScalarProperty Name="Choice4" ColumnName="Choice4" />
+                <ScalarProperty Name="Choice3" ColumnName="Choice3" />
+                <ScalarProperty Name="Choice2" ColumnName="Choice2" />
+                <ScalarProperty Name="Choice1" ColumnName="Choice1" />
+                <ScalarProperty Name="QuestionTitle" ColumnName="QuestionTitle" />
+                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
