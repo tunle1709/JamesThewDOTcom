@@ -297,6 +297,21 @@
     <Content Include="Assets\assets_LoginAdmin\vendor\select2\select2.js" />
     <Content Include="Assets\assets_LoginAdmin\vendor\select2\select2.min.css" />
     <Content Include="Assets\assets_LoginAdmin\vendor\select2\select2.min.js" />
+    <Content Include="Assets\assets_RecipeDetail\css\animate.css" />
+    <Content Include="Assets\assets_RecipeDetail\css\bootstrap.min.css" />
+    <Content Include="Assets\assets_RecipeDetail\css\classy-nav.min.css" />
+    <Content Include="Assets\assets_RecipeDetail\css\custom-icon.css" />
+    <Content Include="Assets\assets_RecipeDetail\css\font-awesome.min.css" />
+    <Content Include="Assets\assets_RecipeDetail\css\magnific-popup.css" />
+    <Content Include="Assets\assets_RecipeDetail\css\nice-select.min.css" />
+    <Content Include="Assets\assets_RecipeDetail\css\owl.carousel.min.css" />
+    <Content Include="Assets\assets_RecipeDetail\js\active.js" />
+    <Content Include="Assets\assets_RecipeDetail\js\bootstrap\bootstrap.min.js" />
+    <Content Include="Assets\assets_RecipeDetail\js\bootstrap\popper.min.js" />
+    <Content Include="Assets\assets_RecipeDetail\js\google-map\map-active.js" />
+    <Content Include="Assets\assets_RecipeDetail\js\jquery\jquery-2.2.4.min.js" />
+    <Content Include="Assets\assets_RecipeDetail\js\plugins\plugins.js" />
+    <Content Include="Assets\assets_RecipeDetail\style.css" />
     <Content Include="Assets\assets_Recipe\css_recipe\ajax-loader.gif" />
     <Content Include="Assets\assets_Recipe\css_recipe\animate.css" />
     <Content Include="Assets\assets_Recipe\css_recipe\bootsnav.css" />
@@ -623,7 +638,6 @@
     <Content Include="Views\User\Feedback\Index.cshtml" />
     <Content Include="Views\User\Contests\Index.cshtml" />
     <Content Include="Views\UserAuthAdmin\LoginAdmin.cshtml" />
-    <Content Include="Views\User\RecipesPublic\Detail.cshtml" />
     <Content Include="Views\Customers\Delete.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Customers\Edit.cshtml" />
@@ -663,6 +677,7 @@
     <Content Include="Views\RegiterContests\Details.cshtml" />
     <Content Include="Views\RegiterContests\Edit.cshtml" />
     <Content Include="Views\RegiterContests\Index.cshtml" />
+    <Content Include="Views\User\RecipesPublic\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
