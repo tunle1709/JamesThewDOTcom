@@ -35,6 +35,8 @@
         <AssociationConnector Association="JamesThewDBModel.Employees_Group" ManuallyRouted="false" />
         <AssociationConnector Association="JamesThewDBModel.Group_Object" ManuallyRouted="false" />
         <AssociationConnector Association="JamesThewDBModel.RecipeType_CustomerType" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="JamesThewDBModel.Question" Width="1.5" PointX="3" PointY="11.5" />
+        <AssociationConnector Association="JamesThewDBModel.FK__Question__Cookin__06CD04F7" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using JamesThewDOTcom.Models;
+using PagedList;
 
 namespace JamesThewDOTcom.Controllers.Administration
 {
@@ -15,9 +16,28 @@ namespace JamesThewDOTcom.Controllers.Administration
         private JamesThewDBEntities db = new JamesThewDBEntities();
 
         // GET: Employees
-        public ActionResult Index()
+        public ActionResult Index(string searchString, int? page)
         {
-            return View(db.Employees.ToList());
+            var employees = db.Employees.ToList();
+
+            // Tìm kiếm
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                employees = employees.Where(e =>
+                    e.UserName.Contains(searchString) ||
+                    e.Address.Contains(searchString) ||
+                    e.City.Contains(searchString) ||
+                    e.PhoneNumber.Contains(searchString) ||
+                    e.Last_Name.Contains(searchString) ||
+                    e.First_Name.Contains(searchString)).ToList();
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            ViewBag.CurrentFilter = searchString;
+
+            return View(employees.OrderBy(e => e.UserName).ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Employees/Details/5

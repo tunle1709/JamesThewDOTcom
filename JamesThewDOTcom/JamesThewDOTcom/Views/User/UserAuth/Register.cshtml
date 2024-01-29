@@ -2,84 +2,60 @@
 
 @{
     ViewBag.Title = "Sign Up";
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <main>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    <section class="vh-100 bg-image" style="background-image: url('https://dulichviet.com.vn/images/bandidau/am-thuc-phap-su-trang-le-trong-tung-chi-tiet-mon-an.jpg'); ">
-        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-            <div class="container h-100 my-form-container">
-                <div class="row d-flex justify-content-center align-items-center h-100">
-                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-                        <div class="card" style="border-radius: 15px;">
-                            <div class="card-body p-5">
-                                <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-                                @using (Html.BeginForm("Register", "UserAuth", FormMethod.Post))
-                                {
-                                    @Html.AntiForgeryToken()
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-                                    <div class="container">
-                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-12 text-center mb-5">
+                <h1>Welcome to our platform!</h1>
+                <p class="lead">Sign up to explore all the features and benefits.</p>
+            </div>
+        </div>
 
-                                        <div class="form-outline mb-4">
-                                            @Html.TextBoxFor(m => m.First_Name, new { @class = "form-control form-control-lg", placeholder = "First Name" })
-                                            @Html.ValidationMessageFor(m => m.First_Name, "", new { @class = "text-danger" })
-                                        </div>
-
-                                        <div class="form-outline mb-4">
-                                            @Html.TextBoxFor(m => m.Last_Name, new { @class = "form-control form-control-lg", placeholder = "Last Name" })
-                                            @Html.ValidationMessageFor(m => m.Last_Name, "", new { @class = "text-danger" })
-                                        </div>
-
-                                        <div class="form-outline mb-4">
-                                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control form-control-lg", placeholder = "UserName" })
-                                            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
-                                        </div>
-
-                                        <div class="form-outline mb-4">
-                                            @Html.PasswordFor(m => m.Password, new { @class = "form-control form-control-lg", placeholder = "Password" })
-                                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                                        </div>
-
-                                        <div class="form-outline mb-4">
-                                            @Html.PasswordFor(m => m.RePassword, new { @class = "form-control form-control-lg", placeholder = "Repeat Password" })
-                                            @Html.ValidationMessageFor(m => m.RePassword, "", new { @class = "text-danger" })
-                                        </div>
-
-                                        <div class="form-outline mb-4">
-                                            @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control form-control-lg", placeholder = "Birth Date" })
-                                            @Html.ValidationMessageFor(m => m.BirthDate, "", new { @class = "text-danger" })
-                                        </div>
-
-                                        <div class="form-check d-flex justify-content-center mb-5">
-                                            <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
-                                            <label class="form-check-label" for="form2Example3g">
-                                                I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
-                                            </label>
-                                        </div>
-
-                                        <div class="d-flex justify-content-center">
-                                            <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
-                                                Register
-                                            </button>
-                                        </div>
-
-                                        <p class="text-center text-muted mt-5 mb-0">
-                                            Have already an account? @Html.ActionLink("Login here", "Login", "UserAuth", new { area = "" }, new { @class = "fw-bold text-body" })
-                                        </p>
-                                    </div>
-                                }
-                            </div>
-                        </div>
+        <div class="row row-cols-1 row-cols-md-2 mb-3 text-center">
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3 text-white bg-primary border-primary">
+                        <h4 class="my-0 fw-normal">Monthly Subscription</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">$10<small class="text-muted fw-light">/mo</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>Unlimited users</li>
+                            <li>5 GB of storage</li>
+                            <li>Priority email support</li>
+                            <li>Help center access</li>
+                        </ul>
+                        <button type="button" class="w-100 btn btn-lg btn-danger">Subscribe Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3 text-white bg-primary border-primary">
+                        <h4 class="my-0 fw-normal">Yearly Subscription</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">$100<small class="text-muted fw-light">/yr</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>Unlimited users</li>
+                            <li>10 GB of storage</li>
+                            <li>Priority email support</li>
+                            <li>Help center access</li>
+                        </ul>
+                        <button type="button" class="w-100 btn btn-lg btn-danger">Subscribe Now</button>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    </div>
 </main>
