@@ -26,8 +26,8 @@ namespace JamesThewDOTcom.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ContestResult> ContestResults { get; set; }
+        public virtual Customer Customer { get; set; }
         public virtual CookingContest CookingContest { get; set; }
         public virtual CookingContest CookingContest1 { get; set; }
-        public virtual Customer Customer { get; set; }
     }
 }

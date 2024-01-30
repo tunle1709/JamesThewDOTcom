@@ -6,7 +6,6 @@
     <edmx:Diagrams>
       <Diagram DiagramId="8eeb48c3226a420d8f7e079207e8809d" Name="Diagram1">
         <EntityTypeShape EntityType="JamesThewDBModel.ContestResult" Width="1.5" PointX="12.75" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="JamesThewDBModel.CookingContest" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="JamesThewDBModel.Customer" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="JamesThewDBModel.CustomerType" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="JamesThewDBModel.Employee" Width="1.5" PointX="6" PointY="3" IsExpanded="true" />
@@ -15,28 +14,29 @@
         <EntityTypeShape EntityType="JamesThewDBModel.Group" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="JamesThewDBModel.Object" Width="1.5" PointX="10.5" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="JamesThewDBModel.PaymentType" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="JamesThewDBModel.Recipe" Width="1.5" PointX="8.25" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="JamesThewDBModel.RecipeType" Width="1.5" PointX="5.25" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="JamesThewDBModel.Register" Width="1.5" PointX="8.25" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="JamesThewDBModel.RegiterContest" Width="1.5" PointX="10.5" PointY="8.5" IsExpanded="true" />
         <AssociationConnector Association="JamesThewDBModel.FK__ContestRe__Custo__59063A47" ManuallyRouted="false" />
         <AssociationConnector Association="JamesThewDBModel.FK__ContestRe__Regis__5812160E" ManuallyRouted="false" />
-        <AssociationConnector Association="JamesThewDBModel.FK__RegiterCo__Cooki__59FA5E80" ManuallyRouted="false" />
-        <AssociationConnector Association="JamesThewDBModel.FK__RegiterCo__Cooki__5AEE82B9" ManuallyRouted="false" />
         <AssociationConnector Association="JamesThewDBModel.FK__Customers__Custo__75A278F5" ManuallyRouted="false" />
         <AssociationConnector Association="JamesThewDBModel.FK__Customers__Payme__74AE54BC" ManuallyRouted="false" />
         <AssociationConnector Association="JamesThewDBModel.FK__FeedBack__Custom__5DCAEF64" ManuallyRouted="false" />
         <AssociationConnector Association="JamesThewDBModel.FK__RegiterCo__Custo__5BE2A6F2" ManuallyRouted="false" />
         <AssociationConnector Association="JamesThewDBModel.FK__Register__Custom__03F0984C" ManuallyRouted="false" />
-        <AssociationConnector Association="JamesThewDBModel.FK__Recipe__Employee__5EBF139D" ManuallyRouted="false" />
-        <AssociationConnector Association="JamesThewDBModel.FK__FeedBack__Recipe__5CD6CB2B" ManuallyRouted="false" />
         <AssociationConnector Association="JamesThewDBModel.FK__Register__Paymen__02FC7413" ManuallyRouted="false" />
-        <AssociationConnector Association="JamesThewDBModel.CustomerType_CookingContest" ManuallyRouted="false" />
         <AssociationConnector Association="JamesThewDBModel.Employees_Group" ManuallyRouted="false" />
         <AssociationConnector Association="JamesThewDBModel.Group_Object" ManuallyRouted="false" />
         <AssociationConnector Association="JamesThewDBModel.RecipeType_CustomerType" ManuallyRouted="false" />
         <EntityTypeShape EntityType="JamesThewDBModel.Question" Width="1.5" PointX="3" PointY="11.5" />
+        <EntityTypeShape EntityType="JamesThewDBModel.CookingContest" Width="1.5" PointX="0.75" PointY="9.875" />
+        <EntityTypeShape EntityType="JamesThewDBModel.Recipe" Width="1.5" PointX="8.25" PointY="3.25" />
         <AssociationConnector Association="JamesThewDBModel.FK__Question__Cookin__06CD04F7" />
+        <AssociationConnector Association="JamesThewDBModel.FK__RegiterCo__Cooki__59FA5E80" />
+        <AssociationConnector Association="JamesThewDBModel.FK__RegiterCo__Cooki__5AEE82B9" />
+        <AssociationConnector Association="JamesThewDBModel.FK__Recipe__Employee__5EBF139D" />
+        <AssociationConnector Association="JamesThewDBModel.FK__FeedBack__Recipe__5CD6CB2B" />
+        <AssociationConnector Association="JamesThewDBModel.CustomerType_CookingContest" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

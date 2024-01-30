@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Payment Confirmation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Payment Confirmation</h2>
+
+<p>Cảm ơn bạn đã đăng ký!</p>
+
+<div>
+    <p>Bạn cần thanh toán thông qua mã QR này:</p>
+    <img src="~/Images/QRPayment.png" alt="QR Code" width="300" height="300">
+</div>
+
+<div>
+    <p>Số tiền phải thanh toán: $@ViewBag.RegistrationFee</p>
+    <p>Thời hạn sử dụng: @ViewBag.EndDate</p>
+</div>

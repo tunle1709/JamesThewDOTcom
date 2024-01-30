@@ -447,6 +447,7 @@
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\QRPayment.png" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
@@ -652,11 +653,6 @@
     <Content Include="Views\CookingContests\Details.cshtml" />
     <Content Include="Views\CookingContests\Edit.cshtml" />
     <Content Include="Views\CookingContests\Index.cshtml" />
-    <Content Include="Views\Recipes\Create.cshtml" />
-    <Content Include="Views\Recipes\Delete.cshtml" />
-    <Content Include="Views\Recipes\Details.cshtml" />
-    <Content Include="Views\Recipes\Edit.cshtml" />
-    <Content Include="Views\Recipes\Index.cshtml" />
     <Content Include="Views\RecipeTypes\Create.cshtml" />
     <Content Include="Views\RecipeTypes\Delete.cshtml" />
     <Content Include="Views\RecipeTypes\Details.cshtml" />
@@ -678,6 +674,12 @@
     <Content Include="Views\RegiterContests\Edit.cshtml" />
     <Content Include="Views\RegiterContests\Index.cshtml" />
     <Content Include="Views\User\RecipesPublic\Detail.cshtml" />
+    <Content Include="Views\Recipes\Create.cshtml" />
+    <Content Include="Views\Recipes\Delete.cshtml" />
+    <Content Include="Views\Recipes\Details.cshtml" />
+    <Content Include="Views\Recipes\Edit.cshtml" />
+    <Content Include="Views\Recipes\Index.cshtml" />
+    <Content Include="Views\User\UserAuth\PaymentConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

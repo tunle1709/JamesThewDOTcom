@@ -26,7 +26,6 @@ namespace JamesThewDOTcom.Models
         }
     
         public virtual DbSet<ContestResult> ContestResults { get; set; }
-        public virtual DbSet<CookingContest> CookingContests { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<CustomerType> CustomerTypes { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
@@ -35,10 +34,11 @@ namespace JamesThewDOTcom.Models
         public virtual DbSet<Group> Groups { get; set; }
         public virtual DbSet<Object> Objects { get; set; }
         public virtual DbSet<PaymentType> PaymentTypes { get; set; }
-        public virtual DbSet<Recipe> Recipes { get; set; }
         public virtual DbSet<RecipeType> RecipeTypes { get; set; }
         public virtual DbSet<Register> Registers { get; set; }
         public virtual DbSet<RegiterContest> RegiterContests { get; set; }
         public virtual DbSet<Question> Questions { get; set; }
+        public virtual DbSet<CookingContest> CookingContests { get; set; }
+        public virtual DbSet<Recipe> Recipes { get; set; }
     }
 }

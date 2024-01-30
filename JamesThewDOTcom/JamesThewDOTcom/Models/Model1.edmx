@@ -22,7 +22,7 @@
           <Property Name="Description" Type="nvarchar" MaxLength="500" />
           <Property Name="StartDate" Type="datetime" />
           <Property Name="EndDate" Type="datetime" />
-          <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="Image" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Customers">
           <Key>
@@ -147,7 +147,7 @@
           <Property Name="Steps" Type="nvarchar" MaxLength="500" />
           <Property Name="RecipeType" Type="nvarchar" MaxLength="500" />
           <Property Name="EmployeeID" Type="int" />
-          <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="Image" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="RecipeType">
           <Key>
@@ -555,21 +555,6 @@
           <NavigationProperty Name="Customer" Relationship="Self.FK__ContestRe__Custo__59063A47" FromRole="ContestResults" ToRole="Customers" />
           <NavigationProperty Name="RegiterContest" Relationship="Self.FK__ContestRe__Regis__5812160E" FromRole="ContestResults" ToRole="RegiterContest" />
         </EntityType>
-        <EntityType Name="CookingContest">
-          <Key>
-            <PropertyRef Name="CookingContestID" />
-          </Key>
-          <Property Name="CookingContestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="StartDate" Type="DateTime" Precision="3" />
-          <Property Name="EndDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="RegiterContests" Relationship="Self.FK__RegiterCo__Cooki__59FA5E80" FromRole="CookingContest" ToRole="RegiterContest" />
-          <NavigationProperty Name="RegiterContests1" Relationship="Self.FK__RegiterCo__Cooki__5AEE82B9" FromRole="CookingContest" ToRole="RegiterContest" />
-          <NavigationProperty Name="CustomerTypes" Relationship="Self.CustomerType_CookingContest" FromRole="CookingContest" ToRole="CustomerType" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Questions" Relationship="JamesThewDBModel.FK__Question__Cookin__06CD04F7" FromRole="CookingContest" ToRole="Question" />
-        </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="CustomerID" />
@@ -599,8 +584,8 @@
           <Property Name="CustomersTypeName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Customers" Relationship="Self.FK__Customers__Custo__75A278F5" FromRole="CustomerType" ToRole="Customers" />
           <NavigationProperty Name="Registers" Relationship="Self.FK__Register__Custom__03F0984C" FromRole="CustomerType" ToRole="Register" />
-          <NavigationProperty Name="CookingContests" Relationship="Self.CustomerType_CookingContest" FromRole="CustomerType" ToRole="CookingContest" />
           <NavigationProperty Name="RecipeTypes" Relationship="Self.RecipeType_CustomerType" FromRole="CustomerType" ToRole="RecipeType" />
+          <NavigationProperty Name="CookingContests" Relationship="JamesThewDBModel.CustomerType_CookingContest" FromRole="CustomerType" ToRole="CookingContest" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -616,8 +601,8 @@
           <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Region" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Recipes" Relationship="Self.FK__Recipe__Employee__5EBF139D" FromRole="Employees" ToRole="Recipe" />
           <NavigationProperty Name="Groups" Relationship="Self.Employees_Group" FromRole="Employees" ToRole="Group" />
+          <NavigationProperty Name="Recipes" Relationship="JamesThewDBModel.FK__Recipe__Employee__5EBF139D" FromRole="Employee" ToRole="Recipe" />
         </EntityType>
         <EntityType Name="FAQ">
           <Key>
@@ -636,7 +621,7 @@
           <Property Name="CustomerID" Type="Int32" />
           <Property Name="RecipeID" Type="Int32" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__FeedBack__Custom__5DCAEF64" FromRole="FeedBack" ToRole="Customers" />
-          <NavigationProperty Name="Recipe" Relationship="Self.FK__FeedBack__Recipe__5CD6CB2B" FromRole="FeedBack" ToRole="Recipe" />
+          <NavigationProperty Name="Recipe" Relationship="JamesThewDBModel.FK__FeedBack__Recipe__5CD6CB2B" FromRole="FeedBack" ToRole="Recipe" />
         </EntityType>
         <EntityType Name="Group">
           <Key>
@@ -663,20 +648,6 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Customers" Relationship="Self.FK__Customers__Payme__74AE54BC" FromRole="PaymentType" ToRole="Customers" />
           <NavigationProperty Name="Registers" Relationship="Self.FK__Register__Paymen__02FC7413" FromRole="PaymentType" ToRole="Register" />
-        </EntityType>
-        <EntityType Name="Recipe">
-          <Key>
-            <PropertyRef Name="RecipeID" />
-          </Key>
-          <Property Name="RecipeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Ingredints" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="Steps" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="RecipeType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeID" Type="Int32" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK__Recipe__Employee__5EBF139D" FromRole="Recipe" ToRole="Employees" />
-          <NavigationProperty Name="FeedBacks" Relationship="Self.FK__FeedBack__Recipe__5CD6CB2B" FromRole="Recipe" ToRole="FeedBack" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="RecipeType">
           <Key>
@@ -708,9 +679,9 @@
           <Property Name="CustomerID" Type="Int32" />
           <Property Name="CookingContestID" Type="Int32" />
           <NavigationProperty Name="ContestResults" Relationship="Self.FK__ContestRe__Regis__5812160E" FromRole="RegiterContest" ToRole="ContestResults" />
-          <NavigationProperty Name="CookingContest" Relationship="Self.FK__RegiterCo__Cooki__59FA5E80" FromRole="RegiterContest" ToRole="CookingContest" />
-          <NavigationProperty Name="CookingContest1" Relationship="Self.FK__RegiterCo__Cooki__5AEE82B9" FromRole="RegiterContest" ToRole="CookingContest" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__RegiterCo__Custo__5BE2A6F2" FromRole="RegiterContest" ToRole="Customers" />
+          <NavigationProperty Name="CookingContest" Relationship="JamesThewDBModel.FK__RegiterCo__Cooki__59FA5E80" FromRole="RegiterContest" ToRole="CookingContest" />
+          <NavigationProperty Name="CookingContest1" Relationship="JamesThewDBModel.FK__RegiterCo__Cooki__5AEE82B9" FromRole="RegiterContest" ToRole="CookingContest" />
         </EntityType>
         <Association Name="FK__ContestRe__Custo__59063A47">
           <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
@@ -733,30 +704,6 @@
             </Principal>
             <Dependent Role="ContestResults">
               <PropertyRef Name="RegisterContestID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__RegiterCo__Cooki__59FA5E80">
-          <End Role="CookingContest" Type="Self.CookingContest" Multiplicity="0..1" />
-          <End Role="RegiterContest" Type="Self.RegiterContest" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CookingContest">
-              <PropertyRef Name="CookingContestID" />
-            </Principal>
-            <Dependent Role="RegiterContest">
-              <PropertyRef Name="CookingContestID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__RegiterCo__Cooki__5AEE82B9">
-          <End Role="CookingContest" Type="Self.CookingContest" Multiplicity="0..1" />
-          <End Role="RegiterContest" Type="Self.RegiterContest" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CookingContest">
-              <PropertyRef Name="CookingContestID" />
-            </Principal>
-            <Dependent Role="RegiterContest">
-              <PropertyRef Name="CookingContestID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -820,30 +767,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Recipe__Employee__5EBF139D">
-          <End Role="Employees" Type="Self.Employee" Multiplicity="0..1" />
-          <End Role="Recipe" Type="Self.Recipe" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employees">
-              <PropertyRef Name="EmployeeID" />
-            </Principal>
-            <Dependent Role="Recipe">
-              <PropertyRef Name="EmployeeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__FeedBack__Recipe__5CD6CB2B">
-          <End Role="Recipe" Type="Self.Recipe" Multiplicity="0..1" />
-          <End Role="FeedBack" Type="Self.FeedBack" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Recipe">
-              <PropertyRef Name="RecipeID" />
-            </Principal>
-            <Dependent Role="FeedBack">
-              <PropertyRef Name="RecipeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Register__Paymen__02FC7413">
           <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="0..1" />
           <End Role="Register" Type="Self.Register" Multiplicity="*" />
@@ -855,10 +778,6 @@
               <PropertyRef Name="PaymentTypeID" />
             </Dependent>
           </ReferentialConstraint>
-        </Association>
-        <Association Name="CustomerType_CookingContest">
-          <End Role="CookingContest" Type="Self.CookingContest" Multiplicity="*" />
-          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="*" />
         </Association>
         <Association Name="Employees_Group">
           <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
@@ -874,7 +793,6 @@
         </Association>
         <EntityContainer Name="JamesThewDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ContestResults" EntityType="Self.ContestResult" />
-          <EntitySet Name="CookingContests" EntityType="Self.CookingContest" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="CustomerTypes" EntityType="Self.CustomerType" />
           <EntitySet Name="Employees" EntityType="Self.Employee" />
@@ -883,7 +801,6 @@
           <EntitySet Name="Groups" EntityType="Self.Group" />
           <EntitySet Name="Objects" EntityType="Self.Object" />
           <EntitySet Name="PaymentTypes" EntityType="Self.PaymentType" />
-          <EntitySet Name="Recipes" EntityType="Self.Recipe" />
           <EntitySet Name="RecipeTypes" EntityType="Self.RecipeType" />
           <EntitySet Name="Registers" EntityType="Self.Register" />
           <EntitySet Name="RegiterContests" EntityType="Self.RegiterContest" />
@@ -894,14 +811,6 @@
           <AssociationSet Name="FK__ContestRe__Regis__5812160E" Association="Self.FK__ContestRe__Regis__5812160E">
             <End Role="RegiterContest" EntitySet="RegiterContests" />
             <End Role="ContestResults" EntitySet="ContestResults" />
-          </AssociationSet>
-          <AssociationSet Name="FK__RegiterCo__Cooki__59FA5E80" Association="Self.FK__RegiterCo__Cooki__59FA5E80">
-            <End Role="CookingContest" EntitySet="CookingContests" />
-            <End Role="RegiterContest" EntitySet="RegiterContests" />
-          </AssociationSet>
-          <AssociationSet Name="FK__RegiterCo__Cooki__5AEE82B9" Association="Self.FK__RegiterCo__Cooki__5AEE82B9">
-            <End Role="CookingContest" EntitySet="CookingContests" />
-            <End Role="RegiterContest" EntitySet="RegiterContests" />
           </AssociationSet>
           <AssociationSet Name="FK__Customers__Custo__75A278F5" Association="Self.FK__Customers__Custo__75A278F5">
             <End Role="CustomerType" EntitySet="CustomerTypes" />
@@ -923,21 +832,9 @@
             <End Role="CustomerType" EntitySet="CustomerTypes" />
             <End Role="Register" EntitySet="Registers" />
           </AssociationSet>
-          <AssociationSet Name="FK__Recipe__Employee__5EBF139D" Association="Self.FK__Recipe__Employee__5EBF139D">
-            <End Role="Employees" EntitySet="Employees" />
-            <End Role="Recipe" EntitySet="Recipes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__FeedBack__Recipe__5CD6CB2B" Association="Self.FK__FeedBack__Recipe__5CD6CB2B">
-            <End Role="Recipe" EntitySet="Recipes" />
-            <End Role="FeedBack" EntitySet="FeedBacks" />
-          </AssociationSet>
           <AssociationSet Name="FK__Register__Paymen__02FC7413" Association="Self.FK__Register__Paymen__02FC7413">
             <End Role="PaymentType" EntitySet="PaymentTypes" />
             <End Role="Register" EntitySet="Registers" />
-          </AssociationSet>
-          <AssociationSet Name="CustomerType_CookingContest" Association="Self.CustomerType_CookingContest">
-            <End Role="CookingContest" EntitySet="CookingContests" />
-            <End Role="CustomerType" EntitySet="CustomerTypes" />
           </AssociationSet>
           <AssociationSet Name="Employees_Group" Association="Self.Employees_Group">
             <End Role="Employees" EntitySet="Employees" />
@@ -952,9 +849,31 @@
             <End Role="RecipeType" EntitySet="RecipeTypes" />
           </AssociationSet>
           <EntitySet Name="Questions" EntityType="JamesThewDBModel.Question" />
+          <EntitySet Name="CookingContests" EntityType="JamesThewDBModel.CookingContest" />
+          <EntitySet Name="Recipes" EntityType="JamesThewDBModel.Recipe" />
           <AssociationSet Name="FK__Question__Cookin__06CD04F7" Association="JamesThewDBModel.FK__Question__Cookin__06CD04F7">
             <End Role="CookingContest" EntitySet="CookingContests" />
             <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RegiterCo__Cooki__59FA5E80" Association="JamesThewDBModel.FK__RegiterCo__Cooki__59FA5E80">
+            <End Role="CookingContest" EntitySet="CookingContests" />
+            <End Role="RegiterContest" EntitySet="RegiterContests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RegiterCo__Cooki__5AEE82B9" Association="JamesThewDBModel.FK__RegiterCo__Cooki__5AEE82B9">
+            <End Role="CookingContest" EntitySet="CookingContests" />
+            <End Role="RegiterContest" EntitySet="RegiterContests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Recipe__Employee__5EBF139D" Association="JamesThewDBModel.FK__Recipe__Employee__5EBF139D">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Recipe" EntitySet="Recipes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FeedBack__Recipe__5CD6CB2B" Association="JamesThewDBModel.FK__FeedBack__Recipe__5CD6CB2B">
+            <End Role="Recipe" EntitySet="Recipes" />
+            <End Role="FeedBack" EntitySet="FeedBacks" />
+          </AssociationSet>
+          <AssociationSet Name="CustomerType_CookingContest" Association="JamesThewDBModel.CustomerType_CookingContest">
+            <End Role="CookingContest" EntitySet="CookingContests" />
+            <End Role="CustomerType" EntitySet="CustomerTypes" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Question">
@@ -971,6 +890,35 @@
           <Property Name="CookingContestID" Type="Int32" />
           <NavigationProperty Name="CookingContest" Relationship="JamesThewDBModel.FK__Question__Cookin__06CD04F7" FromRole="Question" ToRole="CookingContest" />
         </EntityType>
+        <EntityType Name="CookingContest">
+          <Key>
+            <PropertyRef Name="CookingContestID" />
+          </Key>
+          <Property Name="CookingContestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Questions" Relationship="JamesThewDBModel.FK__Question__Cookin__06CD04F7" FromRole="CookingContest" ToRole="Question" />
+          <NavigationProperty Name="RegiterContests" Relationship="JamesThewDBModel.FK__RegiterCo__Cooki__59FA5E80" FromRole="CookingContest" ToRole="RegiterContest" />
+          <NavigationProperty Name="RegiterContests1" Relationship="JamesThewDBModel.FK__RegiterCo__Cooki__5AEE82B9" FromRole="CookingContest" ToRole="RegiterContest" />
+          <NavigationProperty Name="CustomerTypes" Relationship="JamesThewDBModel.CustomerType_CookingContest" FromRole="CookingContest" ToRole="CustomerType" />
+        </EntityType>
+        <EntityType Name="Recipe">
+          <Key>
+            <PropertyRef Name="RecipeID" />
+          </Key>
+          <Property Name="RecipeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Ingredints" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Steps" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="RecipeType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="JamesThewDBModel.FK__Recipe__Employee__5EBF139D" FromRole="Recipe" ToRole="Employee" />
+          <NavigationProperty Name="FeedBacks" Relationship="JamesThewDBModel.FK__FeedBack__Recipe__5CD6CB2B" FromRole="Recipe" ToRole="FeedBack" />
+        </EntityType>
         <Association Name="FK__Question__Cookin__06CD04F7">
           <End Type="JamesThewDBModel.CookingContest" Role="CookingContest" Multiplicity="0..1" />
           <End Type="JamesThewDBModel.Question" Role="Question" Multiplicity="*" />
@@ -982,6 +930,58 @@
               <PropertyRef Name="CookingContestID" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RegiterCo__Cooki__59FA5E80">
+          <End Type="JamesThewDBModel.CookingContest" Role="CookingContest" Multiplicity="0..1" />
+          <End Type="JamesThewDBModel.RegiterContest" Role="RegiterContest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CookingContest">
+              <PropertyRef Name="CookingContestID" />
+            </Principal>
+            <Dependent Role="RegiterContest">
+              <PropertyRef Name="CookingContestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RegiterCo__Cooki__5AEE82B9">
+          <End Type="JamesThewDBModel.CookingContest" Role="CookingContest" Multiplicity="0..1" />
+          <End Type="JamesThewDBModel.RegiterContest" Role="RegiterContest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CookingContest">
+              <PropertyRef Name="CookingContestID" />
+            </Principal>
+            <Dependent Role="RegiterContest">
+              <PropertyRef Name="CookingContestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Recipe__Employee__5EBF139D">
+          <End Type="JamesThewDBModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="JamesThewDBModel.Recipe" Role="Recipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Recipe">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FeedBack__Recipe__5CD6CB2B">
+          <End Type="JamesThewDBModel.Recipe" Role="Recipe" Multiplicity="0..1" />
+          <End Type="JamesThewDBModel.FeedBack" Role="FeedBack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="RecipeID" />
+            </Principal>
+            <Dependent Role="FeedBack">
+              <PropertyRef Name="RecipeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CustomerType_CookingContest">
+          <End Type="JamesThewDBModel.CookingContest" Role="CookingContest" Multiplicity="*" />
+          <End Type="JamesThewDBModel.CustomerType" Role="CustomerType" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -995,18 +995,6 @@
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="Score" ColumnName="Score" />
                 <ScalarProperty Name="RegisterContestID" ColumnName="RegisterContestID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CookingContests">
-            <EntityTypeMapping TypeName="JamesThewDBModel.CookingContest">
-              <MappingFragment StoreEntitySet="CookingContest">
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="CookingContestID" ColumnName="CookingContestID" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1094,19 +1082,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Recipes">
-            <EntityTypeMapping TypeName="JamesThewDBModel.Recipe">
-              <MappingFragment StoreEntitySet="Recipe">
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="RecipeID" ColumnName="RecipeID" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Ingredints" ColumnName="Ingredints" />
-                <ScalarProperty Name="Steps" ColumnName="Steps" />
-                <ScalarProperty Name="RecipeType" ColumnName="RecipeType" />
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="RecipeTypes">
             <EntityTypeMapping TypeName="JamesThewDBModel.RecipeType">
               <MappingFragment StoreEntitySet="RecipeType">
@@ -1137,14 +1112,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="CustomerType_CookingContest" TypeName="JamesThewDBModel.CustomerType_CookingContest" StoreEntitySet="CustomerType_CookingContest">
-            <EndProperty Name="CookingContest">
-              <ScalarProperty Name="CookingContestID" ColumnName="CookingContestID" />
-            </EndProperty>
-            <EndProperty Name="CustomerType">
-              <ScalarProperty Name="CustomersTypeID" ColumnName="CustomersTypeID" />
-            </EndProperty>
-          </AssociationSetMapping>
           <AssociationSetMapping Name="Employees_Group" TypeName="JamesThewDBModel.Employees_Group" StoreEntitySet="Employees_Group">
             <EndProperty Name="Employees">
               <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
@@ -1183,6 +1150,39 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CookingContests">
+            <EntityTypeMapping TypeName="JamesThewDBModel.CookingContest">
+              <MappingFragment StoreEntitySet="CookingContest">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CookingContestID" ColumnName="CookingContestID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recipes">
+            <EntityTypeMapping TypeName="JamesThewDBModel.Recipe">
+              <MappingFragment StoreEntitySet="Recipe">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="RecipeType" ColumnName="RecipeType" />
+                <ScalarProperty Name="Steps" ColumnName="Steps" />
+                <ScalarProperty Name="Ingredints" ColumnName="Ingredints" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="RecipeID" ColumnName="RecipeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="CustomerType_CookingContest" TypeName="JamesThewDBModel.CustomerType_CookingContest" StoreEntitySet="CustomerType_CookingContest">
+            <EndProperty Name="CustomerType">
+              <ScalarProperty Name="CustomersTypeID" ColumnName="CustomersTypeID" />
+            </EndProperty>
+            <EndProperty Name="CookingContest">
+              <ScalarProperty Name="CookingContestID" ColumnName="CookingContestID" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
