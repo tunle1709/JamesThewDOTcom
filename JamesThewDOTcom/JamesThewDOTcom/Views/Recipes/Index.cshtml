@@ -31,6 +31,7 @@
                 <th>@Html.DisplayNameFor(model => model[0].Ingredints)</th>
                 <th>@Html.DisplayNameFor(model => model[0].Steps)</th>
                 <th>@Html.DisplayNameFor(model => model[0].RecipeType)</th>
+                <th>@Html.DisplayNameFor(model => model[0].Image)</th>
                 <th>@Html.DisplayNameFor(model => model[0].Employee.UserName)</th>
                 <th></th>
             </tr>
@@ -43,6 +44,9 @@
                     <td>@Html.DisplayFor(modelItem => item.Ingredints)</td>
                     <td>@Html.DisplayFor(modelItem => item.Steps)</td>
                     <td>@Html.DisplayFor(modelItem => item.RecipeType)</td>
+                    <td>
+                        <img src="@(string.IsNullOrEmpty(item.Image) ? "No Image" : Url.Content(item.Image))" alt="" style="max-width: 100px; max-height: 100px;" />
+                    </td>
                     <td>@Html.DisplayFor(modelItem => item.Employee.UserName)</td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.RecipeID }) |

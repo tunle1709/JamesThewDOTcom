@@ -33,7 +33,8 @@ namespace JamesThewDOTcom.Models
         public System.DateTime BirthDate { get; set; }
         public Nullable<int> CustomersTypeID { get; set; }
         public Nullable<int> PaymentTypeID { get; set; }
-    
+        public string PaymentTypeName { get; set; }
+
         public virtual ContestResult ContestResult { get; set; }
         public virtual CustomerType CustomerType { get; set; }
         public virtual PaymentType PaymentType { get; set; }

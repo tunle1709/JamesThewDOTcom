@@ -26,7 +26,7 @@ namespace JamesThewDOTcom.Models
         public string Steps { get; set; }
         public string RecipeType { get; set; }
         public Nullable<int> EmployeeID { get; set; }
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
     
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

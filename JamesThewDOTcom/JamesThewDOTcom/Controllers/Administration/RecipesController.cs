@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -64,10 +65,18 @@ namespace JamesThewDOTcom.Controllers.Administration
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RecipeID,Title,Ingredints,Steps,RecipeType,EmployeeID")] Recipe recipe)
+        public ActionResult Create([Bind(Include = "RecipeID,Title,Ingredints,Steps,RecipeType,EmployeeID,Image")] Recipe recipe, HttpPostedFileBase imageFile)
         {
             if (ModelState.IsValid)
             {
+                if (imageFile != null && imageFile.ContentLength > 0)
+                {
+                    string fileName = Path.GetFileName(imageFile.FileName);
+                    string filePath = Path.Combine(Server.MapPath("~/Images"), fileName);
+                    imageFile.SaveAs(filePath);
+                    recipe.Image = "~/Images/" + fileName;
+                }
+
                 db.Recipes.Add(recipe);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -98,14 +107,23 @@ namespace JamesThewDOTcom.Controllers.Administration
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RecipeID,Title,Ingredints,Steps,RecipeType,EmployeeID")] Recipe recipe)
+        public ActionResult Edit([Bind(Include = "RecipeID,Title,Ingredints,Steps,RecipeType,EmployeeID,Image")] Recipe recipe, HttpPostedFileBase imageFile)
         {
             if (ModelState.IsValid)
             {
+                if (imageFile != null && imageFile.ContentLength > 0)
+                {
+                    string fileName = Path.GetFileName(imageFile.FileName);
+                    string filePath = Path.Combine(Server.MapPath("~/Images"), fileName);
+                    imageFile.SaveAs(filePath);
+                    recipe.Image = "~/Images/" + fileName;
+                }
+
                 db.Entry(recipe).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             ViewBag.EmployeeID = new SelectList(db.Employees, "EmployeeID", "UserName", recipe.EmployeeID);
             return View(recipe);
         }

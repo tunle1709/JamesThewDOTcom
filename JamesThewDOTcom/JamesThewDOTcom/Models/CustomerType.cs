@@ -19,8 +19,8 @@ namespace JamesThewDOTcom.Models
         {
             this.Customers = new HashSet<Customer>();
             this.Registers = new HashSet<Register>();
-            this.CookingContests = new HashSet<CookingContest>();
             this.RecipeTypes = new HashSet<RecipeType>();
+            this.CookingContests = new HashSet<CookingContest>();
         }
     
         public int CustomersTypeID { get; set; }
@@ -31,8 +31,8 @@ namespace JamesThewDOTcom.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Register> Registers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CookingContest> CookingContests { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RecipeType> RecipeTypes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CookingContest> CookingContests { get; set; }
     }
 }
