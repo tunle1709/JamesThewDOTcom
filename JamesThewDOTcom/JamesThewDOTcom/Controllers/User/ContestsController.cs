@@ -18,5 +18,10 @@ namespace JamesThewDOTcom.Controllers
         {
             return View("~/Views/User/Contests/Index.cshtml");
         }
+
+        public ActionResult DetailContest()
+        {
+            return View("~/Views/User/Contests/DetailContest.cshtml");
+        }
     }
 }

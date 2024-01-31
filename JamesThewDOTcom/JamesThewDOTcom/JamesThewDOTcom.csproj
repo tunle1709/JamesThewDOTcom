@@ -680,6 +680,7 @@
     <Content Include="Views\Recipes\Edit.cshtml" />
     <Content Include="Views\Recipes\Index.cshtml" />
     <Content Include="Views\User\UserAuth\PaymentConfirmation.cshtml" />
+    <Content Include="Views\User\Contests\DetailContest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

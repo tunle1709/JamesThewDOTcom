@@ -1,0 +1,161 @@
+﻿
+
+@{
+    ViewBag.Title = "DetailContest";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<br />
+<br />
+<br />
+
+<!--Bắt đầu cuộc thi một-->
+<div class="container text-center mt-4">
+
+    <div class="col-md-8 col-sm-10 mx-auto">
+        <div class="card shadow-lg">
+            <div class="card-body">
+                <div class="jumbotron bg-wine text-white">
+                    <h1 class="display-4"><a href="~/DetailContest/Detail" class="text-white">Welcome to the CookingContest</a></h1>
+                    <p class="lead">Contest description and important information.</p>
+                </div>
+
+                <!-- Phần Ảnh -->
+                <img class="img-fluid mb-4 rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStEws2vxkjYn71pQfQzjQN9bbEh2WGPYBrFhrxYwFqQsTjD9Rxfa0DX4Uq8_K1aVeJOBg&usqp=CAU" alt="hình ảnh khám phá">
+
+                <!-- Nội dung chính -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="lead text-justify">
+                            Welcome all talented and passionate chefs to participate in our biggest Cooking Competition! This is not just a contest, but a journey to discover diverse and creative cuisine. Organized with the desire to find the best plates and the impressive stories behind every meal, we are happy and proud to stand front and present opportunities to teams and individuals who commit to participate. into an unforgettable experience.
+                        </p>
+                        <!-- Nội dung thêm... -->
+                    </div>
+                </div>
+
+                <!-- Ảnh bổ sung -->
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <img class="img-fluid rounded" src="https://png.pngtree.com/thumb_back/fh260/back_our/20190620/ourmid/pngtree-gourmet-japanese-restaurant-sushi-creative-simple-business-poster-design-image_157485.jpg" alt="hình ảnh khám phá">
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <img class="img-fluid rounded" src="https://img.freepik.com/premium-photo/sushi-roll-levitating-plate-japanese-food-black-background-generative-ai_788189-3827.jpg" alt="hình ảnh khám phá">
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <img class="img-fluid rounded" src="https://img.freepik.com/free-photo/vegetable-salad-with-stick-table_140725-5609.jpg?t=st=1706499820~exp=1706500420~hmac=424018ca87aad53d47c28e1e3070bf7a1d27c091b888e6656978a439b42e89a2" alt="hình ảnh khám phá">
+                    </div>
+                </div>
+
+                <!-- Đoạn kết -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="lead text-justify">
+                            Let's create delicious memories and new relationships, come with us on a continuous journey of flavor discovery and creativity. Together, we will witness the power of food, where your passion becomes a source of inspiration and innovation. Wishing our chefs a wonderful and meaningful journey in this Cooking Competition! Thank you for listening! Register now below to show off your talent.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Biểu tượng Khám phá -->
+                <div class="row">
+                    <div class="col-md-5">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="explore-map-icon">
+                            <a href="#"><i data-feather="message-circle"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*Phần form đăng ký*@
+    <section id="registration" class="container mt-4">
+        <div class="card mx-auto" style="max-width: 400px;">
+            <div class="card-body">
+                <h2 class="card-title" style="color:red; text-align: center;">Registration Form</h2>
+                <form action="process_registration.php" method="post">
+
+
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phoneNumber">PhoneNumber:</label>
+                        <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-danger btn-block" style="margin-top:20px;">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        button {
+            background: red;
+        }
+
+            button:hover {
+                color: white;
+            }
+
+        .bg-wine {
+            background-color: #8B0000; /* Mã màu cho rượu vang, bạn có thể điều chỉnh mã màu theo ý muốn */
+            color: #fff; /* Màu chữ trắng hoặc một màu tương phản để đảm bảo đọc được nội dung */
+        }
+    </style>
+</div>
+<!--Hết cuộc thi 1->
+
+
+
+
+
+<!--explore end -->
+
+<script src="~/Assets/assets_DetailContest/js_detailcontest/jquery.js"></script>
+
+<!--modernizr.min.js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+<!--bootstrap.min.js-->
+<script src="~/Assets/assets_DetailContest/js_detailcontest/bootstrap.min.js"></script>
+
+<!-- bootsnav js -->
+<script src="~/Assets/assets_DetailContest/js_detailcontest/bootsnav.js"></script>
+
+<!--feather.min.js-->
+<script src="~/Assets/assets_DetailContest/js_detailcontest/feather.min.js"></script>
+
+<!-- counter js -->
+<script src="~/Assets/assets_DetailContest/js_detailcontest/jquery.counterup.min.js"></script>
+<script src="~/Assets/assets_DetailContest/js_detailcontest/waypoints.min.js"></script>
+
+<!--slick.min.js-->
+<script src="~/Assets/assets_DetailContest/js_detailcontest/slick.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<!-- Add more Bootstrap components and sections as needed -->
+<!-- Link to Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+
+
