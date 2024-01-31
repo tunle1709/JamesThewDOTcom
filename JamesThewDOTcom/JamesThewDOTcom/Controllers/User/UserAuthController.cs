@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using JamesThewDOTcom.Models;
 
 public class UserAuthController : Controller
@@ -33,7 +34,8 @@ public class UserAuthController : Controller
 
             if (registrationSuccess)
             {
-                return RedirectToAction("Login", "UserAuth");
+                TempData["PaymentType"] = customer.PaymentTypeID;
+                return RedirectToAction("PaymentConfirmation", "UserAuth");
             }
             else
             {
@@ -43,6 +45,8 @@ public class UserAuthController : Controller
 
         return View("~/Views/User/UserAuth/Register.cshtml", customer);
     }
+
+
 
     private bool RegisterNewCustomer(Customer customer)
     {
@@ -59,6 +63,21 @@ public class UserAuthController : Controller
         }
     }
 
+    public ActionResult PaymentConfirmation()
+    {
+        int paymentType = (int)TempData["PaymentType"];
+        decimal registrationFee = paymentType == 1 ? 10 : 100;
+
+        DateTime endDate = paymentType == 1 ? DateTime.Now.AddDays(31) : DateTime.Now.AddDays(365);
+
+        ViewBag.RegistrationFee = registrationFee;
+        ViewBag.EndDate = endDate;
+
+        return View("~/Views/User/UserAuth/PaymentConfirmation.cshtml");
+    }
+
+
+
     [HttpGet]
     public ActionResult Login()
     {
@@ -74,6 +93,8 @@ public class UserAuthController : Controller
 
             if (authenticatedCustomer != null)
             {
+                FormsAuthentication.SetAuthCookie(authenticatedCustomer.UserName, false);
+
                 return RedirectToAction("Index", "Home");
             }
             else

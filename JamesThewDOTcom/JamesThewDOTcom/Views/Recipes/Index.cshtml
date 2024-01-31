@@ -1,58 +1,100 @@
-﻿@model IEnumerable<JamesThewDOTcom.Models.Recipe>
+﻿@model PagedList.IPagedList<JamesThewDOTcom.Models.Recipe>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout_More.cshtml";
 }
 
-<h2>Index</h2>
+<div class="container">
+    <h2>Recipe List</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ingredints)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Steps)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RecipeType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Employee.UserName)
-        </th>
-        <th></th>
-    </tr>
+    @using (Html.BeginForm("Index", "Recipes", FormMethod.Get))
+    {
+        <div class="input-group mb-3">
+            @Html.TextBox("searchString", null, new { @class = "form-control", placeholder = "Tìm kiếm..." })
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Tìm kiếm</button>
+            </div>
+        </div>
+    }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ingredints)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Steps)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RecipeType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Employee.UserName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RecipeID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RecipeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RecipeID })
-        </td>
-    </tr>
-}
 
-</table>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model[0].Title)</th>
+                <th>@Html.DisplayNameFor(model => model[0].Ingredints)</th>
+                <th>@Html.DisplayNameFor(model => model[0].Steps)</th>
+                <th>@Html.DisplayNameFor(model => model[0].RecipeType)</th>
+                <th>@Html.DisplayNameFor(model => model[0].Image)</th>
+                <th>@Html.DisplayNameFor(model => model[0].Employee.UserName)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Ingredints)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Steps)</td>
+                    <td>@Html.DisplayFor(modelItem => item.RecipeType)</td>
+                    <td>
+                        <img src="@(string.IsNullOrEmpty(item.Image) ? "No Image" : Url.Content(item.Image))" alt="" style="max-width: 100px; max-height: 100px;" />
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.Employee.UserName)</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.RecipeID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.RecipeID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.RecipeID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="pagination-container">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchString = ViewBag.searchString }), new PagedListRenderOptions { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true })
+    </div>
+</div>
+
+<style>
+    .pagination-container {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pagination {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        .pagination li {
+            margin: 0 5px;
+        }
+
+        .pagination a {
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 1px solid #ccc;
+            color: #333;
+        }
+
+            .pagination a:hover {
+                background-color: #f1f1f1;
+            }
+
+        .pagination .disabled a {
+            color: #ddd;
+            pointer-events: none;
+        }
+</style>

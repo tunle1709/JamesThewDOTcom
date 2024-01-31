@@ -17,6 +17,7 @@ namespace JamesThewDOTcom.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CookingContest()
         {
+            this.Questions = new HashSet<Question>();
             this.RegiterContests = new HashSet<RegiterContest>();
             this.RegiterContests1 = new HashSet<RegiterContest>();
             this.CustomerTypes = new HashSet<CustomerType>();
@@ -27,7 +28,10 @@ namespace JamesThewDOTcom.Models
         public string Description { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
+        public string Image { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Question> Questions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RegiterContest> RegiterContests { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

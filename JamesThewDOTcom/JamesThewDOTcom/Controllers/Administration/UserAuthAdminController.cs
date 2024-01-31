@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using JamesThewDOTcom.Models;
@@ -13,6 +10,14 @@ namespace JamesThewDOTcom.Controllers.Administration
     public class UserAuthAdminController : Controller
     {
         private JamesThewDBEntities db = new JamesThewDBEntities();
+        private Employee AuthenticateEmployee(string userName, string password)
+        {
+            var authenticatedEmployee = db.Employees
+                .Where(e => e.UserName == userName && e.Password == password)
+                .FirstOrDefault();
+
+            return authenticatedEmployee;
+        }
 
         [HttpGet]
         [Route("Login")]
@@ -22,7 +27,7 @@ namespace JamesThewDOTcom.Controllers.Administration
         }
 
         [HttpPost]
-        public ActionResult LoginAdmin(Employee employee)
+        public ActionResult LoginAdmin(Employee employee, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -30,7 +35,16 @@ namespace JamesThewDOTcom.Controllers.Administration
 
                 if (authenticatedEmployee != null)
                 {
-                    return RedirectToAction("Index", "Employees");
+                    SetAuthenticationSession(authenticatedEmployee);
+
+                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Employees");
+                    }
                 }
                 else
                 {
@@ -41,13 +55,10 @@ namespace JamesThewDOTcom.Controllers.Administration
             return View(employee);
         }
 
-        private Employee AuthenticateEmployee(string userName, string password)
+        private void SetAuthenticationSession(Employee authenticatedEmployee)
         {
-            var authenticatedEmployee = db.Employees
-                .Where(e => e.UserName == userName && e.Password == password)
-                .FirstOrDefault();
-
-            return authenticatedEmployee;
+            Session["UserName"] = authenticatedEmployee.UserName;
+            Session["Password"] = authenticatedEmployee.Password;
         }
     }
 }

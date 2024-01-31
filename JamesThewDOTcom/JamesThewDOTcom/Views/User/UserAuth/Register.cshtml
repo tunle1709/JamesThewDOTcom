@@ -54,6 +54,17 @@
                                             @Html.ValidationMessageFor(m => m.BirthDate, "", new { @class = "text-danger" })
                                         </div>
 
+                                        <div class="form-check mb-4">
+                                            @Html.RadioButtonFor(m => m.PaymentTypeID, 1, new { @class = "form-check-input", id = "monthlyPayment" })
+                                            <label class="form-check-label" for="monthlyPayment">Đăng ký hàng tháng - $10</label>
+                                        </div>
+
+                                        <div class="form-check mb-4">
+                                            @Html.RadioButtonFor(m => m.PaymentTypeID, 2, new { @class = "form-check-input", id = "yearlyPayment" })
+                                            <label class="form-check-label" for="yearlyPayment">Đăng ký hàng năm - $100</label>
+                                        </div>
+
+
                                         <div class="form-check d-flex justify-content-center mb-5">
                                             <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
                                             <label class="form-check-label" for="form2Example3g">
