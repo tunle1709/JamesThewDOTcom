@@ -1,72 +1,242 @@
-
+﻿
 @{
     ViewBag.Title = "Contests";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<main>
 
-    <br />
-    <section class="container mt-4">
-        <div class="jumbotron">
-            <h2>Welcome to the Contest!</h2>
+
+
+<!---->
+<!--font-awesome.min.css-->
+<link rel="stylesheet" href="~/Assets/assets_Recipe/css_recipe/font-awesome.min.css">
+
+<!--linear icon css-->
+<link rel="stylesheet" href="~/Assets/assets_Recipe/css_recipe/linearicons.css">
+
+<!--animate.css-->
+<link rel="stylesheet" href="~/Assets/assets_Recipe/css_recipe/animate.css">
+
+<!--flaticon.css-->
+<link rel="stylesheet" href="~/Assets/assets_Recipe/css_recipe/flaticon.css">
+
+<!--slick.css-->
+<link rel="stylesheet" href="~/Assets/assets_Recipe/css_recipe/slick.css">
+<link rel="stylesheet" href="~/Assets/assets_Recipe/css_recipe/slick-theme.css">
+
+@*bootstrap.min.css
+<link rel="stylesheet" href="~/Assets/assets_Recipe/css_recipe/bootstrap.min.css">*@
+
+<!-- bootsnav -->
+<link rel="stylesheet" href="~/Assets/assets_Recipe/css_recipe/bootsnav.css">
+
+<!--style.css-->
+<link rel="stylesheet" href="~/Assets/assets_Recipe/css_recipe/style.css">
+
+<!--responsive.css-->
+<link rel="stylesheet" href="~/Assets/assets_Recipe/css_recipe/responsive.css">
+
+
+<!--explore start -->
+<section id="explore" class="explore">
+    <div class="container">
+        <div class="section-header">
+            <h1><a href="~/Contests/DetailContest">Welcome to the CookingContest</a></h1>
             <p class="lead">Description of the contest and important information.</p>
-            <a href="#registration" class="btn btn-danger btn-lg">Register Now</a>
-        </div>
-        <br />
-        <img width="1000" src="https://toanphatcorp.vn/media/images/tin-tuc/A2.png"
-             alt="Registration Form image" class="card-img-top" >
-    </section>
+        </div><!--/.section-header-->
+        <div class="explore-content">
+            <div class="row">
+                <!--Bắt đầu 1 món-->
+                <div class=" col-md-4 col-sm-6">
+                    <div class="single-explore-item">
+                        <div class="single-explore-img">
 
-    <section id="registration" class="container mt-4">
-        <div class="card">
-            <div class="card-body">
-                <h2 class="card-title" style="color:red">Registration Form</h2>
-                <form action="process_registration.php" method="post">
+                            <!--đây là ảnh-->
+                            <img src="https://media.istockphoto.com/id/1081422898/vi/anh/v%E1%BB%8Bt-%C3%A1p-ch%E1%BA%A3o.jpg?s=612x612&w=0&k=20&c=A11-xDOraTgAER4BcNV9_NW75rb2TS1ji4BDdQkfUAo=" alt="explore image">
 
-                    <div class="form-group">
-                        <label for="id">ID:</label>
-                        <input type="text" id="id" name="id" class="form-control" required>
+
+                        </div>
+                        <div class="single-explore-txt bg-theme-1">
+                            <h1><a href="~/Contests/DetailContest">Contest</a></h1>
+                            @*@Html.ActionLink("Contest", "DetailContest", "Contests", new { area = "" }, new { @class = "nav-link" })*@
+                            <div class="row"></div>
+                            <div class="explore-person">
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <p>
+                                            Today, I am very happy and proud to stand here to share with you about a vibrant and meaningful event,
+                                            It's the Great Cooking Competition, a great opportunity for our culinary talents to shine...
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="explore-open-close-part">
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        @Html.ActionLink("See more", "DetailContest", "Contests", new { area = "" }, new { @class = "nav-link" })
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <div class="explore-map-icon">
+
+                                            <a href="#"><i data-feather="message-circle"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <!--Hết 1 món-->
+                <!--Bắt đầu 1 món-->
+                <div class=" col-md-4 col-sm-6">
+                    <div class="single-explore-item">
+                        <div class="single-explore-img">
 
-                    <div class="form-group">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
+                            <!--đây là ảnh-->
+                            <img src="https://media.istockphoto.com/id/516329534/vi/anh/v%E1%BA%A5n-%C4%91%E1%BB%81-cu%E1%BB%91i.jpg?s=612x612&w=0&k=20&c=AJvuZhPxcqcECaqCx42uYjAsU6HPWryhur8fBvhiNTM=" alt="explore image">
+
+
+                        </div>
+                        <div class="single-explore-txt bg-theme-1">
+                            <h1><a href="~/Contests/DetailContest">Contest</a></h1>
+                            <div class="row"></div>
+                            <div class="explore-person">
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <p>
+                                            Today, I am very happy and proud to stand here to share with you about a vibrant and meaningful event,
+                                            It's the Great Cooking Competition, a great opportunity for our culinary talents to shine...
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="explore-open-close-part">
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        @Html.ActionLink("See more", "DetailContest", "Contests", new { area = "" }, new { @class = "nav-link" })
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <div class="explore-map-icon">
+                                            <a href="#"><i data-feather="message-circle"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <!--Hết 1 món-->
+                <!--Bắt đầu 1 món-->
+                <div class=" col-md-4 col-sm-6">
+                    <div class="single-explore-item">
+                        <div class="single-explore-img">
 
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
+                            <!--đây là ảnh-->
+                            <img src="https://media.istockphoto.com/id/1428412216/photo/a-male-chef-pouring-sauce-on-meal.jpg?s=612x612&w=0&k=20&c=8U3mrgWsuB7pB8axtGj89MXRkHDKodEli9F6wKgPT4A=" alt="explore image">
+
+
+                        </div>
+                        <div class="single-explore-txt bg-theme-1">
+                            <h1><a href="~/Contests/DetailContest">Contest</a></h1>
+                            <div class="row"></div>
+                            <div class="explore-person">
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <p>
+                                            Today, I am very happy and proud to stand here to share with you about a vibrant and meaningful event,
+                                            It's the Great Cooking Competition, a great opportunity for our culinary talents to shine...
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="explore-open-close-part">
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        @Html.ActionLink("See more", "DetailContest", "Contests", new { area = "" }, new { @class = "nav-link" })
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <div class="explore-map-icon">
+                                            <a href="#"><i data-feather="message-circle"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <!--Hết 1 món-->
+                <!--Bắt đầu 1 món-->
+                <div class=" col-md-4 col-sm-6">
+                    <div class="single-explore-item">
+                        <div class="single-explore-img">
 
-                    <div class="form-group">
-                        <label for="address">Address</label>
-                        <input type="text" id="address" name="address" class="form-control" required>
+                            <!--đây là ảnh-->
+                            <img src="https://media.istockphoto.com/id/1069793714/photo/sprinkling-seasonings-from-high-up.jpg?s=612x612&w=0&k=20&c=Cb537EMBtujrYokiMbVb7jVG1MlCcgP7QNIat0M_hgY=" alt="explore image">
+
+
+                        </div>
+                        <div class="single-explore-txt bg-theme-1">
+                            <h1><a href="~/Contests/DetailContest">Contest</a></h1>
+                            <div class="row"></div>
+                            <div class="explore-person">
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <p>
+                                            Today, I am very happy and proud to stand here to share with you about a vibrant and meaningful event,
+                                            It's the Great Cooking Competition, a great opportunity for our culinary talents to shine...
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="explore-open-close-part">
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        @Html.ActionLink("See more", "DetailContest", "Contests", new { area = "" }, new { @class = "nav-link" })
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <div class="explore-map-icon">
+                                            <a href="#"><i data-feather="message-circle"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="phoneNumber">PhoneNumber:</label>
-                        <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" required>
-                    </div>
-
-                    <button type="submit" class="btn btn-danger" style="margin-top:20px">Submit</button>
-                </form>
+                </div>
             </div>
         </div>
-    </section>
-    <style>
-        button{
-            background: red;
-        }
-        
-        button:hover{
-            color: white;
-        }
-    </style>
 
-    <!-- Add more Bootstrap components and sections as needed -->
-    <!-- Link to Bootstrap JS and Popper.js -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</main>
+    </div><!--/.container-->
+
+</section><!--/.explore-->
+<!--explore end -->
+
+<script src="~/Assets/assets_Recipe/js_recipe/jquery.js"></script>
+
+<!--explore end -->
+
+<script src="~/Assets/assets_Recipe/js_recipe/jquery.js"></script>
+
+<!--modernizr.min.js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+<!--bootstrap.min.js-->
+<script src="~/Assets/assets_Recipe/js_recipe/bootstrap.min.js"></script>
+
+<!-- bootsnav js -->
+<script src="~/Assets/assets_Recipe/js_contest/bootsnav.js"></script>
+
+<!--feather.min.js-->
+<script src="~/Assets/assets_Recipe/js_recipe/feather.min.js"></script>
+
+<!-- counter js -->
+<script src="~/Assets/assets_Recipe/js_recipe/jquery.counterup.min.js"></script>
+<script src="~/Assets/assets_Recipe/js_recipe/waypoints.min.js"></script>
+
+<!--slick.min.js-->
+<script src="~/Assets/assets_Recipe/js_recipe/slick.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+<!--Custom JS-->
+<script src="~/Assets/assets_Recipe/js_recipe/custom.js"></script>

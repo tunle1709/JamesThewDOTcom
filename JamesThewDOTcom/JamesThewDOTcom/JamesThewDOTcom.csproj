@@ -653,6 +653,7 @@
     <Content Include="Views\RegiterContests\Details.cshtml" />
     <Content Include="Views\RegiterContests\Edit.cshtml" />
     <Content Include="Views\RegiterContests\Index.cshtml" />
+    <Content Include="Views\User\Contests\DetailContest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
