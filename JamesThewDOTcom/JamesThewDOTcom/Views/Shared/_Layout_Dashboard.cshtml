@@ -128,7 +128,7 @@
                                 <span class="user-info">@userName</span>
                             </li>
                         }
-                        <li><a class="dropdown-item text-center" href="#">My Profile</a></li>
+                        <li>@Html.ActionLink("My Profile", "EditProfile", "UserAuth", new { area = "" }, new { @class = "dropdown-item text-center" })</li>
                         <li>@Html.ActionLink("Reset Password", "ResetPassword", "UserAuth", new { area = "" }, new { @class = "dropdown-item text-center" })</li>
                         <li>
                             <form action="@Url.Action("Logout", "UserAuth")" method="get">

@@ -681,6 +681,7 @@
     <Content Include="Views\User\Contests\DetailContest.cshtml" />
     <Content Include="Views\Shared\_Layout_Dashboard.cshtml" />
     <Content Include="Views\User\UserAuth\ResetPassword.cshtml" />
+    <Content Include="Views\User\UserAuth\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

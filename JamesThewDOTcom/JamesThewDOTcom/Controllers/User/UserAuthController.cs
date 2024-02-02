@@ -182,4 +182,54 @@ public class UserAuthController : Controller
 
         return RedirectToAction("Index", "Home");
     }
+
+
+
+    [HttpGet]
+    public ActionResult EditProfile()
+    {
+        string userName = (string)Session["UserName"];
+
+        Customer customer = db.Customers.FirstOrDefault(c => c.UserName == userName);
+
+        if (customer != null)
+        {
+            return View("~/Views/User/UserAuth/EditProfile.cshtml", customer);
+        }
+        else
+        {
+            return HttpNotFound();
+        }
+    }
+
+    [HttpPost]
+    public ActionResult EditProfile(Customer updatedCustomer)
+    {
+        if (ModelState.IsValid)
+        {
+            string userName = (string)Session["UserName"];
+
+            Customer existingCustomer = db.Customers.FirstOrDefault(c => c.UserName == userName);
+
+            if (existingCustomer != null)
+            {
+                existingCustomer.First_Name = updatedCustomer.First_Name;
+                existingCustomer.Last_Name = updatedCustomer.Last_Name;
+                existingCustomer.Address = updatedCustomer.Address;
+                existingCustomer.City = updatedCustomer.City;
+                existingCustomer.Phone = updatedCustomer.Phone;
+                existingCustomer.BirthDate = updatedCustomer.BirthDate;
+
+                db.SaveChanges();
+
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return HttpNotFound(); 
+            }
+        }
+
+        return View("~/Views/User/UserAuth/EditProfile.cshtml", updatedCustomer);
+    }
 }
