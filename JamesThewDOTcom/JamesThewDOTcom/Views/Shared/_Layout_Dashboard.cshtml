@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    string userName = Session["UserName"] as string;
+}
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -49,6 +53,27 @@
                 </a>
             </h1>
 
+            <style>
+                .btn-user-icon {
+                    background-color: transparent;
+                    border: none;
+                    height: 70px;
+                    width: 70px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-left: 10px;
+                }
+
+                    .btn-user-icon i {
+                        font-size: 35px;
+                        color: #ff0000;
+                    }
+
+                .profile {
+                    list-style: none;
+                }
+            </style>
 
             <nav id="navbar" class="navbar">
                 <ul>
@@ -90,7 +115,33 @@
                     <li>@Html.ActionLink("FAQ", "Index", "FAQ", new { area = "" }, new { @class = "navbar-brand" })</li>
                 </ul>
             </nav><!-- .navbar -->
-            @Html.ActionLink("Sign up", "Register", "UserAuth", new { area = "" }, new { @class = "navbar-brand btn-book-a-table" })
+            <div class="dropdown">
+                <li class="profile">
+                    <button class="btn btn-user-icon" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        @if (!string.IsNullOrEmpty(userName))
+                        {
+                            <li class="dropdown-item d-flex align-items-center">
+                                <i class="bi bi-person-circle me-2"></i>
+                                <span class="user-info">@userName</span>
+                            </li>
+                        }
+                        <li><a class="dropdown-item text-center" href="#">My Profile</a></li>
+                        <li>@Html.ActionLink("Reset Password", "ResetPassword", "UserAuth", new { area = "" }, new { @class = "dropdown-item text-center" })</li>
+                        <li>
+                            <form action="@Url.Action("Logout", "UserAuth")" method="get">
+                                <button class="dropdown-item bg-white border border-danger text-danger w-100 d-flex justify-content-center" type="submit">Logout</button>
+                            </form>
+                        </li>
+
+                    </ul>
+                </li>
+            </div>
+
+
+
             <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
             <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
@@ -156,11 +207,7 @@
                     &copy; Copyright <strong><span>James's Recipe</span></strong>. All Rights Reserved
                 </div>
                 <div class="credits">
-                    <!-- All the links in the footer should remain intact. -->
-                    <!-- You can delete the links only if you purchased the pro version. -->
-                    <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/ -->
-                    Designed by <a href="https://bootstrapmade.com/">Group-one</a>
+                    Designed by <a href="https://bootstrapmade.com/">Vippro</a>
                 </div>
             </div>
 
@@ -168,11 +215,6 @@
         <!-- End Footer -->
 
     </div>
-
-
-    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-    <div id="preloader"></div>
 
     <!-- Vendor JS Files -->
     <script src="~/Assets/assets_Home/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

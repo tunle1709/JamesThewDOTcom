@@ -1,6 +1,17 @@
 ﻿@{
-    ViewBag.Title = "FAQ";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Home";
+
+
+    if (Session["UserName"] == null)
+    {
+        // Khi chưa Login thì sử dụng Layout này
+        Layout = "~/Views/Shared/_Layout_Dashboard.cshtml";
+    }
+    else
+    {
+        // Khi đã Login thì sử dụng Layout này
+        Layout = "~/Views/Shared/_Layout_Dashboard.cshtml";
+    }
 }
 
 <main>
@@ -8,14 +19,6 @@
     <section>
         <div class="container mt-5">
             <h1 class="mb-4 text-danger font-weight-bold">Frequently asked questions</h1>
-
-            <!-- Search Bar -->
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-danger" style="margin-left:20px">Search</button>
-                </div>
-            </div>
 
             <div class="accordion" id="faqAccordion">
                 <!-- Question 1 -->
@@ -68,7 +71,7 @@
                             For free recipes you will be able to view and without any fees, you want to see more recipes and more attractive dishes.
                             This page will have two forms of payment for members
                             A: One-month membership subscription costs $10
-                            B: Sign up for a one-month membership of $100
+                            B: Sign up for a one-year membership of $100
                         </div>
                     </div>
                 </div>
@@ -142,15 +145,6 @@
                     </div>
                 </div>
 
-            </div>
-
-            <br />
-            <!-- Input Bar -->
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Please enter your question...">
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-danger" style="margin-left:20px"> Submit </button>
-                </div>
             </div>
 
         </div>
