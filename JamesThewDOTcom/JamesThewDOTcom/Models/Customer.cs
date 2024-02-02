@@ -25,6 +25,9 @@ namespace JamesThewDOTcom.Models
         public string UserName { get; set; }
         public string Password { get; set; }
         public string RePassword { get; set; }
+        public string CurrentPassword { get; set; }
+        public string NewPassword { get; set; }
+        public string ConfirmNewPassword { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public string Phone { get; set; }

@@ -1,8 +1,18 @@
 ﻿@{
-    ViewBag.Title = "Recipes";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+    ViewBag.Title = "Home";
 
+
+    if (Session["UserName"] == null)
+    {
+        // Khi chưa Login thì sử dụng Layout này
+        Layout = "~/Views/Shared/_Layout_Dashboard.cshtml";
+    }
+    else
+    {
+        // Khi đã Login thì sử dụng Layout này
+        Layout = "~/Views/Shared/_Layout_Dashboard.cshtml";
+    }
+}
 
 
 
@@ -90,7 +100,7 @@
                                     </div>
                                     <div class="col-sm-7">
                                         <div class="explore-map-icon">
-                                            
+
                                             <a href="#"><i data-feather="message-circle"></i></a>
                                         </div>
                                     </div>

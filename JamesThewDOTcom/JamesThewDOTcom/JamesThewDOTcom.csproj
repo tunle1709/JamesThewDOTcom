@@ -180,7 +180,6 @@
     <Compile Include="Controllers\Administration\UserAuthAdminController.cs" />
     <Compile Include="Controllers\User\ContestsController.cs" />
     <Compile Include="Controllers\User\FAQController.cs" />
-    <Compile Include="Controllers\User\FeedbackController.cs" />
     <Compile Include="Controllers\User\HomeController.cs" />
     <Compile Include="Controllers\User\RecipesPublicController.cs" />
     <Compile Include="Controllers\User\UserAuthController.cs" />
@@ -633,10 +632,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\User\RecipesPublic\Index.cshtml" />
     <Content Include="Views\User\UserAuth\Register.cshtml" />
-    <Content Include="Views\Shared\_Layout_More.cshtml" />
+    <Content Include="Views\Shared\_Layout_Admin.cshtml" />
     <Content Include="Views\User\UserAuth\Login.cshtml" />
     <Content Include="Views\User\FAQ\Index.cshtml" />
-    <Content Include="Views\User\Feedback\Index.cshtml" />
     <Content Include="Views\User\Contests\Index.cshtml" />
     <Content Include="Views\UserAuthAdmin\LoginAdmin.cshtml" />
     <Content Include="Views\Customers\Delete.cshtml" />
@@ -681,6 +679,8 @@
     <Content Include="Views\Recipes\Index.cshtml" />
     <Content Include="Views\User\UserAuth\PaymentConfirmation.cshtml" />
     <Content Include="Views\User\Contests\DetailContest.cshtml" />
+    <Content Include="Views\Shared\_Layout_Dashboard.cshtml" />
+    <Content Include="Views\User\UserAuth\ResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
