@@ -32,16 +32,30 @@ public class UserAuthController : Controller
                 return View("~/Views/User/UserAuth/Register.cshtml", customer);
             }
 
-            bool registrationSuccess = RegisterNewCustomer(customer);
-
-            if (registrationSuccess)
+            if (IsUsernameUnique(customer.UserName))
             {
-                TempData["PaymentType"] = customer.PaymentTypeID;
-                return RedirectToAction("PaymentConfirmation", "UserAuth");
+                if (customer.Password.Length < 6)
+                {
+                    ModelState.AddModelError("Password", "Password must be at least 6 characters long.");
+                    return View("~/Views/User/UserAuth/Register.cshtml", customer);
+                }
+
+                bool registrationSuccess = RegisterNewCustomer(customer);
+
+                if (registrationSuccess)
+                {
+                    TempData["PaymentType"] = customer.PaymentTypeID;
+                    return RedirectToAction("PaymentConfirmation", "UserAuth");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Registration failed. Please try again.");
+                }
             }
             else
             {
-                ModelState.AddModelError("", "Registration failed. Please try again.");
+                ModelState.AddModelError("UserName", "Username is already taken.");
+                return View("~/Views/User/UserAuth/Register.cshtml", customer);
             }
         }
 
@@ -63,6 +77,11 @@ public class UserAuthController : Controller
         {
             return false;
         }
+    }
+
+    private bool IsUsernameUnique(string username)
+    {
+        return !db.Customers.Any(c => c.UserName == username);
     }
 
     public ActionResult PaymentConfirmation()
@@ -128,8 +147,8 @@ public class UserAuthController : Controller
     public ActionResult ResetPassword(string currentPassword, string newPassword, string confirmNewPassword)
     {
         if (ModelState.IsValid)
-        {      
-            string userName = (string)Session["UserName"]; 
+        {
+            string userName = (string)Session["UserName"];
 
             var authenticatedCustomer = AuthenticateCustomer(userName, currentPassword);
             if (authenticatedCustomer != null)
@@ -140,21 +159,26 @@ public class UserAuthController : Controller
                     return View("~/Views/User/UserAuth/ResetPassword.cshtml");
                 }
 
-                
+                if (newPassword.Length < 6)
+                {
+                    ModelState.AddModelError("", "The new password must be at least 6 characters long.");
+                    return View("~/Views/User/UserAuth/ResetPassword.cshtml");
+                }
+
                 if (currentPassword == newPassword)
-                { 
+                {
                     ModelState.AddModelError("", "The new password must be different from the old password.");
                     return View("~/Views/User/UserAuth/ResetPassword.cshtml");
                 }
 
-                
+
                 var customer = db.Customers.FirstOrDefault(c => c.UserName == userName);
                 if (customer != null)
                 {
                     customer.Password = newPassword;
                     db.SaveChanges();
 
-                    
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
