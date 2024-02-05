@@ -10,13 +10,15 @@ namespace JamesThewDOTcom.Controllers
 {
     public class FAQController : Controller
     {
-
         private JamesThewDBEntities db = new JamesThewDBEntities();
 
         // GET: FAQ
         public ActionResult Index()
         {
-            return View("~/Views/User/FAQ/Index.cshtml");
+            
+            List<FAQ> faqs = db.FAQs.ToList();
+
+            return View("~/Views/User/FAQ/Index.cshtml", faqs);
         }
     }
 }

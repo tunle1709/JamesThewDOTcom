@@ -1,5 +1,8 @@
-﻿@{
-    ViewBag.Title = "Home";
+﻿@model List<JamesThewDOTcom.Models.FAQ>
+
+
+@{
+    ViewBag.Title = "Frequently Asked Questions";
 
 
     if (Session["UserName"] == null)
@@ -21,132 +24,24 @@
             <h1 class="mb-4 text-danger font-weight-bold">Frequently asked questions</h1>
 
             <div class="accordion" id="faqAccordion">
-                <!-- Question 1 -->
-                <div class="card">
-                    <div class="card-header" id="headingOne">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link text-danger font-weight-bold text-decoration-none" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                How to become a member of this site?
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#faqAccordion">
-                        <div class="card-body">
-                            You want to be a member of this community
-                            Please register an account
+                @foreach (var faq in Model)
+                {
+                    <div class="card">
+                        <div class="card-header" id="heading@(faq.FaqID)">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link text-danger font-weight-bold text-decoration-none" type="button" data-toggle="collapse" data-target="#collapse@(faq.FaqID)" aria-expanded="true" aria-controls="collapse@(faq.FaqID)">
+                                    @faq.Questions
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapse@(faq.FaqID)" class="collapse" aria-labelledby="heading@(faq.FaqID)" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                @faq.Answers
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Question 2 -->
-                <div class="card">
-                    <div class="card-header" id="headingTwo">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link text-danger font-weight-bold text-decoration-none collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Will there be any registration fees?
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
-                        <div class="card-body">
-                            There will be no fees for you to register
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question 3 -->
-                <div class="card">
-                    <div class="card-header" id="headingThree">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link text-danger font-weight-bold text-decoration-none collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                How to view recipes and tips? Will there be any fees for that?
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
-                        <div class="card-body">
-                            For free recipes you will be able to view and without any fees, you want to see more recipes and more attractive dishes.
-                            This page will have two forms of payment for members
-                            A: One-month membership subscription costs $10
-                            B: Sign up for a one-year membership of $100
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question 4 -->
-                <div class="card">
-                    <div class="card-header" id="headingFour">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link text-danger font-weight-bold text-decoration-none collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                I am not a registered member of the site. Can I participate in the organized competition?
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#faqAccordion">
-                        <div class="card-body">
-                            Of course you can still participate in the contest. If you want to register, please go to the contest function to participate.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question 5 -->
-                <div class="card">
-                    <div class="card-header" id="headingFive">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link text-danger font-weight-bold text-decoration-none collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                How to upload or post recipes and tips
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#faqAccordion">
-                        <div class="card-body">
-                            Please click on the contest page, register to participate in the contest and you will have the opportunity to post your recipes.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question 6 -->
-                <div class="card">
-                    <div class="card-header" id="headingSix">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link text-danger font-weight-bold text-decoration-none collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                How to send feedback?
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#faqAccordion">
-                        <div class="card-body">
-                            Please click on the website's feedback page to submit your comments
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question 7 -->
-                <div class="card">
-                    <div class="card-header" id="headingSeven">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link text-danger font-weight-bold text-decoration-none collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                I posted a recipe or a tip related to the contest. How can I know who is the winner?
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#faqAccordion">
-                        <div class="card-body">
-                            If you want to know who will win, it will be calculated by points.
-                            After posting the recipe, the results will be notified to you via your personal account
-                        </div>
-                    </div>
-                </div>
-
+                }
             </div>
-
         </div>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -154,3 +49,4 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     </section>
 </main>
+
