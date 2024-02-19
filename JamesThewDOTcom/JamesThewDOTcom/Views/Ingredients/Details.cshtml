@@ -1,0 +1,32 @@
+﻿@model JamesThewDOTcom.Models.Ingredient
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ingredient</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IngredientName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IngredientName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Recipe.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Recipe.Title)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IngredientID }) |
+    @Html.ActionLink("Back to List", "Index", new { recipeId = Model.RecipeID })
+</p>

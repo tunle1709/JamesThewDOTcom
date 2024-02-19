@@ -30,13 +30,15 @@
         <AssociationConnector Association="JamesThewDBModel.RecipeType_CustomerType" ManuallyRouted="false" />
         <EntityTypeShape EntityType="JamesThewDBModel.Question" Width="1.5" PointX="3" PointY="11.5" />
         <EntityTypeShape EntityType="JamesThewDBModel.CookingContest" Width="1.5" PointX="0.75" PointY="9.875" />
-        <EntityTypeShape EntityType="JamesThewDBModel.Recipe" Width="1.5" PointX="8.25" PointY="3.25" />
         <AssociationConnector Association="JamesThewDBModel.FK__Question__Cookin__06CD04F7" />
         <AssociationConnector Association="JamesThewDBModel.FK__RegiterCo__Cooki__59FA5E80" />
         <AssociationConnector Association="JamesThewDBModel.FK__RegiterCo__Cooki__5AEE82B9" />
+        <AssociationConnector Association="JamesThewDBModel.CustomerType_CookingContest" />
+        <EntityTypeShape EntityType="JamesThewDBModel.Ingredient" Width="1.5" PointX="10.5" PointY="13.75" />
+        <EntityTypeShape EntityType="JamesThewDBModel.Recipe" Width="1.5" PointX="8.25" PointY="12.25" />
         <AssociationConnector Association="JamesThewDBModel.FK__Recipe__Employee__5EBF139D" />
         <AssociationConnector Association="JamesThewDBModel.FK__FeedBack__Recipe__5CD6CB2B" />
-        <AssociationConnector Association="JamesThewDBModel.CustomerType_CookingContest" />
+        <AssociationConnector Association="JamesThewDBModel.FK_Ingredients_Recipe" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

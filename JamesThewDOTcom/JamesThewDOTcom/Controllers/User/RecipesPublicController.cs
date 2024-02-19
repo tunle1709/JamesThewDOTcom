@@ -16,15 +16,20 @@ namespace JamesThewDOTcom.Controllers
         // GET: Receipe
         public ActionResult Index()
         {
-            return View("~/Views/User/RecipesPublic/Index.cshtml");
+            List<Recipe> recipes = db.Recipes.ToList();
+            
+            return View("~/Views/User/RecipesPublic/Index.cshtml", recipes);
         }
 
-        public ActionResult Detail()
+        public ActionResult Detail(int id)
         {
-            return View("~/Views/User/RecipesPublic/Detail.cshtml");
+            Recipe recipe = db.Recipes.Find(id);
+            if (recipe == null)
+            {
+                return HttpNotFound();
+            }
+            return View("~/Views/User/RecipesPublic/Detail.cshtml", recipe);
         }
 
     }
-
-
 }

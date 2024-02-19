@@ -20,22 +20,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Ingredints)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ingredints)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Steps)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Steps)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.RecipeType)
         </dt>
 
@@ -48,7 +32,103 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Image)
+            <img src="@(string.IsNullOrEmpty(Model.Image) ? "No Image" : Url.Content(Model.Image))" alt="" style="max-width: 100px; max-height: 100px;" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ingredients)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ingredients)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Step1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Step1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageOfStep1)
+        </dt>
+
+        <dd>
+            <img src="@(string.IsNullOrEmpty(Model.ImageOfStep1) ? "No Image" : Url.Content(Model.ImageOfStep1))" alt="" style="max-width: 100px; max-height: 100px;" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Step2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Step2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageOfStep2)
+        </dt>
+
+        <dd>
+            <img src="@(string.IsNullOrEmpty(Model.ImageOfStep2) ? "No Image" : Url.Content(Model.ImageOfStep2))" alt="" style="max-width: 100px; max-height: 100px;" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Step3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Step3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageOfStep3)
+        </dt>
+
+        <dd>
+            <img src="@(string.IsNullOrEmpty(Model.ImageOfStep3) ? "No Image" : Url.Content(Model.ImageOfStep3))" alt="" style="max-width: 100px; max-height: 100px;" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Step4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Step4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageOfStep4)
+        </dt>
+
+        <dd>
+            <img src="@(string.IsNullOrEmpty(Model.ImageOfStep4) ? "No Image" : Url.Content(Model.ImageOfStep4))" alt="" style="max-width: 100px; max-height: 100px;" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Step5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Step5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageOfStep5)
+        </dt>
+
+        <dd>
+            <img src="@(string.IsNullOrEmpty(Model.ImageOfStep5) ? "No Image" : Url.Content(Model.ImageOfStep5))" alt="" style="max-width: 100px; max-height: 100px;" />
         </dd>
 
         <dt>

@@ -18,18 +18,31 @@ namespace JamesThewDOTcom.Models
         public Recipe()
         {
             this.FeedBacks = new HashSet<FeedBack>();
+            this.Ingredients1 = new HashSet<Ingredient>();
         }
     
         public int RecipeID { get; set; }
         public string Title { get; set; }
-        public string Ingredints { get; set; }
-        public string Steps { get; set; }
         public string RecipeType { get; set; }
         public Nullable<int> EmployeeID { get; set; }
         public string Image { get; set; }
+        public string Ingredients { get; set; }
+        public string Step1 { get; set; }
+        public string Step2 { get; set; }
+        public string Step3 { get; set; }
+        public string Step4 { get; set; }
+        public string Step5 { get; set; }
+        public string ImageOfStep1 { get; set; }
+        public string ImageOfStep2 { get; set; }
+        public string ImageOfStep3 { get; set; }
+        public string ImageOfStep4 { get; set; }
+        public string ImageOfStep5 { get; set; }
+        public string Description { get; set; }
     
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FeedBack> FeedBacks { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ingredient> Ingredients1 { get; set; }
     }
 }
