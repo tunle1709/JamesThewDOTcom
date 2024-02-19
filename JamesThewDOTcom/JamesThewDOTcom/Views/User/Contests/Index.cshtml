@@ -1,10 +1,18 @@
-﻿
-@{
-    ViewBag.Title = "Contests";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@{
+    ViewBag.Title = "Home";
+
+
+    if (Session["UserName"] == null)
+    {
+        // Khi chưa Login thì sử dụng Layout này
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else
+    {
+        // Khi đã Login thì sử dụng Layout này
+        Layout = "~/Views/Shared/_Layout_Dashboard.cshtml";
+    }
 }
-
-
 
 
 <!---->
@@ -25,7 +33,7 @@
 <link rel="stylesheet" href="~/Assets/assets_Recipe/css_recipe/slick-theme.css">
 
 @*bootstrap.min.css
-<link rel="stylesheet" href="~/Assets/assets_Recipe/css_recipe/bootstrap.min.css">*@
+    <link rel="stylesheet" href="~/Assets/assets_Recipe/css_recipe/bootstrap.min.css">*@
 
 <!-- bootsnav -->
 <link rel="stylesheet" href="~/Assets/assets_Recipe/css_recipe/bootsnav.css">

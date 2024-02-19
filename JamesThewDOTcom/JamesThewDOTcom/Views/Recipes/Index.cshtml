@@ -3,7 +3,7 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout_More.cshtml";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
 }
 
 <div class="container">
@@ -25,37 +25,118 @@
     </p>
 
     <table class="table">
-        <thead>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].RecipeType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Ingredients)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Step1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].ImageOfStep1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Step2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].ImageOfStep2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Step3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].ImageOfStep3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Step4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].ImageOfStep4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Step5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].ImageOfStep5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Employee.UserName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
             <tr>
-                <th>@Html.DisplayNameFor(model => model[0].Title)</th>
-                <th>@Html.DisplayNameFor(model => model[0].Ingredints)</th>
-                <th>@Html.DisplayNameFor(model => model[0].Steps)</th>
-                <th>@Html.DisplayNameFor(model => model[0].RecipeType)</th>
-                <th>@Html.DisplayNameFor(model => model[0].Image)</th>
-                <th>@Html.DisplayNameFor(model => model[0].Employee.UserName)</th>
-                <th></th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RecipeType)
+                </td>
+                <td>
+                    <img src="@(string.IsNullOrEmpty(item.Image) ? "No Image" : Url.Content(item.Image))" alt="" style="max-width: 100px; max-height: 100px;" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.ActionLink(item.Ingredients, "Index", "Ingredients", new { recipeId = item.RecipeID }, new { @style = "text-decoration: none; color: red; font-weight: bold;" })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Step1)
+                </td>
+                <td>
+                    <img src="@(string.IsNullOrEmpty(item.ImageOfStep1) ? "No Image" : Url.Content(item.ImageOfStep1))" alt="" style="max-width: 100px; max-height: 100px;" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Step2)
+                </td>
+                <td>
+                    <img src="@(string.IsNullOrEmpty(item.ImageOfStep2) ? "No Image" : Url.Content(item.ImageOfStep2))" alt="" style="max-width: 100px; max-height: 100px;" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Step3)
+                </td>
+                <td>
+                    <img src="@(string.IsNullOrEmpty(item.ImageOfStep3) ? "No Image" : Url.Content(item.ImageOfStep3))" alt="" style="max-width: 100px; max-height: 100px;" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Step4)
+                </td>
+                <td>
+                    <img src="@(string.IsNullOrEmpty(item.ImageOfStep4) ? "No Image" : Url.Content(item.ImageOfStep4))" alt="" style="max-width: 100px; max-height: 100px;" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Step5)
+                </td>
+                <td>
+                    <img src="@(string.IsNullOrEmpty(item.ImageOfStep5) ? "No Image" : Url.Content(item.ImageOfStep5))" alt="" style="max-width: 100px; max-height: 100px;" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee.UserName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.RecipeID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.RecipeID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.RecipeID })
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@Html.DisplayFor(modelItem => item.Title)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Ingredints)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Steps)</td>
-                    <td>@Html.DisplayFor(modelItem => item.RecipeType)</td>
-                    <td>
-                        <img src="@(string.IsNullOrEmpty(item.Image) ? "No Image" : Url.Content(item.Image))" alt="" style="max-width: 100px; max-height: 100px;" />
-                    </td>
-                    <td>@Html.DisplayFor(modelItem => item.Employee.UserName)</td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.RecipeID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.RecipeID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.RecipeID })
-                    </td>
-                </tr>
-            }
-        </tbody>
+        }
+
     </table>
 
     <div class="pagination-container">

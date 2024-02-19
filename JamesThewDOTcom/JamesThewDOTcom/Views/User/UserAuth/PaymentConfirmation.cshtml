@@ -16,3 +16,9 @@
     <p>Số tiền phải thanh toán: $@ViewBag.RegistrationFee</p>
     <p>Thời hạn sử dụng: @ViewBag.EndDate</p>
 </div>
+
+<div>
+    <p class="text-center text-muted mt-5 mb-0">
+        If you have successfully paid, please @Html.ActionLink("Login here", "Login", "UserAuth", new { area = "" }, new { @class = "fw-bold text-body" })
+    </p>
+</div>

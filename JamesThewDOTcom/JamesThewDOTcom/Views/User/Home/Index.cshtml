@@ -1,8 +1,36 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Home";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+    if (Session["UserName"] == null)
+    {
+        // Khi chưa Login thì sử dụng Layout này
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else
+    {
+        // Khi đã Login thì sử dụng Layout này
+        Layout = "~/Views/Shared/_Layout_Dashboard.cshtml";
+    }
 }
+
+
+@*@{
+    ViewBag.Title = "Home";
+
+
+    if (User.Identity.IsAuthenticated)
+    {
+        // Sau khi đã Login thì sử dụng Layout này
+        Layout = "~/Views/Shared/_Layout_Dashboard.cshtml";
+    }
+    else
+    {
+        // Còn khi chưa Login thì sử dụng Layout này
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}*@
+
 
 
 <main>

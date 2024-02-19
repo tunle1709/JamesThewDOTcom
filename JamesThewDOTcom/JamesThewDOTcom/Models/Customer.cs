@@ -11,7 +11,7 @@ namespace JamesThewDOTcom.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,11 +20,14 @@ namespace JamesThewDOTcom.Models
             this.FeedBacks = new HashSet<FeedBack>();
             this.RegiterContests = new HashSet<RegiterContest>();
         }
-    
+
         public int CustomerID { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public string RePassword { get; set; }
+        public string CurrentPassword { get; set; }
+        public string NewPassword { get; set; }
+        public string ConfirmNewPassword { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public string Phone { get; set; }

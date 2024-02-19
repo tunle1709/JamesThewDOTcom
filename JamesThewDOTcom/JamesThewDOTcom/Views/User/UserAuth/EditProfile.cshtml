@@ -1,0 +1,54 @@
+﻿@model JamesThewDOTcom.Models.Customer
+
+@{
+    ViewBag.Title = "EditProfile";
+    Layout = "~/Views/Shared/_Layout_Dashboard.cshtml";
+}
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+<h2>My Profile</h2>
+
+@using (Html.BeginForm("EditProfile", "UserAuth", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.First_Name)
+        @Html.TextBoxFor(model => model.First_Name, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Last_Name)
+        @Html.TextBoxFor(model => model.Last_Name, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Address)
+        @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.City)
+        @Html.TextBoxFor(model => model.City, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Phone)
+        @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BirthDate)
+        @Html.TextBoxFor(model => model.BirthDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+}
