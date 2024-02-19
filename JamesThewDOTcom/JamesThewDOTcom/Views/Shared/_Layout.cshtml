@@ -86,7 +86,8 @@
                     </li>
 
                     <li>@Html.ActionLink("Contest", "Index", "Contests", new { area = "" }, new { @class = "navbar-brand" })</li>
-                    <li><a href="#winners">Winners</a></li>
+                    <li>@Html.ActionLink("Winner", "Index", "ContestResultPublic", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    @*<li><a href="#winners">Winners</a></li>*@
                     <li>@Html.ActionLink("Feedback", "Index", "Feedback", new { area = "" }, new { @class = "navbar-brand" })</li>
                     <li>@Html.ActionLink("FAQ", "Index", "FAQ", new { area = "" }, new { @class = "navbar-brand" })</li>
                 </ul>

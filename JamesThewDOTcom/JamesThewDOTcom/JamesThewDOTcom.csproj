@@ -178,6 +178,7 @@
     <Compile Include="Controllers\Administration\RecipeTypesController.cs" />
     <Compile Include="Controllers\Administration\RegiterContestsController.cs" />
     <Compile Include="Controllers\Administration\UserAuthAdminController.cs" />
+    <Compile Include="Controllers\User\ContestResultPublicController.cs" />
     <Compile Include="Controllers\User\ContestsController.cs" />
     <Compile Include="Controllers\User\FAQController.cs" />
     <Compile Include="Controllers\User\FeedbackController.cs" />
@@ -681,6 +682,7 @@
     <Content Include="Views\Recipes\Index.cshtml" />
     <Content Include="Views\User\UserAuth\PaymentConfirmation.cshtml" />
     <Content Include="Views\User\Contests\DetailContest.cshtml" />
+    <Content Include="Views\User\ContestResultPublic\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
