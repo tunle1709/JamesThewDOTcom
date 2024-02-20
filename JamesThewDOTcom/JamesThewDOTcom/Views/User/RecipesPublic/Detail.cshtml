@@ -1,7 +1,6 @@
 ﻿@{
     ViewBag.Title = "Detail";
 
-    Layout = null;
     if (Session["UserName"] == null)
     {
         // Khi chưa Login thì sử dụng Layout này
@@ -62,41 +61,6 @@
         <!-- ##### Breadcumb Area End ##### -->
 
         <div class="receipe-post-area section-padding-80">
-
-            <!-- Receipe Post Search -->
-            <div class="receipe-post-search mb-80">
-                <div class="container">
-                    <form action="#" method="post">
-                        <div class="row">
-                            <div class="col-12 col-lg-3">
-                                <select name="select1" id="select1">
-                                    <option value="1">All Receipies Categories</option>
-                                    <option value="1">All Receipies Categories 2</option>
-                                    <option value="1">All Receipies Categories 3</option>
-                                    <option value="1">All Receipies Categories 4</option>
-                                    <option value="1">All Receipies Categories 5</option>
-                                </select>
-                            </div>
-                            <div class="col-12 col-lg-3">
-                                <select name="select1" id="select2">
-                                    <option value="1">All Receipies Categories</option>
-                                    <option value="1">All Receipies Categories 2</option>
-                                    <option value="1">All Receipies Categories 3</option>
-                                    <option value="1">All Receipies Categories 4</option>
-                                    <option value="1">All Receipies Categories 5</option>
-                                </select>
-                            </div>
-                            <div class="col-12 col-lg-3">
-                                <input type="search" name="search" placeholder="Search Receipies">
-                            </div>
-                            <div class="col-12 col-lg-3 text-right">
-                                <button type="submit" class="btn delicious-btn">Search</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
             <div class="receipe-content-area">
                 <div class="container">
 
@@ -252,28 +216,21 @@
         <div class="row">
             <div class="col-12">
                 <div class="contact-form-area">
-                    <form action="#" method="post">
+                    <form action="@Url.Action("AddFeedback", "RecipesPublic")" method="post">
                         <div class="row">
-                            <div class="col-12 col-lg-6">
-                                <input type="text" class="form-control" id="name" placeholder="Name">
-                            </div>
-                            <div class="col-12 col-lg-6">
-                                <input type="email" class="form-control" id="email" placeholder="E-mail">
+                            <div class="col-12">
+                                <textarea name="feedbackComment" class="form-control" id="feedbackComment" cols="30" rows="5" placeholder="Leave your feedback here"></textarea>
                             </div>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="subject" placeholder="Subject">
-                            </div>
-                            <div class="col-12">
-                                <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
-                            </div>
-                            <div class="col-12">
-                                <button class="btn delicious-btn mt-30" type="submit">Post Comments</button>
+                                <input type="hidden" name="recipeId" value="@Model.RecipeID" />
+                                <button class="btn delicious-btn mt-30" type="submit">Post Feedback</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+
     </div>
 </body>
 

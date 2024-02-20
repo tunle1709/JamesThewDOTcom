@@ -60,51 +60,68 @@
                 <h2>Việt Nam</h2>
                 <p>Việt Nam sở hữu những món ăn ngon nhất thế giới</p>
             </div><!--/.section-header-->
+            <!-- Receipe Post Search -->
+            <div class="receipe-post-search mb-80">
+                <div class="container">
+                    @using (Html.BeginForm("Index", "RecipesPublic", FormMethod.Get, new { @class = "search-form" }))
+                    {
+                        <div class="row align-items-center">
+                            <div class="col-lg-8 col-md-7">
+                                <input type="search" name="searchString" placeholder="Search Recipes" class="form-control rounded-pill">
+                            </div>
+                            <div class="col-lg-4 col-md-5 text-md-right">
+                                <button type="submit" class="btn btn-danger btn-lg">Search</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
             <div class="explore-content">
                 <div class="row">
                     @foreach (var recipe in Model)
                     {
                         <div class="col-md-4 col-sm-6">
                             <div class="single-explore-item">
-                                <div class="single-explore-img">
-                                    @if (!string.IsNullOrEmpty(recipe.Image))
-                                    {
-                                        <img src="@Url.Content(recipe.Image)" alt="recipe image" class="img-fluid rounded">
-                                    }
-                                    <div class="single-explore-img-info">
-                                        <div class="single-explore-image-icon-box">
-                                            <ul>
-                                                <li>
-                                                    <div class="single-explore-image-icon">
-                                                        <i class="fa fa-arrows-alt"></i>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="single-explore-image-icon">
-                                                        <i class="fa fa-bookmark-o"></i>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                <a href="@Url.Action("Detail", "RecipesPublic", new { id = recipe.RecipeID })">
+                                    <div class="single-explore-img">
+                                        @if (!string.IsNullOrEmpty(recipe.Image))
+                                        {
+                                            <img src="@Url.Content(recipe.Image)" alt="recipe image" class="img-fluid rounded">
+                                        }
+                                        <div class="single-explore-img-info">
+                                            <div class="single-explore-image-icon-box">
+                                                <ul>
+                                                    <li>
+                                                        <div class="single-explore-image-icon">
+                                                            <i class="fa fa-arrows-alt"></i>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="single-explore-image-icon">
+                                                            <i class="fa fa-bookmark-o"></i>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="single-explore-txt bg-theme-1">
-                                    <h2>
-                                        @Html.ActionLink(recipe.Title, "Detail", "RecipesPublic", new { id = recipe.RecipeID }, new { @class = "navbar-brand" })
-                                    </h2>
-                                    @if (!string.IsNullOrEmpty(recipe.Description))
-                                    {
-                                        string shortDescription = recipe.Description.Length > 50 ? recipe.Description.Substring(0, 50) + "..." : recipe.Description;
-                                        @shortDescription
-                                    }
-                                    <p style="opacity: 0.5;">Được đăng bởi: @recipe.UserName</p>
-                                </div>
+                                    <div class="single-explore-txt bg-theme-1">
+                                        <h2>@recipe.Title</h2>
+                                        @if (!string.IsNullOrEmpty(recipe.Description))
+                                        {
+                                            string shortDescription = recipe.Description.Length > 50 ? recipe.Description.Substring(0, 50) + "..." : recipe.Description;
+                                            @shortDescription
+                                        }
+                                        <p style="opacity: 0.5;">Được đăng bởi: @recipe.UserName</p>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     }
-
                 </div>
             </div>
+
 
             <div class="section-footer">
                 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = false, MaximumPageNumbersToDisplay = 5 })
