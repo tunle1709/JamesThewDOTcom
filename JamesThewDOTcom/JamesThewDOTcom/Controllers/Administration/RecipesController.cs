@@ -162,7 +162,14 @@ namespace JamesThewDOTcom.Controllers.Administration
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RecipeID,Title,RecipeType,EmployeeID,Image,Ingredients,Step1,Step2,Step3,Step4,Step5,ImageOfStep1,ImageOfStep2,ImageOfStep3,ImageOfStep4,ImageOfStep5, Description")] Recipe recipe, HttpPostedFileBase imageFile, HttpPostedFileBase imageOfStep1File, HttpPostedFileBase imageOfStep2File, HttpPostedFileBase imageOfStep3File, HttpPostedFileBase imageOfStep4File, HttpPostedFileBase imageOfStep5File)
+        public ActionResult Edit([Bind(Include = "RecipeID,Title,RecipeType,EmployeeID,Image,Ingredients,Step1,Step2,Step3,Step4,Step5,ImageOfStep1,ImageOfStep2,ImageOfStep3,ImageOfStep4,ImageOfStep5, Description")] 
+        Recipe recipe, 
+            HttpPostedFileBase imageFile, 
+            HttpPostedFileBase imageOfStep1File, 
+            HttpPostedFileBase imageOfStep2File, 
+            HttpPostedFileBase imageOfStep3File, 
+            HttpPostedFileBase imageOfStep4File, 
+            HttpPostedFileBase imageOfStep5File)
         {
             if (ModelState.IsValid)
             {

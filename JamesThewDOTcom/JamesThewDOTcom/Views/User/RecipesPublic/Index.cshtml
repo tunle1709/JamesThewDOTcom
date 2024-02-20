@@ -1,4 +1,5 @@
-﻿@model List<JamesThewDOTcom.Models.Recipe>
+﻿@model PagedList.IPagedList<JamesThewDOTcom.Models.Recipe>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Home";
@@ -88,35 +89,27 @@
                                     </div>
                                 </div>
                                 <div class="single-explore-txt bg-theme-1">
-                                    <h2>@Html.ActionLink(recipe.Title, "Detail", "RecipesPublic", new { area = "" }, new { @class = "navbar-brand" })</h2>
-                                    <p>@recipe.Description</p>
-                                    <div class="explore-actions">
-                                        <button class="btn btn-danger btn-sm" onclick="window.location.href='#'">Học Ngay</button>
-                                    </div>
+                                    <h2>
+                                        @Html.ActionLink(recipe.Title, "Detail", "RecipesPublic", new { id = recipe.RecipeID }, new { @class = "navbar-brand" })
+                                    </h2>
+                                    @if (!string.IsNullOrEmpty(recipe.Description))
+                                    {
+                                        string shortDescription = recipe.Description.Length > 50 ? recipe.Description.Substring(0, 50) + "..." : recipe.Description;
+                                        @shortDescription
+                                    }
+                                    <p style="opacity: 0.5;">Được đăng bởi: @recipe.UserName</p>
                                 </div>
                             </div>
                         </div>
                     }
+
                 </div>
             </div>
 
             <div class="section-footer">
-                <nav aria-label="...">
-                    <ul class="pagination">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item active" aria-current="page">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = false, MaximumPageNumbersToDisplay = 5 })
             </div>
+
         </div><!--/.container-->
     </section><!--/.explore-->
     <!--explore end -->
