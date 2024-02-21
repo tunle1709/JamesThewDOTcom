@@ -7,18 +7,22 @@
 
 <br />
 <br />
+<br />
+<br />
+
+
 <div class="container">
-    <h1 class="mt-4">Determining Winners</h1>
+    <h2 class="mt-4">Xác Định Người Chiến Thắng</h2>
 
     <!-- Form để nhập thông tin người chiến thắng -->
     <form>
         <div class="form-group">
-            <label for="winnerName">Winner Name:</label>
-            <input type="text" class="form-control" id="winnerName" placeholder="Determining Winners">
+            <label for="winnerName">Tên Người Chiến Thắng:</label>
+            <input type="text" class="form-control" id="winnerName" placeholder="Nhập tên người chiến thắng">
         </div>
-
+        <br />
         <!-- Nút để xác nhận người chiến thắng -->
-        <button type="button" class="btn btn-primary" onclick="displayWinner()">Winner Confirmation</button>
+        <button type="button" class="btn btn-primary" style="background:red" onclick="displayWinner()">Xác Nhận Người Chiến Thắng</button>
     </form>
 
     <!-- Hiển thị kết quả người chiến thắng -->
@@ -37,7 +41,7 @@
         var winnerName = document.getElementById("winnerName").value;
 
         // Hiển thị kết quả
-        document.getElementById("winnerResult").innerHTML = "<h3>Winner:</h3><p>" + winnerName + "</p>";
+        document.getElementById("winnerResult").innerHTML = "<h3>Người Chiến Thắng:</h3><p>" + winnerName + "</p>";
     }
 </script>
 
