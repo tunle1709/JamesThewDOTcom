@@ -38,7 +38,8 @@ namespace JamesThewDOTcom.Models
         public string ImageOfStep4 { get; set; }
         public string ImageOfStep5 { get; set; }
         public string Description { get; set; }
-    
+        public string UserName { get; set; }
+
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FeedBack> FeedBacks { get; set; }
