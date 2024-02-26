@@ -28,9 +28,7 @@
         <AssociationConnector Association="JamesThewDBModel.Employees_Group" ManuallyRouted="false" />
         <AssociationConnector Association="JamesThewDBModel.Group_Object" ManuallyRouted="false" />
         <AssociationConnector Association="JamesThewDBModel.RecipeType_CustomerType" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="JamesThewDBModel.Question" Width="1.5" PointX="3" PointY="11.5" />
         <EntityTypeShape EntityType="JamesThewDBModel.CookingContest" Width="1.5" PointX="0.75" PointY="9.875" />
-        <AssociationConnector Association="JamesThewDBModel.FK__Question__Cookin__06CD04F7" />
         <AssociationConnector Association="JamesThewDBModel.FK__RegiterCo__Cooki__59FA5E80" />
         <AssociationConnector Association="JamesThewDBModel.FK__RegiterCo__Cooki__5AEE82B9" />
         <AssociationConnector Association="JamesThewDBModel.CustomerType_CookingContest" />
@@ -39,6 +37,9 @@
         <AssociationConnector Association="JamesThewDBModel.FK__Recipe__Employee__5EBF139D" />
         <AssociationConnector Association="JamesThewDBModel.FK__FeedBack__Recipe__5CD6CB2B" />
         <AssociationConnector Association="JamesThewDBModel.FK_Ingredients_Recipe" />
+        <EntityTypeShape EntityType="JamesThewDBModel.CustomerRecipe" Width="1.5" PointX="15.75" PointY="7.375" />
+        <AssociationConnector Association="JamesThewDBModel.FK_CustomerRecipe_Customers" />
+        <AssociationConnector Association="JamesThewDBModel.FK_CustomerRecipe_RegisterContest" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -46,17 +47,35 @@ namespace JamesThewDOTcom.Controllers.Administration
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CookingContestID,Title,Description,StartDate,EndDate")] CookingContest cookingContest)
+        public ActionResult Create([Bind(Include = "CookingContestID,Title,Description,StartDate,EndDate,Image")] CookingContest cookingContest, HttpPostedFileBase imageFile)
         {
             if (ModelState.IsValid)
             {
+                if (cookingContest.StartDate > cookingContest.EndDate)
+                {
+                    ModelState.AddModelError("EndDate", "End Date must be greater than Start Date.");
+                    return View(cookingContest);
+                }
+
+                if (imageFile != null && imageFile.ContentLength > 0)
+                {
+                    string fileName = Path.GetFileName(imageFile.FileName);
+                    string filePath = Path.Combine(Server.MapPath("~/Images"), fileName);
+
+                    imageFile.SaveAs(filePath);
+
+                    cookingContest.Image = "~/Images/" + fileName;
+                }
+
                 db.CookingContests.Add(cookingContest);
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
             return View(cookingContest);
         }
+
 
         // GET: CookingContests/Edit/5
         public ActionResult Edit(int? id)
@@ -76,18 +95,36 @@ namespace JamesThewDOTcom.Controllers.Administration
         // POST: CookingContests/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: CookingContests/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CookingContestID,Title,Description,StartDate,EndDate")] CookingContest cookingContest)
+        public ActionResult Edit([Bind(Include = "CookingContestID,Title,Description,StartDate,EndDate,Image")] CookingContest cookingContest, HttpPostedFileBase imageFile)
         {
             if (ModelState.IsValid)
             {
+                if (cookingContest.StartDate > cookingContest.EndDate)
+                {
+                    ModelState.AddModelError("EndDate", "End Date must be greater than Start Date.");
+                    return View(cookingContest);
+                }
+
+                if (imageFile != null && imageFile.ContentLength > 0)
+                {
+                    string fileName = Path.GetFileName(imageFile.FileName);
+                    string filePath = Path.Combine(Server.MapPath("~/Images"), fileName);
+
+                    imageFile.SaveAs(filePath);
+
+                    cookingContest.Image = "~/Images/" + fileName;
+                }
+
                 db.Entry(cookingContest).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(cookingContest);
         }
+
 
         // GET: CookingContests/Delete/5
         public ActionResult Delete(int? id)

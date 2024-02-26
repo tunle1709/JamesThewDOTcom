@@ -11,7 +11,7 @@ namespace JamesThewDOTcom.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Recipe
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +20,7 @@ namespace JamesThewDOTcom.Models
             this.FeedBacks = new HashSet<FeedBack>();
             this.Ingredients1 = new HashSet<Ingredient>();
         }
-    
+
         public int RecipeID { get; set; }
         public string Title { get; set; }
         public string RecipeType { get; set; }

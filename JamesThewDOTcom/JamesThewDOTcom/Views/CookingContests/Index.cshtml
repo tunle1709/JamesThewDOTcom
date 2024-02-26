@@ -23,6 +23,9 @@
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.StartDate)
         </th>
         <th>
@@ -40,15 +43,18 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
+            <img src="@(string.IsNullOrEmpty(item.Image) ? "No Image" : Url.Content(item.Image))" alt="" style="max-width: 100px; max-height: 100px;" />
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.StartDate)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EndDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CookingContestID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CookingContestID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CookingContestID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.CookingContestID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.CookingContestID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CookingContestID })
         </td>
     </tr>
 }

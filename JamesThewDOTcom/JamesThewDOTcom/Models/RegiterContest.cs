@@ -18,6 +18,7 @@ namespace JamesThewDOTcom.Models
         public RegiterContest()
         {
             this.ContestResults = new HashSet<ContestResult>();
+            this.CustomerRecipes = new HashSet<CustomerRecipe>();
         }
     
         public int RegisterContestID { get; set; }
@@ -29,5 +30,7 @@ namespace JamesThewDOTcom.Models
         public virtual Customer Customer { get; set; }
         public virtual CookingContest CookingContest { get; set; }
         public virtual CookingContest CookingContest1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CustomerRecipe> CustomerRecipes { get; set; }
     }
 }

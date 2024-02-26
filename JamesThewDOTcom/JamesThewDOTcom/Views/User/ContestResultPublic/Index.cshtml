@@ -1,0 +1,47 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<br />
+<br />
+
+
+<div class="container">
+    <h2 class="mt-4">Xác Định Người Chiến Thắng</h2>
+
+    <!-- Form để nhập thông tin người chiến thắng -->
+    <form>
+        <div class="form-group">
+            <label for="winnerName">Tên Người Chiến Thắng:</label>
+            <input type="text" class="form-control" id="winnerName" placeholder="Nhập tên người chiến thắng">
+        </div>
+        <br />
+        <!-- Nút để xác nhận người chiến thắng -->
+        <button type="button" class="btn btn-primary" style="background:red" onclick="displayWinner()">Xác Nhận Người Chiến Thắng</button>
+    </form>
+
+    <!-- Hiển thị kết quả người chiến thắng -->
+    <div class="mt-4" id="winnerResult"></div>
+</div>
+
+<!-- Sử dụng Bootstrap JS và Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+@*<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>*@
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // Hàm để hiển thị người chiến thắng
+    function displayWinner() {
+        // Lấy giá trị từ ô nhập liệu
+        var winnerName = document.getElementById("winnerName").value;
+
+        // Hiển thị kết quả
+        document.getElementById("winnerResult").innerHTML = "<h3>Người Chiến Thắng:</h3><p>" + winnerName + "</p>";
+    }
+</script>
+

@@ -11,7 +11,7 @@ namespace JamesThewDOTcom.Models
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,8 +19,9 @@ namespace JamesThewDOTcom.Models
         {
             this.FeedBacks = new HashSet<FeedBack>();
             this.RegiterContests = new HashSet<RegiterContest>();
+            this.CustomerRecipes = new HashSet<CustomerRecipe>();
         }
-
+    
         public int CustomerID { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
@@ -36,8 +37,7 @@ namespace JamesThewDOTcom.Models
         public System.DateTime BirthDate { get; set; }
         public Nullable<int> CustomersTypeID { get; set; }
         public Nullable<int> PaymentTypeID { get; set; }
-        public string PaymentTypeName { get; set; }
-
+    
         public virtual ContestResult ContestResult { get; set; }
         public virtual CustomerType CustomerType { get; set; }
         public virtual PaymentType PaymentType { get; set; }
@@ -45,5 +45,7 @@ namespace JamesThewDOTcom.Models
         public virtual ICollection<FeedBack> FeedBacks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RegiterContest> RegiterContests { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CustomerRecipe> CustomerRecipes { get; set; }
     }
 }

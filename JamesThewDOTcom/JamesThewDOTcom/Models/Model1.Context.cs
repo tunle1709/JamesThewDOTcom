@@ -37,9 +37,9 @@ namespace JamesThewDOTcom.Models
         public virtual DbSet<RecipeType> RecipeTypes { get; set; }
         public virtual DbSet<Register> Registers { get; set; }
         public virtual DbSet<RegiterContest> RegiterContests { get; set; }
-        public virtual DbSet<Question> Questions { get; set; }
         public virtual DbSet<CookingContest> CookingContests { get; set; }
         public virtual DbSet<Ingredient> Ingredients { get; set; }
         public virtual DbSet<Recipe> Recipes { get; set; }
+        public virtual DbSet<CustomerRecipe> CustomerRecipes { get; set; }
     }
 }
