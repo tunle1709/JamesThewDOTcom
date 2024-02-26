@@ -637,7 +637,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\User\RecipesPublic\Index.cshtml" />
     <Content Include="Views\User\UserAuth\Register.cshtml" />
-    <Content Include="Views\Shared\_Layout_Admin.cshtml" />
     <Content Include="Views\User\UserAuth\Login.cshtml" />
     <Content Include="Views\User\FAQ\Index.cshtml" />
     <Content Include="Views\User\Contests\Index.cshtml" />
@@ -692,6 +691,7 @@
     <Content Include="Views\Ingredients\Index.cshtml" />
     <Content Include="Views\Recipes\Create.cshtml" />
     <Content Include="Views\Recipes\Edit.cshtml" />
+    <Content Include="Views\Shared\_Layout_Admin.cshtml" />
     <Content Include="Views\User\ContestResultPublic\Index.cshtml" />
     <Content Include="Views\User\Contests\UploadRecipe.cshtml" />
   </ItemGroup>
