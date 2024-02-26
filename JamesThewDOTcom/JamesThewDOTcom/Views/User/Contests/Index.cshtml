@@ -1,5 +1,7 @@
-﻿@{
-    ViewBag.Title = "Home";
+﻿@model List<JamesThewDOTcom.Models.CookingContest>
+
+@{
+    ViewBag.Title = "Contest";
 
 
     if (Session["UserName"] == null)
@@ -54,165 +56,54 @@
         </div><!--/.section-header-->
         <div class="explore-content">
             <div class="row">
-                <!--Bắt đầu 1 món-->
-                <div class=" col-md-4 col-sm-6">
-                    <div class="single-explore-item">
-                        <div class="single-explore-img">
-
-                            <!--đây là ảnh-->
-                            <img src="https://media.istockphoto.com/id/1081422898/vi/anh/v%E1%BB%8Bt-%C3%A1p-ch%E1%BA%A3o.jpg?s=612x612&w=0&k=20&c=A11-xDOraTgAER4BcNV9_NW75rb2TS1ji4BDdQkfUAo=" alt="explore image">
-
-
-                        </div>
-                        <div class="single-explore-txt bg-theme-1">
-                            <h1><a href="~/Contests/DetailContest">Contest</a></h1>
-                            @*@Html.ActionLink("Contest", "DetailContest", "Contests", new { area = "" }, new { @class = "nav-link" })*@
-                            <div class="row"></div>
-                            <div class="explore-person">
-                                <div class="row">
-                                    <div class="col-sm-10">
-                                        <p>
-                                            Today, I am very happy and proud to stand here to share with you about a vibrant and meaningful event,
-                                            It's the Great Cooking Competition, a great opportunity for our culinary talents to shine...
-                                        </p>
-                                    </div>
+                @foreach (var contest in Model)
+                {
+                    <div class="col-md-4 col-sm-6">
+                        <a href="@Url.Action("DetailContest", "Contests", new { id = contest.CookingContestID })">
+                            <div class="single-explore-item">
+                                <div class="single-explore-img">
+                                    <!-- Hiển thị ảnh từ đường dẫn trong contest.Image -->
+                                    <img src="@Url.Content(contest.Image)" alt="explore image">
                                 </div>
-                            </div>
-                            <div class="explore-open-close-part">
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        @Html.ActionLink("See more", "DetailContest", "Contests", new { area = "" }, new { @class = "nav-link" })
+                                <div class="single-explore-txt bg-theme-1">
+                                    <h1>@contest.Title</h1>
+                                    <div class="row"></div>
+                                    <div class="explore-person">
+                                        <div class="row">
+                                            <div class="col-sm-10">
+                                                <!-- Hiển thị Description của cuộc thi -->
+                                                <p>
+                                                    @if (!string.IsNullOrEmpty(contest.Description))
+                                                    {
+                                                        string shortDescription = contest.Description.Length > 50 ? contest.Description.Substring(0, 50) + "..." : contest.Description;
+                                                        @shortDescription
+                                                    }
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-7">
-                                        <div class="explore-map-icon">
-
-                                            <a href="#"><i data-feather="message-circle"></i></a>
+                                    <div class="explore-open-close-part">
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <!-- Hiển thị ngày bắt đầu và kết thúc của cuộc thi -->
+                                                <p>Start Date: @(contest.StartDate.HasValue ? contest.StartDate.Value.ToString("dd/MM/yyyy") : "")</p>
+                                                <p>End Date: @(contest.EndDate.HasValue ? contest.EndDate.Value.ToString("dd/MM/yyyy") : "")</p>
+                                            </div>
+                                            <div class="col-sm-7">
+                                                <div class="explore-map-icon">
+                                                    <a href="#"><i data-feather="message-circle"></i></a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                </div>
-                <!--Hết 1 món-->
-                <!--Bắt đầu 1 món-->
-                <div class=" col-md-4 col-sm-6">
-                    <div class="single-explore-item">
-                        <div class="single-explore-img">
-
-                            <!--đây là ảnh-->
-                            <img src="https://media.istockphoto.com/id/516329534/vi/anh/v%E1%BA%A5n-%C4%91%E1%BB%81-cu%E1%BB%91i.jpg?s=612x612&w=0&k=20&c=AJvuZhPxcqcECaqCx42uYjAsU6HPWryhur8fBvhiNTM=" alt="explore image">
-
-
-                        </div>
-                        <div class="single-explore-txt bg-theme-1">
-                            <h1><a href="~/Contests/DetailContest">Contest</a></h1>
-                            <div class="row"></div>
-                            <div class="explore-person">
-                                <div class="row">
-                                    <div class="col-sm-10">
-                                        <p>
-                                            Today, I am very happy and proud to stand here to share with you about a vibrant and meaningful event,
-                                            It's the Great Cooking Competition, a great opportunity for our culinary talents to shine...
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="explore-open-close-part">
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        @Html.ActionLink("See more", "DetailContest", "Contests", new { area = "" }, new { @class = "nav-link" })
-                                    </div>
-                                    <div class="col-sm-7">
-                                        <div class="explore-map-icon">
-                                            <a href="#"><i data-feather="message-circle"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Hết 1 món-->
-                <!--Bắt đầu 1 món-->
-                <div class=" col-md-4 col-sm-6">
-                    <div class="single-explore-item">
-                        <div class="single-explore-img">
-
-                            <!--đây là ảnh-->
-                            <img src="https://media.istockphoto.com/id/1428412216/photo/a-male-chef-pouring-sauce-on-meal.jpg?s=612x612&w=0&k=20&c=8U3mrgWsuB7pB8axtGj89MXRkHDKodEli9F6wKgPT4A=" alt="explore image">
-
-
-                        </div>
-                        <div class="single-explore-txt bg-theme-1">
-                            <h1><a href="~/Contests/DetailContest">Contest</a></h1>
-                            <div class="row"></div>
-                            <div class="explore-person">
-                                <div class="row">
-                                    <div class="col-sm-10">
-                                        <p>
-                                            Today, I am very happy and proud to stand here to share with you about a vibrant and meaningful event,
-                                            It's the Great Cooking Competition, a great opportunity for our culinary talents to shine...
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="explore-open-close-part">
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        @Html.ActionLink("See more", "DetailContest", "Contests", new { area = "" }, new { @class = "nav-link" })
-                                    </div>
-                                    <div class="col-sm-7">
-                                        <div class="explore-map-icon">
-                                            <a href="#"><i data-feather="message-circle"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Hết 1 món-->
-                <!--Bắt đầu 1 món-->
-                <div class=" col-md-4 col-sm-6">
-                    <div class="single-explore-item">
-                        <div class="single-explore-img">
-
-                            <!--đây là ảnh-->
-                            <img src="https://media.istockphoto.com/id/1069793714/photo/sprinkling-seasonings-from-high-up.jpg?s=612x612&w=0&k=20&c=Cb537EMBtujrYokiMbVb7jVG1MlCcgP7QNIat0M_hgY=" alt="explore image">
-
-
-                        </div>
-                        <div class="single-explore-txt bg-theme-1">
-                            <h1><a href="~/Contests/DetailContest">Contest</a></h1>
-                            <div class="row"></div>
-                            <div class="explore-person">
-                                <div class="row">
-                                    <div class="col-sm-10">
-                                        <p>
-                                            Today, I am very happy and proud to stand here to share with you about a vibrant and meaningful event,
-                                            It's the Great Cooking Competition, a great opportunity for our culinary talents to shine...
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="explore-open-close-part">
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        @Html.ActionLink("See more", "DetailContest", "Contests", new { area = "" }, new { @class = "nav-link" })
-                                    </div>
-                                    <div class="col-sm-7">
-                                        <div class="explore-map-icon">
-                                            <a href="#"><i data-feather="message-circle"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                }
             </div>
         </div>
+
 
     </div><!--/.container-->
 

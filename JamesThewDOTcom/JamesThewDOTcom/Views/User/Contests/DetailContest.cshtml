@@ -1,5 +1,7 @@
-﻿@{
-    ViewBag.Title = "Home";
+﻿@model JamesThewDOTcom.Models.CookingContest
+
+@{
+    ViewBag.Title = "Detail Contest";
 
 
     if (Session["UserName"] == null)
@@ -27,8 +29,8 @@
         <div class="card shadow-lg">
             <div class="card-body">
                 <div class="jumbotron bg-wine text-white">
-                    <h1 class="display-4"><a href="~/DetailContest/Detail" class="text-white">Welcome to the CookingContest</a></h1>
-                    <p class="lead">Contest description and important information.</p>
+                    <!-- Hiển thị Title của cuộc thi -->
+                    <h1 class="display-4"><a href="~/DetailContest/Detail" class="text-white">@Model.Title</a></h1>
                 </div>
 
                 <!-- Phần Ảnh -->
@@ -38,9 +40,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <p class="lead text-justify">
-                            Welcome all talented and passionate chefs to participate in our biggest Cooking Competition! This is not just a contest, but a journey to discover diverse and creative cuisine. Organized with the desire to find the best plates and the impressive stories behind every meal, we are happy and proud to stand front and present opportunities to teams and individuals who commit to participate. into an unforgettable experience.
+                            @Model.Description
                         </p>
-                        <!-- Nội dung thêm... -->
                     </div>
                 </div>
 
@@ -85,34 +86,15 @@
         <div class="card mx-auto" style="max-width: 400px;">
             <div class="card-body">
                 <h2 class="card-title" style="color:red; text-align: center;">Registration Form</h2>
-                <form action="process_registration.php" method="post">
-
-
-                    <div class="form-group">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="address">Address</label>
-                        <input type="text" id="address" name="address" class="form-control" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phoneNumber">PhoneNumber:</label>
-                        <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" required>
-                    </div>
-
+                @using (Html.BeginForm("RegisterContest", "Contests", FormMethod.Post))
+                {
+                    <input type="hidden" name="contestId" value="@Model.CookingContestID">
                     <button type="submit" class="btn btn-danger btn-block" style="margin-top:20px;">Submit</button>
-                </form>
+                }
             </div>
         </div>
     </section>
+
 
     <style>
         button {

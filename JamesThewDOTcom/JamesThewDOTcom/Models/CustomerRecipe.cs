@@ -11,20 +11,14 @@ namespace JamesThewDOTcom.Models
 {
     using System;
     using System.Collections.Generic;
-
-    public partial class Recipe
+    
+    public partial class CustomerRecipe
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Recipe()
-        {
-            this.FeedBacks = new HashSet<FeedBack>();
-            this.Ingredients1 = new HashSet<Ingredient>();
-        }
-
         public int RecipeID { get; set; }
         public string Title { get; set; }
         public string RecipeType { get; set; }
-        public Nullable<int> EmployeeID { get; set; }
+        public int CustomerID { get; set; }
+        public int RegisterContestID { get; set; }
         public string Image { get; set; }
         public string Ingredients { get; set; }
         public string Step1 { get; set; }
@@ -38,12 +32,8 @@ namespace JamesThewDOTcom.Models
         public string ImageOfStep4 { get; set; }
         public string ImageOfStep5 { get; set; }
         public string Description { get; set; }
-        public string UserName { get; set; }
-
-        public virtual Employee Employee { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FeedBack> FeedBacks { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ingredient> Ingredients1 { get; set; }
+    
+        public virtual Customer Customer { get; set; }
+        public virtual RegiterContest RegiterContest { get; set; }
     }
 }

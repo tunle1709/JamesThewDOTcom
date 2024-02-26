@@ -1,0 +1,167 @@
+﻿@model JamesThewDOTcom.Models.CustomerRecipe
+
+@{
+    ViewBag.Title = "Upload Recipe";
+    Layout = "~/Views/Shared/_Layout_Dashboard.cshtml";
+}
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<h2>Post your recipes</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <div class="alert alert-success" role="alert">
+        @ViewBag.SuccessMessage
+    </div>
+}
+
+@using (Html.BeginForm("UploadRecipe", "Contests", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <div class="form-group">
+        @Html.HiddenFor(model => model.Customer, new { Value = ViewBag.CustomerID })
+        @Html.HiddenFor(model => model.RegiterContest, new { Value = ViewBag.RegisterContestID })
+    </div>
+
+    <div class="form-group">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="imageFile" id="imageFile" class="form-control" onchange="previewImage(event)" />
+            <img id="imagePreview" src="#" alt="Preview Image" style="max-width: 200px; max-height: 200px; display: none;" />
+            @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Step1, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Step1, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Step1, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ImageOfStep1, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="imageOfStep1File" id="imageOfStep1File" class="form-control" onchange="previewImage(event)" />
+            <img id="imagePreviewOfStep1" src="#" alt="Preview Image" style="max-width: 200px; max-height: 200px; display: none;" />
+            @Html.ValidationMessageFor(model => model.ImageOfStep1, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Step2, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Step2, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Step2, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ImageOfStep2, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="imageOfStep2File" id="imageOfStep2File" class="form-control" onchange="previewImage(event)" />
+            <img id="imagePreviewOfStep2" src="#" alt="Preview Image" style="max-width: 200px; max-height: 200px; display: none;" />
+            @Html.ValidationMessageFor(model => model.ImageOfStep2, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Step3, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Step3, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Step3, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ImageOfStep3, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="imageOfStep3File" id="imageOfStep3File" class="form-control" onchange="previewImage(event)" />
+            <img id="imagePreviewOfStep3" src="#" alt="Preview Image" style="max-width: 200px; max-height: 200px; display: none;" />
+            @Html.ValidationMessageFor(model => model.ImageOfStep3, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Step4, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Step4, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Step4, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ImageOfStep4, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="imageOfStep4File" id="imageOfStep4File" class="form-control" onchange="previewImage(event)" />
+            <img id="imagePreviewOfStep4" src="#" alt="Preview Image" style="max-width: 200px; max-height: 200px; display: none;" />
+            @Html.ValidationMessageFor(model => model.ImageOfStep4, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Step5, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Step5, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Step5, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ImageOfStep5, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="imageOfStep5File" id="imageOfStep5File" class="form-control" onchange="previewImage(event)" />
+            <img id="imagePreviewOfStep5" src="#" alt="Preview Image" style="max-width: 200px; max-height: 200px; display: none;" />
+            @Html.ValidationMessageFor(model => model.ImageOfStep5, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Submit" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var output = event.target.nextElementSibling;
+            output.src = reader.result;
+            output.style.display = 'block';
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
